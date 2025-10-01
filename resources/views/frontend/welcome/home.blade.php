@@ -648,35 +648,35 @@
             const API_KEY = "cdce7f65-b9a1-44ff-8322-d36d346d9d59";
         const API_URL = "https://api.cricapi.com/v1/currentMatches?apikey=" + API_KEY;
 
-        // function loadScores() {
-        //     $.get(API_URL, function (response) {
-        //         if (response.status !== "success") {
-        //             $("#score-list").html("<div class='p-2 text-danger'>Failed to fetch scores</div>");
-        //             return;
-        //         }
+        function loadScores() {
+            $.get(API_URL, function (response) {
+                if (response.status !== "success") {
+                    $("#score-list").html("<div class='p-2 text-danger'>Failed to fetch scores</div>");
+                    return;
+                }
 
-        //         let matches = response.data;
-        //         if (!matches || matches.length === 0) {
-        //             $("#score-list").html("<div class='p-2 text-muted'>No live matches right now</div>");
-        //             return;
-        //         }
+                let matches = response.data;
+                if (!matches || matches.length === 0) {
+                    $("#score-list").html("<div class='p-2 text-muted'>No live matches right now</div>");
+                    return;
+                }
 
-        //         $("#score-list").empty();
-        //         matches.forEach(match => {
-        //             let matchInfo = `
-        //                 <div class="list-group-item">
-        //                     <strong>${match.name}</strong><br>
-        //                     ${match.status}<br>
-        //                     <span class="text-primary">${match.teams[0]} vs ${match.teams[1]}</span><br>
-        //                     <small>${match.venue}</small>
-        //                 </div>
-        //             `;
-        //             $("#score-list").append(matchInfo);
-        //         });
-        //     });
-        // }
-        // loadScores();
-        // setInterval(loadScores, 60000);
+                $("#score-list").empty();
+                matches.forEach(match => {
+                    let matchInfo = `
+                        <div class="list-group-item">
+                            <strong>${match.name}</strong><br>
+                            ${match.status}<br>
+                            <span class="text-primary">${match.teams[0]} vs ${match.teams[1]}</span><br>
+                            <small>${match.venue}</small>
+                        </div>
+                    `;
+                    $("#score-list").append(matchInfo);
+                });
+            });
+        }
+        loadScores();
+        setInterval(loadScores, 60000);
 
 
         $('.blog-carousel').owlCarousel({
@@ -703,5 +703,14 @@
             }
         });
 
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            var myCarousel = document.querySelector('#carouselExampleFade')
+            var carousel = new bootstrap.Carousel(carouselExampleFade, {
+                interval: 2000,
+            })
+        });
     </script>
 @endpush

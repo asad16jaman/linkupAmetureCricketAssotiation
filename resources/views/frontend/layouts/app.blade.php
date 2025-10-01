@@ -260,7 +260,7 @@
         <div class="offcanvas-body">
             <div class="head-contact d-block d-lg-none">
                 <a href="{{ url('/') }}" class="logo-side">
-                    <img src=""
+                    <img src="{{ $company->logo ? asset('storage/'.$company->logo) : "" }}"
                         style="height: 50px; width: auto; object-fit: contain;" alt="logo" />
                 </a>
 
@@ -475,7 +475,7 @@
                 loop: true,
                 margin: 30,
                 autoplay: true,
-                nav: false, // ডিফল্ট নেভ অফ রাখলাম
+                nav: false, 
                 dots: true,
                 responsive: {
                     0: {
