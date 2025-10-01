@@ -63,9 +63,10 @@
             </div>
         </div>
     </section>
-
+   
     <section class="contact py-5" id="contact">
         <div class="container">
+
 
             <!-- Contact Info -->
             <div class="row g-4 mb-5">
@@ -107,7 +108,7 @@
                                     d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z">
                                 </path>
                             </svg>
-                            
+
                         </div>
 
                         <!-- Text Part -->
@@ -156,26 +157,47 @@
                                 <div class="underline mx-auto"></div>
                             </div>
                         </div>
-                        <form>
+                        <form method="post">
+                            @csrf
                             <div class="row g-3 mt-3">
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control form-control-lg rounded-4"
-                                        placeholder="Your Name" required>
+                                    <input type="text" value="{{ old('name') }}"
+                                        class="form-control form-control-lg rounded-4 @error('name') is-invalid @enderror"
+                                        placeholder="Your Name" name="name" required>
+                                    @error('name')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="email" class="form-control form-control-lg rounded-4"
+                                    <input type="email" value="{{ old('email') }}" name="email"
+                                        class="form-control form-control-lg rounded-4 @error('email') is-invalid @enderror"
                                         placeholder="Your Email" required>
+                                    @error('email')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="tel" class="form-control form-control-lg rounded-4"
-                                        placeholder="Phone Number" required>
+                                    <input type="tel" value="{{ old('phone') }}" name="phone" class="form-control form-control-lg rounded-4 @error('phone') is-invalid
+                                    @enderror" placeholder="Phone Number" required>
+                                    @error('phone')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control form-control-lg rounded-4"
-                                        placeholder="Subject" required>
+                                    <input type="text" value="{{ old('subject') }}" name="subject" class="form-control form-control-lg rounded-4 @error('subject') is-invalid
+                                    @enderror" placeholder="Subject" required>
+                                    @error('subject')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="col-12">
-                                    <textarea rows="5" class="form-control form-control-lg rounded-4" placeholder="Your Message" required></textarea>
+                                    <textarea rows="5" name="message" class="form-control form-control-lg rounded-4 @error('message') is-invalid
+                                    @enderror" placeholder="Your Message"
+                                        required>{{ old('message') }}</textarea>
+                                    <small class="text-mute">Max : 500 Letter</small>
+                                    @error('message')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="col-12 text-end">
                                     <button type="submit"
@@ -192,16 +214,60 @@
             <div class="row mt-5">
                 <div class="col-12">
                     <div class="map-container rounded shadow-lg overflow-hidden" style="height: 400px;">
-                        <iframe
-                            src="{{ optional($company)->map }}"
-                            width="100%" height="455" style="border:1;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="{{ optional($company)->map }}" width="100%" height="455" style="border:1;"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+
+<!-- Session Message Modal -->
+<div class="modal fade" id="sessionModal" tabindex="-1" aria-labelledby="sessionModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      
+      <div class="modal-header 
+            @if(session('success')) bg-success text-white 
+            @elseif(session('error')) bg-danger text-white 
+            @endif">
+        <h5 class="modal-title" id="sessionModalLabel">
+            @if(session('success'))
+                Success
+            @elseif(session('error'))
+                Error
+            @endif
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body">
+        @if(session('success'))
+            {{ session('success') }}
+        @elseif(session('error'))
+            {{ session('error') }}
+        @endif
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
 @endsection
 
 @push('js')
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            @if(session('success') || session('error'))
+                let modal = new bootstrap.Modal(document.getElementById('sessionModal'));
+                modal.show();
+            @endif
+        });
+    </script>
 @endpush

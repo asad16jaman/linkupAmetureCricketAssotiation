@@ -198,14 +198,14 @@
               </li>
               --}}
 
-              {{-- 
+              
                 <li class="nav-item {{ ($page=='contact') ? 'active' : '' }}">
                 <a href="{{ route('admin.message') }}">
                   <i class="fas fa-envelope"></i>
                   <p>Contact</p>
                 </a>
               </li>
-              --}}
+              
 
               
               <li class="nav-item {{ ($page=='company') ? 'active' : '' }}">

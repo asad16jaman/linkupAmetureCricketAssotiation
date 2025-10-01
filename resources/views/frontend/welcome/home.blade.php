@@ -317,7 +317,7 @@
 
     <section class="banner-part-content w-100 float-start w3-white">
         <div class="row g-0">
-            <div class="col-md-9">
+            <div class="col-lg-9">
                 <div id="carouselExampleFade" class="carousel slide carousel-fade w-100" data-bs-ride="carousel">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="0"
@@ -352,7 +352,7 @@
             </div>
 
             <!-- Card -->
-            <div class="col-md-3 mt-2 mt-md-0">
+            <div class="col-lg-3 mt-2 mt-md-0">
                 <div class="card shadow-sm h-100">
                     <div class="card-header bg-danger text-white fw-bold">
                         Message From {{ optional($auth_message)->designation }}
@@ -719,7 +719,8 @@
             dots: false,
             responsive: {
                 0: {
-                    items: 1
+                    items: 1,
+                    nav: false,
                 },
                 600: {
                     items: 2

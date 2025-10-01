@@ -112,10 +112,10 @@
                                 <div class="row mb-2">
                                     <!-- //Instagram is replased by whatsapp  -->
                                     <div class="col-md-3 col-12">
-                                        <label for="password">Whatsapp :</label>
+                                        <label for="password">Linkdin :</label>
                                     </div>
                                     <div class="col-md-9 col-12">
-                                          <input type="text" class="form-control p-1 @error('instagram') is-invalid @enderror" value="{{ old('instagram',optional($company)->instagram) }}" name="instagram" placeholder="Enter Instagram">
+                                          <input type="text" class="form-control p-1 @error('instagram') is-invalid @enderror" value="{{ old('instagram',optional($company)->instagram) }}" name="instagram" placeholder="Enter Linkdin Url">
                                     </div>
                                     @error('instagram')
                                         <p class="text-danger text-end">{{ $message }}</p>
@@ -132,7 +132,8 @@
                                         <p class="text-end text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
-                                <div class="row mb-2">
+                                {{-- 
+                                    <div class="row mb-2">
                                     <!-- //Linkdin is replased by wechat  -->
                                     <div class="col-md-3 col-12">
                                         <label for="password">Wechat :</label>
@@ -144,6 +145,7 @@
                                         <p class="text-end text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
+                                --}}
                                 <div class="row mb-2">
                                     <div class="col-md-3 col-12">
                                         <div class="">

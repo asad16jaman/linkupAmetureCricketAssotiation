@@ -407,15 +407,12 @@
             }
         });
 
-
         scrollBtn.addEventListener("click", () => {
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
             });
         });
-
-
         scrollBtn.style.display = "none";
     </script>
 
@@ -699,10 +696,6 @@
 
 
     <script>
-
-
-
-
         //    init();
 
         // function init(){
@@ -760,6 +753,17 @@
         }
     </script>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+        var toastList = toastElList.map(function (toastEl) {
+            return new bootstrap.Toast(toastEl, {
+                delay: 4000 // ৪ সেকেন্ড পরে auto hide
+            });
+        });
+        toastList.forEach(toast => toast.show());
+    });
+</script>
     @stack('js')
 </body>
 

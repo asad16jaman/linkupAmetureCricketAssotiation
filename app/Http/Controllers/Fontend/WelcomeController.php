@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Authmessage;
 use App\Models\Client;
+use App\Models\Contact;
 use App\Models\Event;
 use App\Models\EventType;
 use App\Models\Management;
@@ -15,6 +16,7 @@ use App\Models\WelcomeNode;
 use Illuminate\Http\Request;
 use App\Models\Slider;
 use App\Models\TeamMember;
+use Illuminate\Support\Facades\Log;
 
 class WelcomeController extends Controller
 {
@@ -59,6 +61,27 @@ class WelcomeController extends Controller
       return view("frontend.welcome.contactus");
     }
 
+     public function saveContact(Request $request)
+    {
+      $request->validate([
+        'name' => 'required',
+        'email' => 'required|email',
+        'phone' => 'required|max:20',
+        'subject' => 'required',
+        'message' => 'required|max:500'
+      ]);
+      $data = $request->only(['name','email','phone','subject','message']);
+      try{
+        Contact::create($data);
+        return redirect()->back()->with('success',"Successfully Stored Your Message!");
+      }catch(\Exception $e){
+        Log::info("This Log Is From WelComeController Line No: ".__LINE__." And Message is : ".$e->getMessage());
+        return redirect()->back()->with('error',"there Is Some Problem. Try Again Later!");
+      }
+      
+     
+    }
+
 
     public function aboutus()
     {
@@ -69,7 +92,8 @@ class WelcomeController extends Controller
 
     public function messageDetails()
     {
-      return view("frontend.welcome.messageDetails");
+      $auth_message = Authmessage::first();
+      return view("frontend.welcome.messageDetails",compact('auth_message'));
     }
 
     public function welocmeNote()

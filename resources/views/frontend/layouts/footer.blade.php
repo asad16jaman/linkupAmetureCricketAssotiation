@@ -34,9 +34,9 @@
                     <p class="footer-text pt-3">{{ optional($company)->footer_text }}</p>
 
                     <div class="social d-flex gap-3 justify-content-center justify-content-lg-start mt-3">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="{{ optional($company)->facebook }}"><i class="fab fa-facebook-f"></i></a>
+                        <a href="{{ optional($company)->twiter }}"><i class="fab fa-instagram"></i></a>
+                        <a href="{{ optional($company)->linkdin }}"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
@@ -68,22 +68,19 @@
                         <li class="my-1"><a href="{{ route('welocme.teamMembers')}}"><i class="fa fa-globe text-danger"
                                     aria-hidden="true"></i>&nbsp; Teams
                             </a></li>
-                        <li class="my-1"><a href="{{ route('welocme.aboutus')}}"><i class="fa fa-globe text-danger"
-                                    aria-hidden="true"></i>&nbsp; About
+                        <li class="my-1"><a href="{{ route('welocme.photoGalleries')}}"><i class="fa fa-globe text-danger"
+                                    aria-hidden="true"></i>&nbsp; Photo Gallery
                             </a></li>
                     </ul>
                 </div>
             </div>
 
-
-
-
             <div class="col d-grid justify-content-lg-end">
                 <div class="comonft-sec d-inline-block w-100">
                     <h5 class="footer-title mb-3"> Support </h5>
                     <ul>
-                        <li class="my-1"><a href="#"> Help Center </a></li>
-                        <li class="my-1"><a href="#"> Privacy & Policy </a></li>
+                        <li class="my-1"><a href="{{ route('welocme.contactus') }}"> Contact </a></li>
+                        <li class="my-1"><a href="{{ route('welocme.aboutus')}}"> About </a></li>
                     </ul>
                 </div>
             </div>
@@ -96,8 +93,7 @@
             <div class="d-flex justify-content-between">
 
                 <p class="footer-copy mb-0">Copyright © {{ date('Y') }}. All Rights Reserved</p>
-                <p> Designed & Developed by:<a target="_blank" class="text-white" href="https://linktechbd.com/">Link-Up
-                        Technology Ltd.</a> </p>
+                <p> Designed & Developed by:<a target="_blank" class="text-white" href="https://linktechbd.com/">{{ optional($company)->name }}</a> </p>
             </div>
         </div>
     </div>

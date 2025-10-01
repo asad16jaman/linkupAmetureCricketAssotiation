@@ -1,17 +1,18 @@
 <?php
 
-use App\Http\Controllers\Admin\EventController;
-use App\Http\Controllers\Admin\EventTypeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\WellcomeController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\EventTypeController;
 use App\Http\Controllers\Admin\ManagemenController;
 use App\Http\Controllers\Fontend\WelcomeController;
 use App\Http\Controllers\Admin\AuthMessageController;
@@ -38,9 +39,11 @@ use App\Http\Controllers\Admin\VideoGalleryController;
    
    Route::get('blogs/{type?}', [WelcomeController::class, 'blogs'])->name('welocme.blogs');
    Route::get('blogs/{uid}/detail', [WelcomeController::class, 'blogsDetail'])->name('welocme.blogs.detial');
-
    Route::get('about', [WelcomeController::class, 'aboutus'])->name('welocme.aboutus');
+
    Route::get('contact', [WelcomeController::class, 'contactus'])->name('welocme.contactus');
+   Route::post('contact', [WelcomeController::class, 'saveContact'])->name('welocme.contactus');
+
    Route::get('message_details', [WelcomeController::class, 'messageDetails'])->name('welcome.messageDetails');
 
    Route::get('welcome/note', [WelcomeController::class, 'welocmeNote'])->name('welocme.note');
@@ -139,8 +142,8 @@ Route::group(['prefix'=> '/admin','middleware'=>'auth','as'=>'admin.'], function
     
 
     //Contact url hare
-   //  Route::get('/contact',[ContactController::class,'index'])->name('message');
-   //  Route::post('/contact/{id}',[ContactController::class,'destroy'])->name('message.delete');
+    Route::get('/contact',[ContactController::class,'index'])->name('message');
+    Route::post('/contact/{id}',[ContactController::class,'destroy'])->name('message.delete');
 
      //Client url hare
     Route::get('/clients',[ClientController::class,'index'])->name('client');
@@ -166,7 +169,7 @@ Route::get('image', function () {
    })->name('admin.storage.link');
 
 
-   Route::get('clear', function () {
+Route::get('clear', function () {
       Artisan::call('optimize:clear');
       return redirect()->back()->with('success', 'Application cache cleared.');
    })->name('admin.clear.cache');
