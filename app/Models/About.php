@@ -2,15 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class About extends Model
 {
-    use HasFactory;
+    //
 
-    public function fi()
+    protected $guarded = [];
+
+    protected function about(): Attribute
     {
-        return $this->image ?: 'chairman.png';
+        return Attribute::make(
+            get: fn ($value) => htmlspecialchars_decode($value, ENT_QUOTES),
+            set: fn ($value) => htmlspecialchars($value, ENT_QUOTES, 'UTF-8')
+        );
     }
+
+    
 }

@@ -31,7 +31,7 @@
 @endpush
 
 @section('title')
-    Cricket Association | All Blogs
+     | All Blogs
 @endsection
 
 
@@ -61,164 +61,35 @@
 
         <div class="latest-blogs py-3 w3-light-gray">
             <div class="container">
-                <div class="row g-4">
-                    <div class="col-lg-3 col-md-6">
-                        <a href="#" class="text-decoration-none text-dark">
-                            <div class="card border-0 shadow-sm h-100 blog-card">
-                                <div class="position-relative">
-                                    <img src="{{ asset('frontend/images/fg.jpg') }}" class="card-img-top" alt="Blog">
-                                    <div class="blog-date-badge bg-danger text-white text-center">
-                                        Fri <br><span>15</span>Aug
+                <div class="row g-4 py-5">
+                    @forelse ($blogs as $blog)
+                        <div class="col-lg-3 col-md-6">
+                            <a href="{{ route('welocme.blogs.detial',['uid'=>$blog->uid]) }}" class="text-decoration-none text-dark">
+                                <div class="card border-0 shadow-sm h-100 blog-card">
+                                    <div class="position-relative">
+                                        <img height="170px" src="{{ asset('storage/'.$blog->picture) }}" class="card-img-top" alt="{{ $blog->name }}">
+                                        <div class="blog-date-badge bg-danger text-white text-center">
+                                            @php
+                                                    $date = \Carbon\Carbon::parse($blog->event_date);
+                                                    $dayName = $date->format('D'); 
+                                                    $dayNum  = $date->format('d');
+                                                    $month   = $date->format('M');
+                                                @endphp
+                                                {{ $dayName }} <br><span>{{ $dayNum }}</span>{{ $month }}
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <span class="badge bg-danger mb-2 text-uppercase">{{ $blog->eventType->name }}</span>
+                                        <h5 class="card-title fw-semibold w3-medium">{{ $blog->name }}
+                                        </h5>
+
                                     </div>
                                 </div>
-                                <div class="card-body">
-                                    <span class="badge bg-danger mb-2 text-uppercase">Club</span>
-                                    <h5 class="card-title fw-semibold w3-medium">T20 2023 Herbalife Active Catch of Week 8
-                                    </h5>
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <a href="#" class="text-decoration-none text-dark">
-                            <div class="card border-0 shadow-sm h-100 blog-card">
-                                <div class="position-relative">
-                                    <img src="{{ asset('frontend/images/sg.webp') }}" class="card-img-top"
-                                        alt="Blog">
-                                    <div class="blog-date-badge bg-danger text-white text-center">
-                                        Fri <br><span>15</span>Aug
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <span class="badge bg-danger mb-2 text-uppercase">Sports</span>
-                                    <h5 class="card-title fw-semibold w3-medium">India thump England for sixth successive
-                                        win</h5>
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <a href="#" class="text-decoration-none text-dark">
-                            <div class="card border-0 shadow-sm h-100 blog-card">
-                                <div class="position-relative">
-                                    <img src="{{ asset('frontend/images/fg.jpg') }}" class="card-img-top" alt="Blog">
-                                    <div class="blog-date-badge bg-danger text-white text-center">
-                                        Fri <br><span>15</span>Aug
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <span class="badge bg-danger mb-2 text-uppercase">Team</span>
-                                    <h5 class="card-title fw-semibold w3-medium">T20 2023 Herbalife Active Catch of Week 8
-                                    </h5>
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <a href="#" class="text-decoration-none text-dark">
-                            <div class="card border-0 shadow-sm h-100 blog-card">
-                                <div class="position-relative">
-                                    <img src="{{ asset('frontend/images/fg.jpg') }}" class="card-img-top" alt="Blog">
-                                    <div class="blog-date-badge bg-danger text-white text-center">
-                                        Fri <br><span>15</span>Aug
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <span class="badge bg-danger mb-2 text-uppercase">Club</span>
-                                    <h5 class="card-title fw-semibold w3-medium">T20 2023 Herbalife Active Catch of Week 8
-                                    </h5>
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-
-                    <div class="col-lg-3 col-md-6">
-                        <a href="#" class="text-decoration-none text-dark">
-                            <div class="card border-0 shadow-sm h-100 blog-card">
-                                <div class="position-relative">
-                                    <img src="{{ asset('frontend/images/sg.webp') }}" class="card-img-top"
-                                        alt="Blog">
-                                    <div class="blog-date-badge bg-danger text-white text-center">
-                                        Fri <br><span>15</span>Aug
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <span class="badge bg-danger mb-2 text-uppercase">Sports</span>
-                                    <h5 class="card-title fw-semibold w3-medium">India thump England for sixth successive
-                                        win</h5>
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <a href="#" class="text-decoration-none text-dark">
-                            <div class="card border-0 shadow-sm h-100 blog-card">
-                                <div class="position-relative">
-                                    <img src="{{ asset('frontend/images/fg.jpg') }}" class="card-img-top"
-                                        alt="Blog">
-                                    <div class="blog-date-badge bg-danger text-white text-center">
-                                        Fri <br><span>15</span>Aug
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <span class="badge bg-danger mb-2 text-uppercase">Team</span>
-                                    <h5 class="card-title fw-semibold w3-medium">T20 2023 Herbalife Active Catch of Week 8
-                                    </h5>
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <a href="#" class="text-decoration-none text-dark">
-                            <div class="card border-0 shadow-sm h-100 blog-card">
-                                <div class="position-relative">
-                                    <img src="{{ asset('frontend/images/sg.webp') }}" class="card-img-top"
-                                        alt="Blog">
-                                    <div class="blog-date-badge bg-danger text-white text-center">
-                                        Fri <br><span>15</span>Aug
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <span class="badge bg-danger mb-2 text-uppercase">Sports</span>
-                                    <h5 class="card-title fw-semibold w3-medium">India thump England for sixth successive
-                                        win</h5>
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <a href="#" class="text-decoration-none text-dark">
-                            <div class="card border-0 shadow-sm h-100 blog-card">
-                                <div class="position-relative">
-                                    <img src="{{ asset('frontend/images/fg.jpg') }}" class="card-img-top"
-                                        alt="Blog">
-                                    <div class="blog-date-badge bg-danger text-white text-center">
-                                        Fri <br><span>15</span>Aug
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <span class="badge bg-danger mb-2 text-uppercase">Team</span>
-                                    <h5 class="card-title fw-semibold w3-medium">T20 2023 Herbalife Active Catch of Week 8
-                                    </h5>
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
+                    @empty
+                    <p>There Is No Blogs</p>
+                    @endforelse
 
 
 

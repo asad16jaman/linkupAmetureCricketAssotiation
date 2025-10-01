@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\User;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
 
 return new class extends Migration
 {
@@ -11,14 +13,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+
+        
+            Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('username')->nullable();
-            $table->string('mobile')->nullable();
-            $table->string('email')->unique();
+            $table->string('username')->unique();
+            $table->string('email')->nullable();
+            $table->string('fullname')->nullable();
+            $table->string('picture')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('type', ['admin','user','staff'])->default('user');
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->string('cart')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

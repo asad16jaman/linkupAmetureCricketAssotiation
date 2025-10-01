@@ -59,11 +59,11 @@
 
               <a href="{{ url('/') }}" class="d-flex align-items-center text-decoration-none">
                   <div class="me-2">
-                      <img src="{{ route('imagecache', ['template' => 'original', 'filename' => $ws->logo()]) }}"
+                      <img src="{{ $company->logo ? asset('storage/'.$company->logo) : "" }}"
                           alt="logo" style="height: 50px; width: auto; object-fit: contain;" />
                   </div>
                   <span class="company-name fw-bold fs-5 text-white">
-                      Corporate Amateur Cricket Association
+                      {{ optional($company)->name }}
                   </span>
               </a>
 

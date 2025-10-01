@@ -1,12 +1,26 @@
 @extends('frontend.layouts.app')
 
 @section('title')
-    Cricket Association | About
+    {{ optional($company)->name }} | About
 @endsection
 
 
 
 @push('css')
+<style>
+    .about-top-image{
+        width: 50%;
+        height: auto;
+        float: right;
+        padding: 10px 20px;
+        /* background-color: red */
+    }
+    .about-top-image img{
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+</style>
 @endpush
 
 @section('content')
@@ -28,49 +42,20 @@
     </section>
 
     <div class="about-page-main comon-sub-page-main d-inline-block w-100">
-        <div class="about-club-top mt-3">
+        <div class="about-club-top mt-1 mb-2">
             <div class="container pb-1 pt-0">
                 <div class="row row-cols-1 row-cols-lg-2 g-lg-5">
-                    <div class="col position-relative">
-                        <figure class="big-img">
-                            <img src="{{ asset('frontend/images/GettyImages-1764843770.webp') }}" alt="pic">
-                        </figure>
+                    
 
-                    </div>
-                    <div class="col">
+                    <div class="col-12 py-3" style="text-align: justify;">
                         {{-- <h5 class="samll-sub mb-1 mt-0"> Our Story </h5> --}}
-                        <h2 class="comon-heading m-0"> About </h2>
+                        <h2 class="comon-heading m-0 text-center mb-3"> {{ optional($about)->title }} </h2>
+                        <div class="about-top-image">
+                            <img src="{{ asset('storage/'.optional($about)->picture) }}" alt="pic">
+                        </div>
+                        
                         <p class="mt-2" style="text-align: justify;">
-                            Corporate Amateur Cricket Association (CACA) was established in the year 2011 by few cricket
-                            loving individuals, who visualized this platform to be the stairway to a weekend getaway for
-                            cricket crazy people who are truly affectionate towards the game. The first tournament was
-                            played by Cadet College Club Limited (CCCL), Grameen Phone (GP), Brac Bank (BB), British
-                            American Tobacco (BATB), Banglalink and Bangla Trac. The tournament continued with the same
-                            spirit till date with many new corporate houses taking part.
-                            Corporate Amateur Cricket Association (CACA) was established in the year 2011 by few cricket
-                            loving individuals, who visualized this platform to be the stairway to a weekend getaway for
-                            cricket crazy people who are truly affectionate towards the game. The first tournament was
-                            played by Cadet College Club Limited (CCCL), Grameen Phone (GP), Brac Bank (BB), British
-                            American Tobacco (BATB), Banglalink and Bangla Trac. The tournament continued with the same
-                            spirit till date with many new corporate houses taking part.
-                            Corporate Amateur Cricket Association (CACA) was established in the year 2011 by few cricket
-                            loving individuals, who visualized this platform to be the stairway to a weekend getaway for
-                            cricket crazy people who are truly affectionate towards the game. The first tournament was
-                            played by Cadet College Club Limited (CCCL), Grameen Phone (GP), Brac Bank (BB), British
-                            American Tobacco (BATB), Banglalink and Bangla Trac. The tournament continued with the same
-                            spirit till date with many new corporate houses taking part.
-                            Corporate Amateur Cricket Association (CACA) was established in the year 2011 by few cricket
-                            loving individuals, who visualized this platform to be the stairway to a weekend getaway for
-                            cricket crazy people who are truly affectionate towards the game. The first tournament was
-                            played by Cadet College Club Limited (CCCL), Grameen Phone (GP), Brac Bank (BB), British
-                            American Tobacco (BATB), Banglalink and Bangla Trac. The tournament continued with the same
-                            spirit till date with many new corporate houses taking part.
-                            Corporate Amateur Cricket Association (CACA) was established in the year 2011 by few cricket
-                            loving individuals, who visualized this platform to be the stairway to a weekend getaway for
-                            cricket crazy people who are truly affectionate towards the game. The first tournament was
-                            played by Cadet College Club Limited (CCCL), Grameen Phone (GP), Brac Bank (BB), British
-                            American Tobacco (BATB), Banglalink and Bangla Trac. The tournament continued with the same
-                            spirit till date with many new corporate houses taking part.
+                           {!! optional($about)->about !!}
                         </p>
 
                         {{-- <p>

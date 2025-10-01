@@ -2,114 +2,111 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Slider;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\File;
+use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\File;
 
 class SliderController extends Controller
 {
-   
-    public function slidersAll()
+    //
+
+    public function index(Request $request, ?int $id = null)
     {
-        $data['sliders'] = Slider::latest()->paginate(20);
-        return view('backend.sliders.index', $data);
+        $editSlider = null;
+        if ($id != null) {
+            $editSlider = Slider::find($id);
+        }
+        $search = $request->input('search');
+        if ($search) {
+            $allSlider = Slider::where('title', 'like', '%' . $search . '%')->simplePaginate(10);
+        } else {
+            $allSlider = Slider::simplePaginate(10);
+        }
+        return view("admin.slider", compact("editSlider", "allSlider"));
     }
 
-
-    public function sliderStore(Request $request)
+    public function store(Request $request, ?int $id = null)
     {
-
-        $validation = Validator::make($request->all(), [
+        $validationRules = [
             'title' => 'required',
-            'image' => 'required',
-        ]);
-
-        if ($validation->fails()) {
-            toast('Something Went Wrong!', 'error');
-            return back()->withErrors($validation)->withInput();
+            'description' => 'required'
+        ];
+        if ($request->hasFile('img')) {
+            $validationRules = [
+                'img' => 'required|image|mimes:jpeg,jpg,png,gif,webp,svg',
+            ];
         }
 
-        $slider = new Slider;
-        $slider->title = $request->title;
-        $slider->excerpt = $request->excerpt;
+        $request->validate($validationRules);
 
-        if ($request->hasFile('image')) {
-            $file = $request->image;
-            $imageName = rand(111, 555) . time() . "." . $file->getClientOriginalExtension();
-            Storage::disk('public')->put('sliders/' . $imageName, File::get($file));
-            $slider->image = $imageName;
-        }
+        $data = $request->only(['title','description']);
+        if ($id != null) {
+            $currentEditUser = Slider::findOrFail($id);
+            try {
+                if ($request->hasFile('img')) {
+                    //delete if user already have profile picture...
+                    if ($currentEditUser->img != null && Storage::exists($currentEditUser->img)) {
+                        Storage::delete($currentEditUser->img);
+                    }
+                    $path = $request->file('img')->store('slider');
+                    $data['img'] = $path;
+                }
+                Slider::where('id', '=', $id)->update($data);
+                return redirect()->route('admin.slider', ['page' => $request->query('page'), 'search' => $request->query('search')])->with('success', "Successfully Slider updated!");
+            } catch (Exception $e) {
+                Log::error("Error is commin from SlideController Storage method");
+                return redirect()->route('error');
 
-        $slider->addedby_id = Auth::id();
-        $slider->save();
-
-        toast('Slider added successfully', 'success');
-        return back();
-    }
-
-  
-    public function sliderEdit(Slider $slider)
-    {
-        return view('admin.sliders.sliderEdit', compact('slider'));
-    }
-
-  
-    public function sliderUpdate(Request $request, Slider $slider)
-    {
-
-        $validation = Validator::make($request->all(), [
-            'title' => 'required',
-        ]);
-
-        if ($validation->fails()) {
-            toast('Something Went Wrong!', 'error');
-            return back()->withErrors($validation)->withInput();
-        }
-
-        $slider->title = $request->title;
-        $slider->excerpt = $request->excerpt;
-        $slider->active = $request->active ? 1 : 0;
-
-        if ($request->hasFile('image')) {
-            $old = 'sliders/' . $slider->image;
-            if (Storage::disk('public')->exists($old)) {
-                Storage::disk('public')->delete($old);
             }
-            $file = $request->image;
-            $imageName = rand(111, 555) . time() . "." . $file->getClientOriginalExtension();
-            Storage::disk('public')->put('sliders/' . $imageName, File::get($file));
-            $slider->image = $imageName;
+
         }
 
-       
+        try {
 
-        $slider->editedby_id = Auth::id();
-        $slider->save();
+            if ($request->hasFile('img')) {
+                $path = $request->file('img')->store('slider');
+                $data['img'] = $path;
+            }
+            Slider::create($data);
+            return back()->with("success", "Successfully Slider Created!");
 
-        toast('Slider successfully updated', 'success');
-        return back();
+        } catch (Exception $e) {
+            Log::error("Error is commin from SlideController Storage method");
+            return redirect()->route('error');
+
+        }
+
+
+
     }
 
-   
-    public function sliderDelete(Slider $slider)
+    public function destroy(int $id)
     {
-     
 
-        $old = 'sliders/' . $slider->image;
-        if (Storage::disk('public')->exists($old)) {
-            Storage::disk('public')->delete($old);
+        try {
+
+            $slider = Slider::find($id);
+            if ($slider) {
+                //unlink image from directory....
+                Storage::delete($slider->img);
+                $slider->delete();
+            }
+
+            return redirect()->route('admin.slider')->with('success', 'Successfully Slider Deleted!');
+
+        } catch (Exception $e) {
+            Log::error("Error is commin from SlideController destroy  method");
+            return redirect()->route('error');
         }
-        $slider->delete();
-        toast('Slider successfully deleted', 'success');
-        return redirect()->back();
+
+
     }
 
-    
 
-   
-    
+
+
 }

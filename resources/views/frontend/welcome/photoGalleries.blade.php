@@ -31,7 +31,7 @@
 @endpush
 
 @section('title')
-    Cricket Association | All Blogs
+    {{ optional($company)->name }} | All Blogs
 @endsection
 
 
@@ -60,17 +60,23 @@
   
     <div class="container">
         <div class="row g-4 mt-0 mb-3">
+
+        @foreach ($photogallery as $gallery)
             <div class="col-lg-3 col-md-6">
-                <a data-fancybox="wk" href="{{ asset('frontend/images/gla2.webp') }}" class="comon-links-divb05">
+                <a data-fancybox="wk" href="{{ asset('storage/'.$gallery->img) }}" class="comon-links-divb05">
                     <figure>
-                        <img src="{{ asset('frontend/images/gla2.webp') }}" alt="pbnm">
+                        <img src="{{ asset('storage/'.$gallery->img) }}" alt="pbnm">
                         <figcaption>
-                            FGC CUP 2022
+                            {{ $gallery->title }}
                         </figcaption>
                     </figure>
                 </a>
             </div>
-            <div class="col-lg-3 col-md-6">
+        
+        @endforeach
+            
+
+            <!-- <div class="col-lg-3 col-md-6">
                 <a data-fancybox="wk" href="{{ asset('frontend/images/gla3.webp') }}" class="comon-links-divb05">
                     <figure>
                         <img src="{{ asset('frontend/images/gla3.webp') }}" alt="pbnm">
@@ -144,7 +150,9 @@
                         </figcaption>
                     </figure>
                 </a>
-            </div>
+            </div> -->
+
+
         </div>
     </div>
     

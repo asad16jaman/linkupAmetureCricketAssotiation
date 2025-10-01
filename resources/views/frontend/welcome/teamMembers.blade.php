@@ -74,50 +74,32 @@
     </section>
 
     <div class="container">
-        @php
-    $players = [
-        ['name' => 'Clive Radley', 'role' => 'All-Rounder', 'image' => 'teamp2.png'],
-        ['name' => 'John Smith', 'role' => 'Batsman', 'image' => 'teamp2.png'],
-        ['name' => 'David Warner', 'role' => 'Bowler', 'image' => 'teamp2.png'],
-        ['name' => 'Michael Clarke', 'role' => 'Wicket Keeper', 'image' => 'teamp2.png'],
-        ['name' => 'Andrew Flintoff', 'role' => 'All-Rounder', 'image' => 'teamp2.png'],
-        ['name' => 'Clive Radley', 'role' => 'All-Rounder', 'image' => 'teamp2.png'],
-        ['name' => 'John Smith', 'role' => 'Batsman', 'image' => 'teamp2.png'],
-        ['name' => 'David Warner', 'role' => 'Bowler', 'image' => 'teamp2.png'],
-        ['name' => 'Michael Clarke', 'role' => 'Wicket Keeper', 'image' => 'teamp2.png'],
-        ['name' => 'Andrew Flintoff', 'role' => 'All-Rounder', 'image' => 'teamp2.png'],
-        ['name' => 'Michael Clarke', 'role' => 'Wicket Keeper', 'image' => 'teamp2.png'],
-        ['name' => 'Andrew Flintoff', 'role' => 'All-Rounder', 'image' => 'teamp2.png'],
-    ];
-@endphp
-
-<div class="container">
-    <div class="row g-4 mt-0 mb-3">
-        @foreach ($players as $player)
-            <div class="col-lg-2 col-sm-4">
-                <div class="player-card">
-                    <div class="card border">
-                        <div class="position-relative">
-                            <img src="{{ asset('frontend/images/' . $player['image']) }}" 
-                                 class="card-img-top" 
-                                 alt="{{ $player['name'] }}">
-                            <ul class="social-icons list-unstyled d-flex justify-content-center">
-                                <li><a href="#" class="btn btn-social"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#" class="btn btn-social"><i class="fab fa-linkedin-in"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="card-body text-center">
-                            <a href="/Players/{{ $player['name'] }}" data-discover="true">
-                                <h5 class="card-title mb-1">{{ $player['name'] }}</h5>
-                            </a>
-                            <p class="text-muted mb-0">{{ $player['role'] }}</p>
+        <div class="container">
+            <div class="row g-4 mt-0 mb-3">
+                @foreach ($players as $player)
+                    <div class="col-lg-2 col-sm-4">
+                        <div class="player-card">
+                            <div class="card border">
+                                <div class="position-relative">
+                                    <img style="height:170px" src="{{ asset('storage/' . $player->photo) }}" class="card-img-top"
+                                        alt="{{ $player->name }}">
+                                    <ul class="social-icons list-unstyled d-flex justify-content-center">
+                                        <li><a href="#" class="btn btn-social"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#" class="btn btn-social"><i class="fab fa-linkedin-in"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="card-body text-center">
+                                    <a href="" data-discover="true">
+                                        <h5 class="card-title mb-1">{{ $player->name }}</h5>
+                                    </a>
+                                    <p class="text-muted mb-0">{{ $player->designation }}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
-        @endforeach
-    </div>
-</div>
+        </div>
 
     </div>
 @endsection

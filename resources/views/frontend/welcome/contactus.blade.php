@@ -69,9 +69,6 @@
 
             <!-- Contact Info -->
             <div class="row g-4 mb-5">
-
-
-
                 <div class="col-lg-4 col-md-6">
                     <div class="info-item text-center p-4 rounded shadow-lg h-100 position-relative"
                         style="background: #000031">
@@ -86,11 +83,12 @@
                                 </path>
                             </svg>
                         </div>
-
                         <!-- Text Part -->
                         <div>
                             <h5 class="mb-1 fw-semibold text-white">Address</h5>
-                            <p class="mb-0 text-white">{{ $ws->contact_address }}</p>
+                            <p class="mb-0 text-white">
+                                {!! optional($company)->address !!}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -109,12 +107,13 @@
                                     d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z">
                                 </path>
                             </svg>
+                            
                         </div>
 
                         <!-- Text Part -->
                         <div>
                             <h5 class="mb-1 fw-semibold text-white">Call Us</h5>
-                            <p class="mb-0 text-white">+88 01234-56789</p>
+                            <p class="mb-0 text-white">{{ optional($company)->phone }}</p>
                         </div>
                     </div>
                 </div>
@@ -138,7 +137,7 @@
                         <!-- Text Part -->
                         <div>
                             <h5 class="mb-1 fw-semibold text-white">Mail Us</h5>
-                            <p class="mb-0 text-white">caca@gmail.com</p>
+                            <p class="mb-0 text-white">{{ optional($company)->email }}</p>
                         </div>
                     </div>
                 </div>
@@ -194,7 +193,7 @@
                 <div class="col-12">
                     <div class="map-container rounded shadow-lg overflow-hidden" style="height: 400px;">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.3383266745946!2d90.36699521429806!3d23.806565392546872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c72d1a5bf2a9%3A0x25a0f9a592e96ad8!2sLink-Up%20Technology%20Ltd.!5e0!3m2!1sen!2sbd!4v1653369900462!5m2!1sen!2sbd"
+                            src="{{ optional($company)->map }}"
                             width="100%" height="455" style="border:1;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>

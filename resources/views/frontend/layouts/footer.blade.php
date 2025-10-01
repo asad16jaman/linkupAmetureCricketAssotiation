@@ -22,16 +22,16 @@
 
                     <a href="{{ url('/') }}" class="d-flex align-items-center text-decoration-none">
                   <div class="me-2">
-                      <img src="{{ route('imagecache', ['template' => 'original', 'filename' => $ws->logo()]) }}"
+                      <img src="{{ asset('storage').'/'.optional($company)->logo }}"
                           alt="logo"
                           style="height: 50px; width: auto; object-fit: contain;" />
                   </div>
                   <span class="company-name fw-bold fs-5 text-white" style="font-size: 16px !important">
-                      Corporate Amateur Cricket Association
+                     {{ optional($company)->name }}
                   </span>
               </a>
 
-                    <p class="footer-text pt-3">{{ $ws->contact_address }}</p>
+                    <p class="footer-text pt-3">{{ optional($company)->footer_text }}</p>
 
                     <div class="social d-flex gap-3 justify-content-center justify-content-lg-start mt-3">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -47,10 +47,10 @@
                 <div class="comonft-sec d-inline-block w-100">
                     <h5 class="footer-title mb-3"> Contact Info </h5>
                     <ul>
-                        <li class="my-1"><a href="#"><i class="fab fa-whatsapp text-danger"></i>&nbsp;
-                                +88 01234-56789 </a></li>
+                        <li class="my-1"><a href="#"><i class="fas fa-phone text-danger"></i>&nbsp;
+                                {{ optional($company)->phone }} </a></li>
                         <li class="my-1"><a href="#"><i class="fa fa-envelope text-danger"></i>&nbsp;
-                               caca@gmail.com </a>
+                               {{ optional($company)->email }} </a>
                         </li>
                     </ul>
                 </div>

@@ -61,108 +61,38 @@
     <div class="video-section d-inline-block w-100 w3-light-gray pt-3 pb-2">
         <div class="container">
             <div class="row g-4">
-                <div class="col-lg-3 col-md-6">
-                    <a data-url="https://www.youtube.com/embed/XJj2PbenIsU?rel=0&autoplay=1" data-bs-toggle="modal"
-                        data-bs-target="#myModal"
-                        class="play-button comon-vedo-divu d-inline-block w-100 position-relative">
-                        <div class="vio-imghj">
-                            <img alt="su" src="{{ asset('frontend/images/video2.jpg') }}" class="img-fluid" />
-                            <span class="btn">
-                                <i class="fas fa-play"></i> 9:45
-                            </span>
-                        </div>
-                    </a>
-                </div>
+                @foreach ($videogallery as $gallery)
+                    <div class="col-lg-3 col-md-6">
+                        <a data-url="{{ $gallery->video_url }}" data-bs-toggle="modal"
+                            data-bs-target="#myModal"
+                            class="play-button comon-vedo-divu d-inline-block w-100 position-relative">
+                            <div class="vio-imghj">
+                                <img alt="su" src="{{ asset('storage/'.$gallery->img) }}" class="img-fluid" />
+                                <span class="btn">
+                                    <i class="fas fa-play"></i> {{ $gallery->duration }}
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
 
-                <div class="col-lg-3 col-md-6">
-                    <a data-url="https://www.youtube.com/embed/XJj2PbenIsU?rel=0&autoplay=1" data-bs-toggle="modal"
-                        data-bs-target="#myModal"
-                        class="play-button comon-vedo-divu d-inline-block w-100 position-relative">
-                        <div class="vio-imghj">
-                            <img alt="su" src="{{ asset('frontend/images/video5.webp') }}" class="img-fluid" />
-                            <span class="btn">
-                                <i class="fas fa-play"></i> 9:45
-                            </span>
+            <!-- video modal start hare                      -->
+        <div class="modal fade youtube-video" id="myModal">
+            <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="video-container" class="video-container">
+                            <iframe id="youtubevideo" allowfullscreen></iframe>
                         </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <a data-url="https://www.youtube.com/embed/XJj2PbenIsU?rel=0&autoplay=1" data-bs-toggle="modal"
-                        data-bs-target="#myModal"
-                        class="play-button comon-vedo-divu d-inline-block w-100 position-relative">
-                        <div class="vio-imghj">
-                            <img alt="su" src="{{ asset('frontend/images/video2.jpg') }}" class="img-fluid" />
-                            <span class="btn">
-                                <i class="fas fa-play"></i> 9:45
-                            </span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <a data-url="https://www.youtube.com/embed/XJj2PbenIsU?rel=0&autoplay=1" data-bs-toggle="modal"
-                        data-bs-target="#myModal"
-                        class="play-button comon-vedo-divu d-inline-block w-100 position-relative">
-                        <div class="vio-imghj">
-                            <img alt="su" src="{{ asset('frontend/images/video5.webp') }}" class="img-fluid" />
-                            <span class="btn">
-                                <i class="fas fa-play"></i> 9:45
-                            </span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <a data-url="https://www.youtube.com/embed/XJj2PbenIsU?rel=0&autoplay=1" data-bs-toggle="modal"
-                        data-bs-target="#myModal"
-                        class="play-button comon-vedo-divu d-inline-block w-100 position-relative">
-                        <div class="vio-imghj">
-                            <img alt="su" src="{{ asset('frontend/images/video2.jpg') }}" class="img-fluid" />
-                            <span class="btn">
-                                <i class="fas fa-play"></i> 9:45
-                            </span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <a data-url="https://www.youtube.com/embed/XJj2PbenIsU?rel=0&autoplay=1" data-bs-toggle="modal"
-                        data-bs-target="#myModal"
-                        class="play-button comon-vedo-divu d-inline-block w-100 position-relative">
-                        <div class="vio-imghj">
-                            <img alt="su" src="{{ asset('frontend/images/video5.webp') }}" class="img-fluid" />
-                            <span class="btn">
-                                <i class="fas fa-play"></i> 9:45
-                            </span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <a data-url="https://www.youtube.com/embed/XJj2PbenIsU?rel=0&autoplay=1" data-bs-toggle="modal"
-                        data-bs-target="#myModal"
-                        class="play-button comon-vedo-divu d-inline-block w-100 position-relative">
-                        <div class="vio-imghj">
-                            <img alt="su" src="{{ asset('frontend/images/video2.jpg') }}" class="img-fluid" />
-                            <span class="btn">
-                                <i class="fas fa-play"></i> 9:45
-                            </span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <a data-url="https://www.youtube.com/embed/XJj2PbenIsU?rel=0&autoplay=1" data-bs-toggle="modal"
-                        data-bs-target="#myModal"
-                        class="play-button comon-vedo-divu d-inline-block w-100 position-relative">
-                        <div class="vio-imghj">
-                            <img alt="su" src="{{ asset('frontend/images/video5.webp') }}" class="img-fluid" />
-                            <span class="btn">
-                                <i class="fas fa-play"></i> 9:45
-                            </span>
-                        </div>
-                    </a>
+                    </div>
                 </div>
             </div>
+        </div>
+        <!-- video modal end hare -->
         </div>
     </div>
 @endsection

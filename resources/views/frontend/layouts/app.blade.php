@@ -7,7 +7,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    
+    <link rel="icon" type="image/png" href="{{ asset('storage').'/'.optional($company)->logo }}">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/font-awesome.min.css') }}">
 
@@ -259,7 +260,7 @@
         <div class="offcanvas-body">
             <div class="head-contact d-block d-lg-none">
                 <a href="{{ url('/') }}" class="logo-side">
-                    <img src="{{ route('imagecache', ['template' => 'original', 'filename' => $ws->logo()]) }}"
+                    <img src=""
                         style="height: 50px; width: auto; object-fit: contain;" alt="logo" />
                 </a>
 
@@ -600,6 +601,7 @@
                 autoplay: true,
                 nav: false,
                 dots: true,
+                rtl: true,
                 responsive: {
                     0: {
                         items: 1
