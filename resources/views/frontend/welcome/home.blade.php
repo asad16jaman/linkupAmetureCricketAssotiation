@@ -311,10 +311,7 @@
         }
     </style>
 @endpush
-
-
 @section('content')
-
     <section class="banner-part-content w-100 float-start w3-white">
         <div class="row g-0">
             <div class="col-lg-9">
@@ -392,7 +389,6 @@
             </div>
         </div>
     </section>
-
     <section class="welcome-section w3-light-gray">
         <div class="container py-2">
             <div class="row pt-5">
@@ -433,7 +429,6 @@
             </div>
         </div>
     </section>
-
     <section class="float-start w-100 body-part pt-0">
         <div class="shop-apge-div py-0 my-3">
             <div class="container">
@@ -481,33 +476,10 @@
                                         class="btn mx-auto mt-2 w3-text-white bt-sm py-1" style="background: #C40E00;">
                                         See More &gt;&gt;</a>
                                 </div>
-
-
                             </div>
                         </div>
-
-
-
                     </div>
-
-                    {{-- <div class="col-md-3">
-                        <div class="card- border p-2">
-                            <div class="card-header-">
-                                <h4 class="text-center">Live Cricket Scores</h4>
-                            </div>
-                            <div class="card-body">
-                                <div id="cricket-scores">
-
-                                    <div id="score-list" class="list-group">
-                                        <!-- Scores will be populated here -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div> --}}
                 </div>
-
             </div>
         </div>
         <!-- blog section start -->
@@ -516,7 +488,6 @@
                 <div class="d-flex align-items-center justify-content-between mb-2">
                     <h2 class="main-hed01" style="font-size: 28px;">Latest Blogs</h2>
                 </div>
-
                 <!-- owl-carousel wrapper -->
                 <div class="owl-carousel blog-carousel">
                     <!-- Blog Item -->
@@ -545,9 +516,6 @@
                                 </a>
                             </div>      
                      @endforeach
-                    
-
-                   
                 </div>
 
                 <div class="text-end">
@@ -616,6 +584,7 @@
             </div>
         </div>
         <!-- Video Gallery section End -->
+         
         <!-- video modal start hare                      -->
         <div class="modal fade youtube-video" id="myModal">
             <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg">

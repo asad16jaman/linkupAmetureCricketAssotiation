@@ -43,8 +43,6 @@
         <div class="about-club-top mt-1 mb-2">
             <div class="container pb-1 pt-0">
                 <div class="row row-cols-1 row-cols-lg-2 g-lg-5">
-                    
-
                     <div class="col-12 py-3" style="text-align: justify;">
                         {{-- <h5 class="samll-sub mb-1 mt-0"> Our Story </h5> --}}
                         <h2 class="comon-heading m-0 text-center mb-3"> {{ optional($about)->title }} </h2>
@@ -55,13 +53,6 @@
                         <p class="mt-2" style="text-align: justify;">
                            {!! optional($about)->about !!}
                         </p>
-
-                        {{-- <p>
-                            The motto of the tournament will continue to run as a platform for the people who gave up
-                            playing professional cricket in order to serve as professionals in the corporate world; however
-                            has enough passion to carry the sport along with themselves beside their respective careers.
-                        </p> --}}
-
                     </div>
                 </div>
             </div>

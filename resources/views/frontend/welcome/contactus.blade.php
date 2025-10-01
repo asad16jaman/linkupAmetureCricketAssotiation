@@ -67,13 +67,11 @@
     <section class="contact py-5" id="contact">
         <div class="container">
 
-
             <!-- Contact Info -->
             <div class="row g-4 mb-5">
                 <div class="col-lg-4 col-md-6">
                     <div class="info-item text-center p-4 rounded shadow-lg h-100 position-relative"
                         style="background: #000031">
-
                         <!-- Icon Top Center -->
                         <div class="icon w3-red text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3"
                             style="width: 60px; height: 60px;">
@@ -142,12 +140,7 @@
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
-
-
             <div class="row">
                 <div class="col-12">
                     <div class="contact-form p-4 rounded shadow-lg bg-light h-100">
@@ -208,8 +201,6 @@
                     </div>
                 </div>
             </div>
-
-
             <!-- Google Map -->
             <div class="row mt-5">
                 <div class="col-12">
@@ -221,7 +212,6 @@
             </div>
         </div>
     </section>
-
 
 <!-- Session Message Modal -->
 <div class="modal fade" id="sessionModal" tabindex="-1" aria-labelledby="sessionModalLabel" aria-hidden="true">
@@ -249,7 +239,6 @@
             {{ session('error') }}
         @endif
       </div>
-      
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
@@ -257,8 +246,6 @@
     </div>
   </div>
 </div>
-
-
 @endsection
 
 @push('js')

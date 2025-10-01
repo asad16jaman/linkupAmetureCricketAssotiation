@@ -34,8 +34,6 @@
      {{ optional($company)->name }} | All Blogs
 @endsection
 
-
-
 @push('css')
 @endpush
 
@@ -56,7 +54,6 @@
             </div>
         </div>
     </section>
-
 
     <div class="video-section d-inline-block w-100 w3-light-gray pt-3 pb-2">
         <div class="container">

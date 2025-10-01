@@ -4,8 +4,6 @@
      {{ optional($company)->name }} | Chairman Message
 @endsection
 
-
-
 @push('css')
 @endpush
 

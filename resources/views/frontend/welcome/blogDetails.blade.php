@@ -4,8 +4,6 @@
    {{ optional($company)->name }} | Blog Detail
 @endsection
 
-
-
 @push('css')
 @endpush
 

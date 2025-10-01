@@ -87,15 +87,10 @@ Route::group(['prefix'=> '/admin','middleware'=>'auth','as'=>'admin.'], function
     Route::post("/sliders/{id?}",[SliderController::class,"store"])->name("slider");
     Route::post("/sliders/{id}/delete",[SliderController::class,"destroy"])->name("slider.delete");
 
-
-
     //Event Type url hare
     Route::get("/event-type/{id?}",[EventTypeController::class,"index"])->name("eventType");
     Route::post("/event-type/{id?}",[EventTypeController::class,"store"])->name("eventType");
     Route::post("/event-type/{id}/delete",[EventTypeController::class,"destroy"])->name("eventType.delete");
-
-    //Country url hare
-   
 
     // Event url hare
     Route::get("/event/{id?}",[EventController::class,"index"])->name("event");
@@ -110,14 +105,10 @@ Route::group(['prefix'=> '/admin','middleware'=>'auth','as'=>'admin.'], function
    //  Route::post("/service/{id?}",[ServiceController::class,"store"])->name("service");
    //  Route::post("/service/{id}/delete",[ServiceController::class,"destroy"])->name("service.delete");
 
-
-
     //chairman-message
     Route::get('/chairman-message',[AuthMessageController::class,'index'])->name('ch-message');
     Route::post('/chairman-message',[AuthMessageController::class,'store'])->name('ch-message');
     
-
-   
     //Photo Gallery url hare
     Route::get("/photogallery/{id?}",[PhotoGalleryController::class,"index"])->name("photogallery");
     Route::post("/photogallery/{id?}",[PhotoGalleryController::class,"store"])->name("photogallery");
@@ -128,7 +119,6 @@ Route::group(['prefix'=> '/admin','middleware'=>'auth','as'=>'admin.'], function
     Route::post("/videogallery/{id?}",[VideoGalleryController::class,"store"])->name("videogallery");
     Route::post("/videogallery/{id}/delete",[VideoGalleryController::class,"destory"])->name("videogallery.delete");
 
-    
     //Managment url hare
     Route::get('/player/{id?}',[ManagemenController::class,'index'])->name('management');
     Route::post('/player/{id?}',[ManagemenController::class,'store'])->name('management');
@@ -137,8 +127,6 @@ Route::group(['prefix'=> '/admin','middleware'=>'auth','as'=>'admin.'], function
     //about url hare
     Route::get('/about',[AboutController::class,'index'])->name('about');
     Route::post('/about',[AboutController::class,'store'])->name('about');
-
-    
 
     //Contact url hare
     Route::get('/contact',[ContactController::class,'index'])->name('message');
@@ -153,9 +141,6 @@ Route::group(['prefix'=> '/admin','middleware'=>'auth','as'=>'admin.'], function
     Route::get('/create-wellcome-node',[WellcomeController::class,'index'])->name('wellcome');
     Route::post('/create-wellcome-node',[WellcomeController::class,'store'])->name('wellcome');
 
-    //feedback maintaining url
-   
-    
     //admin logout
     Route::get('/logout',[DashboardController::class,'logout'])->name('logout');
 });

@@ -34,8 +34,6 @@
      | All Blogs
 @endsection
 
-
-
 @push('css')
 @endpush
 
@@ -90,9 +88,6 @@
                     @empty
                     <p>There Is No Blogs</p>
                     @endforelse
-
-
-
                 </div>
             </div>
         </div>

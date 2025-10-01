@@ -49,9 +49,6 @@
 @section('title')
     {{ optional($company)->name }}  | All Blogs
 @endsection
-
-
-
 @push('css')
 @endpush
 

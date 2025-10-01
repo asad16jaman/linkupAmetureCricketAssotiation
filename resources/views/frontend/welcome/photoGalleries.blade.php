@@ -18,7 +18,6 @@
             font-weight: bold;
             display: block;
         }
-
         .blog-card {
             transition: all 0.3s ease;
         }
@@ -33,8 +32,6 @@
 @section('title')
     {{ optional($company)->name }} | All Blogs
 @endsection
-
-
 
 @push('css')
 @endpush
@@ -57,10 +54,8 @@
         </div>
     </section>
 
-  
     <div class="container">
         <div class="row g-4 mt-0 mb-3 py-3">
-
         @foreach ($photogallery as $gallery)
             <div class="col-lg-3 col-md-6">
                 <a data-fancybox="wk" href="{{ asset('storage/'.$gallery->img) }}" class="comon-links-divb05">
@@ -72,7 +67,6 @@
                     </figure>
                 </a>
             </div>
-        
         @endforeach
             
         </div>
