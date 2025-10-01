@@ -61,7 +61,7 @@
 
         <div class="latest-blogs py-3 w3-light-gray">
             <div class="container">
-                <div class="row g-4 py-5">
+                <div class="row g-4 py-3">
                     @forelse ($blogs as $blog)
                         <div class="col-lg-3 col-md-6">
                             <a href="{{ route('welocme.blogs.detial',['uid'=>$blog->uid]) }}" class="text-decoration-none text-dark">

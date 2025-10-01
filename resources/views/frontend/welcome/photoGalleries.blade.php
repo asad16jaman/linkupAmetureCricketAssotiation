@@ -59,7 +59,7 @@
 
   
     <div class="container">
-        <div class="row g-4 mt-0 mb-3">
+        <div class="row g-4 mt-0 mb-3 py-3">
 
         @foreach ($photogallery as $gallery)
             <div class="col-lg-3 col-md-6">
@@ -75,84 +75,6 @@
         
         @endforeach
             
-
-            <!-- <div class="col-lg-3 col-md-6">
-                <a data-fancybox="wk" href="{{ asset('frontend/images/gla3.webp') }}" class="comon-links-divb05">
-                    <figure>
-                        <img src="{{ asset('frontend/images/gla3.webp') }}" alt="pbnm">
-                        <figcaption>
-                            FGC CUP 2022
-                        </figcaption>
-                    </figure>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <a data-fancybox="wk" href="{{ asset('frontend/images/gla4.webp') }}" class="comon-links-divb05">
-                    <figure>
-                        <img src="{{ asset('frontend/images/gla4.webp') }}" alt="pbnm">
-                        <figcaption>
-                            FGC CUP 2022
-                        </figcaption>
-                    </figure>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <a data-fancybox="wk" href="{{ asset('frontend/images/gla5.jpg') }}" class="comon-links-divb05">
-                    <figure>
-                        <img src="{{ asset('frontend/images/gla5.jpg') }}" alt="pbnm">
-                        <figcaption>
-                            FGC CUP 2022
-                        </figcaption>
-                    </figure>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <a data-fancybox="wk" href="{{ asset('frontend/images/gla2.webp') }}" class="comon-links-divb05">
-                    <figure>
-                        <img src="{{ asset('frontend/images/gla2.webp') }}" alt="pbnm">
-                        <figcaption>
-                            FGC CUP 2022
-                        </figcaption>
-                    </figure>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <a data-fancybox="wk" href="{{ asset('frontend/images/gla3.webp') }}" class="comon-links-divb05">
-                    <figure>
-                        <img src="{{ asset('frontend/images/gla3.webp') }}" alt="pbnm">
-                        <figcaption>
-                            FGC CUP 2022
-                        </figcaption>
-                    </figure>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <a data-fancybox="wk" href="{{ asset('frontend/images/gla4.webp') }}" class="comon-links-divb05">
-                    <figure>
-                        <img src="{{ asset('frontend/images/gla4.webp') }}" alt="pbnm">
-                        <figcaption>
-                            FGC CUP 2022
-                        </figcaption>
-                    </figure>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <a data-fancybox="wk" href="{{ asset('frontend/images/gla5.jpg') }}" class="comon-links-divb05">
-                    <figure>
-                        <img src="{{ asset('frontend/images/gla5.jpg') }}" alt="pbnm">
-                        <figcaption>
-                            FGC CUP 2022
-                        </figcaption>
-                    </figure>
-                </a>
-            </div> -->
-
-
         </div>
     </div>
     

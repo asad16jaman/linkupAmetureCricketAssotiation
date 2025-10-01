@@ -45,7 +45,6 @@ use App\Http\Controllers\Admin\VideoGalleryController;
    Route::post('contact', [WelcomeController::class, 'saveContact'])->name('welocme.contactus');
 
    Route::get('message_details', [WelcomeController::class, 'messageDetails'])->name('welcome.messageDetails');
-
    Route::get('welcome/note', [WelcomeController::class, 'welocmeNote'])->name('welocme.note');
 
 

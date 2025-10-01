@@ -31,7 +31,7 @@
 @endpush
 
 @section('title')
-    Cricket Association | All Blogs
+     {{ optional($company)->name }} | All Blogs
 @endsection
 
 
@@ -60,7 +60,7 @@
 
     <div class="video-section d-inline-block w-100 w3-light-gray pt-3 pb-2">
         <div class="container">
-            <div class="row g-4">
+            <div class="row g-4 py-3">
                 @foreach ($videogallery as $gallery)
                     <div class="col-lg-3 col-md-6">
                         <a data-url="{{ $gallery->video_url }}" data-bs-toggle="modal"

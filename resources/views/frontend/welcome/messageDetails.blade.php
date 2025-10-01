@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('title')
-    Cricket Association | Chairman Message
+     {{ optional($company)->name }} | Chairman Message
 @endsection
 
 

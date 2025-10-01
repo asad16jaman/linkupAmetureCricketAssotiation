@@ -4,7 +4,7 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 gy-4 gy-lg-0">
             <!-- Logo + Social -->
             <div class="col">
-                <div class="comonft-sec w-100 text-center text-lg-start">
+                <div class="comonft-sec w-100  text-lg-start">
                     {{-- <a class="logo d-inline-block mb-4 d-flex " href="/">
                         <img src="{{ route('imagecache', ['template' => 'original', 'filename' => $ws->logo()]) }}" alt="logo" style="max-width: 150px;">
                          <a href="{{url('/')}}" class="company-name element">Cricket Association </a>
@@ -33,10 +33,10 @@
 
                     <p class="footer-text pt-3">{{ optional($company)->footer_text }}</p>
 
-                    <div class="social d-flex gap-3 justify-content-center justify-content-lg-start mt-3">
-                        <a href="{{ optional($company)->facebook }}"><i class="fab fa-facebook-f"></i></a>
-                        <a href="{{ optional($company)->twiter }}"><i class="fab fa-instagram"></i></a>
-                        <a href="{{ optional($company)->linkdin }}"><i class="fab fa-linkedin-in"></i></a>
+                    <div class="social d-flex gap-3 justify-content-lg-start mt-3">
+                        <a target="_blank" href="{{ optional($company)->facebook }}"><i class="fab fa-facebook-f"></i></a>
+                        <a target="_blank" href="{{ optional($company)->twiter }}"><i class="fab fa-instagram"></i></a>
+                        <a target="_blank" href="{{ optional($company)->linkdin }}"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>

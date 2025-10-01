@@ -144,21 +144,21 @@
               
               <li class="nav-item {{ ($page=='gallery') ? 'active' : '' }}">
                 <a href="{{ route('admin.photogallery') }}">
-                  <i class="fas fa-comment"></i>
+                 <i class="fas fa-image"></i>
                   <p>Photo Gallery</p>
                 </a>
               </li>
 
               <li class="nav-item {{ ($page=='v-gallery') ? 'active' : '' }}">
                 <a href="{{ route('admin.videogallery') }}">
-                  <i class="fas fa-comment"></i>
+                  <i class="fas fa-video"></i>
                   <p>Video Gallery</p>
                 </a>
               </li>
 
               <li class="nav-item {{ ($page=='management') ? 'active' : '' }}">
                 <a href="{{ route('admin.management') }}">
-                  <i class="fas fa-comment"></i>
+                  <i class="fas fa-futbol"></i>
                   <p>Player</p>
                 </a>
               </li>

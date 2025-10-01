@@ -11,9 +11,9 @@
                               <span style="white-space: nowrap;">Follow us</span>
                           </li>
                           <li class="ms-3 d-flex">
-                              <a href="{{ optional($company)->facebook }}" class="btn" style="border-radius:0px;"> <i
+                              <a  target="_blank" href="{{ optional($company)->facebook }}" class="btn" style="border-radius:0px;"> <i
                                       class="fab fa-facebook-f"></i> </a>
-                              <a href="{{ optional($company)->twiter }}" class="btn" style="border-radius:0px;"> <svg
+                              <a  target="_blank" href="{{ optional($company)->twiter }}" class="btn" style="border-radius:0px;"> <svg
                                       xmlns="http://www.w3.org/2000/svg" width="10" height="10"
                                       fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
                                       <path

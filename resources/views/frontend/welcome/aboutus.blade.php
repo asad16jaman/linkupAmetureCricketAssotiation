@@ -4,8 +4,6 @@
     {{ optional($company)->name }} | About
 @endsection
 
-
-
 @push('css')
 <style>
     .about-top-image{

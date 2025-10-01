@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('title')
-    Cricket Association | Contact
+     {{ optional($company)->name }}  | Contact
 @endsection
 
 @push('css')

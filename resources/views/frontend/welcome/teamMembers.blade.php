@@ -47,7 +47,7 @@
 @endpush
 
 @section('title')
-    Cricket Association | All Blogs
+    {{ optional($company)->name }}  | All Blogs
 @endsection
 
 
@@ -75,7 +75,7 @@
 
     <div class="container">
         <div class="container">
-            <div class="row g-4 mt-0 mb-3">
+            <div class="row g-4 mt-0 mb-3 py-3">
                 @foreach ($players as $player)
                     <div class="col-lg-2 col-sm-4">
                         <div class="player-card">
