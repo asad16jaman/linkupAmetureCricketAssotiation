@@ -92,7 +92,7 @@
         <div class="page-inner">
             <div class="card mb-1">
                 <div class="card-header pt-1 pb-0">
-                    <h4 class="text-center">Create Product</h4>
+                    <h4 class="text-center">Create Blog</h4>
                 </div>
                 <form method="post" id="productForm" enctype="multipart/form-data">
                     @csrf
@@ -103,13 +103,13 @@
                                 <div class="row mb-2">
                                     <div class="col-md-3 col-12">
                                         <div class="">
-                                            <label for="">Name :</label>
+                                            <label for="">Title :</label>
                                         </div>
                                     </div>
                                     <div class="col-md-9 col-12">
                                         <input type="text" class="form-control p-1 @error('name') is-invalid
                                         @enderror" name="name" value="{{ old('name', optional($editItem)->name)}}"
-                                            placeholder="Enter Product Name">
+                                            placeholder="Enter Blog Title">
                                         @error('name')
                                             <p class="text-danger">{{  $message }}</p>
                                         @enderror
@@ -136,7 +136,7 @@
                                  <div class="row mb-2">
                                     <div class="col-md-3 col-12">
                                         <div class="">
-                                            <label for="email2">Catagory :</label>
+                                            <label for="email2">Blog Type :</label>
                                         </div>
                                     </div>
                                     <div class="col-md-9 col-12">
@@ -144,7 +144,7 @@
                                         @enderror">
                                             <!-- <option value="1">dkslk</option>
                                                         <option value="1">dkslk</option> -->
-                                            <option value="">-- Select Category --</option>
+                                            <option value="">-- Select Type --</option>
                                             @if($editItem != null)
                                                 @foreach ($eventTypes as $event)
                                                     <option value="{{ $event->id }}" @selected(old('event_type_id', optional($editItem)->event_type_id) == $event->id)>{{ $event->name }}
@@ -206,7 +206,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header p-2">
-                            <h5 class="card-title ">ALL Product</h5>
+                            <h5 class="card-title ">ALL Blog</h5>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
