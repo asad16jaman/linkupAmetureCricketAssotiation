@@ -54,13 +54,11 @@
                     @csrf
                     <div class="card-body p-2 ">
                         <div class="row">
-
                             <div class="col-md-6 col-12">
                                 <div class="row mb-2">
                                     <div class="col-md-3 col-12">
                                         <div class="">
                                             <label for="title">Name :</label>
-
                                         </div>
                                     </div>
                                     <div class="col-md-9 col-12">
@@ -72,12 +70,10 @@
                                         @enderror
                                     </div>
                                 </div>
-
                                 <div class="row mb-2">
                                     <div class="col-md-3 col-12">
                                         <div class="">
                                             <label for="title">Proffesion :</label>
-
                                         </div>
                                     </div>
                                     <div class="col-md-9 col-12">
@@ -89,12 +85,10 @@
                                         @enderror
                                     </div>
                                 </div>
-
                                 <div class="row mb-2">
                                     <div class="col-md-3 col-12">
                                         <div class="">
                                             <label for="">Description :</label>
-
                                         </div>
                                     </div>
                                     <div class="col-md-9 col-12">
@@ -108,8 +102,6 @@
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
-
-
                                 <div class="row">
                                     <div class="col-md-12 col-12 d-flex justify-content-center mt-1">
                                         <label for="imageInput" style="cursor: pointer;">
@@ -118,7 +110,6 @@
                                                 src="{{ $editfeedback ? asset('storage/' . $editfeedback->photo) : asset('assets/admin/img/demoUpload.jpg') }}"
                                                 alt="Demo Image" class="profileImg" style="">
                                         </label>
-
                                         <!-- hidden input -->
                                         <input type="file" name="photo" id="imageInput" name="image" accept="image/*"
                                             style="display: none;">
@@ -128,11 +119,8 @@
                                             <p class="text-danger text-center mt-1">{{ $message }}</p>
                                         @enderror
                                 </div>
-
-
                             </div>
                         </div>
-
                         <div class="d-flex justify-content-end">
                             <input type="submit" value="Submit" class="btn btn-primary me-3 p-1">
                         </div>
@@ -210,13 +198,13 @@
                                                                     method="post">
                                                                     @csrf
                                                                     <!-- <input type="submit" value="Delete"> -->
-                                                                    <button type="submit" class="btn btn-danger p-1"><i
+                                                                    <button type="submit" class="btn btn-danger p-1 deleteBtn"><i
                                                                             class="fas fa-trash-alt iconsize"></i></button>
                                                                 </form>
                                                             </td>
                                                         </tr>
                                                     @empty
-                                                        <p>there is no users</p>
+                                                        <p>there is no feedback</p>
 
                                                     @endforelse
 
@@ -243,12 +231,6 @@
 
     @push('script')
         <script>
-
-
-
-
-
-
             const imageInput = document.getElementById('imageInput');
             const previewImage = document.getElementById('previewImage');
 
@@ -264,6 +246,35 @@
                     reader.readAsDataURL(file);
                 }
             })
+
+
+            $(document).on("click", ".deleteBtn", function (e) {
+                e.preventDefault();
+                let form = $(this).closest("form"); // nearest form select korbe
+
+                swal({
+                    title: "Are you sure?",
+                    text: "You Want To Delete",
+                    icon: "warning",
+                    buttons: {
+                        cancel: {
+                            text: "Cancel",
+                            visible: true,
+                            className: "btn btn-danger"
+                        },
+                        confirm: {
+                            text: "Yes, delete it!",
+                            className: "btn btn-success"
+                        }
+                    },
+                    dangerMode: true,
+                }).then((willDelete) => {
+                    console.log(willDelete)
+                    if (willDelete) {
+                        form.submit(); // confirm hole form submit hobe
+                    }
+                });
+            });
         </script>
 
     @endpush

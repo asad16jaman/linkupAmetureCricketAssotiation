@@ -710,7 +710,7 @@
                                                 <div class="d-flex align-items-center">
                                                     <img class="feedbackImage" src="{{ asset('storage/' . $fedbck->photo) }}" alt="{{ $fedbck->name }}"
                                                         class="feedback-img me-3">
-                                                    <div class="text-start">
+                                                    <div class="text-start ps-3">
                                                         <h6 class="mb-0 fw-bold">{{ optional($fedbck)->name }}</h6>
                                                         <small class="text-muted">{{ optional($fedbck)->profession }}</small>
                                                     </div>
