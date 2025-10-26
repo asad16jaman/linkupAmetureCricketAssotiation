@@ -18,7 +18,7 @@
                 <div>
                     <p class="footer-text pt-3 footer-mr">{{ optional($company)->footer_text }}</p>
                 </div>
-                <div>
+                <div class="mt-3 d-flex">
                     <a target="_blank" class="socialIcon" href="{{ optional($company)->facebook }}"><i class="fab fa-facebook-f"></i></a>
                     <a target="_blank" class="socialIcon" href="{{ optional($company)->twiter }}"><i class="fab fa-instagram"></i></a>
                     <a target="_blank" class="socialIcon" href="{{ optional($company)->linkdin }}"><i class="fab fa-linkedin-in"></i></a>
@@ -88,10 +88,15 @@
     } */
 
         .socialIcon{
-                padding: 4px 9px;
-    background: #2bb679;
-    border-radius: 49%;
-    margin-right: 10px;
+        background: #2bb679;
+        border-radius: 49%;
+        margin-right: 10px;
+        height: 35px;
+        display: inline-block;
+        width: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         }
         .contactfont{
             color: yellow;
@@ -99,7 +104,6 @@
             margin-top: 10px;
         }
         
-
     .footer {
         background: #2c2c2c;
         background-position: center;

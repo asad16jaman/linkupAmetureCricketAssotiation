@@ -64,20 +64,20 @@
         }
 
         .scroll-to-top {
-            align-items: center;
-            background: #C40E00 !important;
-            border-radius: 50% !important;
-            bottom: 1rem !important;
-            box-shadow: var(--box-shadow);
-            display: flex;
-            height: 4rem !important;
-            justify-content: center;
-            right: 1rem !important;
-            text-align: center;
-            transition: all .2s;
-            width: 4rem !important;
-            z-index: 900 !important;
-            color: #fff !important;
+                align-items: center;
+                background: #2bb679 !important;
+                border-radius: 50% !important;
+                bottom: 1rem !important;
+                box-shadow: var(--box-shadow);
+                display: flex;
+                height: 2rem !important;
+                justify-content: center;
+                right: 1rem !important;
+                text-align: center;
+                transition: all .2s;
+                width: 2rem !important;
+                z-index: 900 !important;
+                color: #fff !important;
         }
 
         .scroll-to-top:hover {
@@ -106,7 +106,7 @@
         }
 
         .nav-item.dropdown .dropdown-menu .dropdown-item:hover {
-            background: #C40E00;
+            background: #2bb679;
         }
 
         .dropdown-toggle::after {

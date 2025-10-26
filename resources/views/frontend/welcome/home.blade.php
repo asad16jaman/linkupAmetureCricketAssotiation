@@ -364,12 +364,13 @@
         }
 
         .carousel_indecator {
-            background-color: #bd9b0c;
-            padding: 1px 15px;
-            color: #ffffff;
-            z-index: 9999;
-            font-size: 30px;
-            border-radius: 46%;
+                background-color: #bd9b0c;
+                color: #ffffff;
+                z-index: 9999;
+                font-size: 30px;
+                border-radius: 50%;
+                width: 47px;
+                height: 47px;
         }
 
         .handleCaption {
@@ -592,7 +593,7 @@
                         </p>
                         <div class="text-end">
                             <a href="{{ route('welocme.aboutus') }}" class="btn mx-auto mt-2 w3-text-white bt-sm py-1"
-                                style="background: #C40E00;">
+                                style="background: #2bb679;">
                                 See More &gt;&gt;</a>
                         </div>
                     </div>
