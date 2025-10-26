@@ -19,9 +19,7 @@
                                       <path
                                           d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" />
                                   </svg> </a>
-
                           </li>
-
                           <li>
                               <button type="button" class="btn bar-btn-links d-block d-lg-none w3-white"
                                   data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightmobile">
@@ -34,15 +32,12 @@
                                   </span>
                               </button>
                           </li>
-
                       </ul>
                   </div>
-
-
               </div>
           </div>
       </div>
-      <nav class="navbar navbar-expand-lg navbar-light" style="background: #C40E00">
+      <nav class="navbar navbar-expand-lg navbar-light" style="background: #2bb679">
           <div class="container">
               {{-- <a class=" py-0" href="{{ url('/') }}">
                   <div class="" style="width: 100%; display: flex;">
@@ -60,7 +55,7 @@
               <a href="{{ url('/') }}" class="d-flex align-items-center text-decoration-none">
                   <div class="me-2">
                       <img src="{{ $company->logo ? asset('storage/'.$company->logo) : "" }}"
-                          alt="logo" style="height: 50px; width: auto; object-fit: contain;" />
+                          alt="logo" style="height: 36px; width: auto; object-fit: contain;" />
                   </div>
                   <span class="company-name fw-bold fs-5 text-white">
                       {{ optional($company)->name }}
@@ -68,25 +63,26 @@
               </a>
 
               <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                  <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <!-- mx-auto -->
+                  <ul class="navbar-nav  mb-2 mb-lg-0">
 
                       <li class="nav-item">
-                          <a class="nav-link text-white" href="{{ url('/') }}">Home</a>
+                          <a class="nav-link text-white {{ Route::is('welcome') ? 'active' : '' }}" href="{{ url('/') }}">Home</a>
                       </li>
 
                       <li class="nav-item">
-                          <a class="nav-link text-white" href="{{ route('welocme.aboutus') }}">About</a>
+                          <a class="nav-link text-white {{ Route::is('welocme.aboutus') ? 'active' : '' }}" href="{{ route('welocme.aboutus') }}">About</a>
                       </li>
 
 
                       <li class="nav-item">
-                          <a class="nav-link text-white" href="{{ route('welocme.teamMembers') }}">Teams</a>
+                          <a class="nav-link text-white {{ Route::is('welocme.teamMembers') ? 'active' : '' }}" href="{{ route('welocme.teamMembers') }}">Teams</a>
                       </li>
 
 
 
                       <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown"
+                          <a class="nav-link dropdown-toggle text-white {{ Route::is('welocme.photoGalleries') || Route::is('welocme.videoGalleries') ? 'active' : '' }}" href="#" id="navbarDropdown"
                               role="button" data-bs-toggle="dropdown" aria-expanded="false">
                               Gallery
                           </a>
@@ -99,11 +95,11 @@
                       </li>
 
                       <li class="nav-item">
-                          <a class="nav-link text-white" href="{{ route('welocme.blogs') }}">Blog</a>
+                          <a class="nav-link text-white {{ Route::is('welocme.blogs') ? 'active' : '' }}" href="{{ route('welocme.blogs') }}">Blog</a>
                       </li>
 
                       <li class="nav-item">
-                          <a class="nav-link text-white" href="{{ route('welocme.contactus') }}">Contact</a>
+                          <a class="nav-link text-white {{ Route::is('welocme.contactus') ? 'active' : '' }}" href="{{ route('welocme.contactus') }}">Contact</a>
                       </li>
 
                   </ul>

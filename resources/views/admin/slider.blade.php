@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('title', 'Admin Page')
+@section('title', 'Create Slider')
 
 @section('style')
     <style>
@@ -77,7 +77,6 @@
                                     <div class="col-md-3 col-12">
                                         <div class="">
                                             <label for="">Description :</label>
-
                                         </div>
                                     </div>
                                     <div class="col-md-9 col-12">
@@ -226,7 +225,7 @@
 
             </div>
         </div>
-
+</div>
 @endsection
 
     @push('script')

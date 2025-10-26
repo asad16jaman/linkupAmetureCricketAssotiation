@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('title', 'Admin Page')
+@section('title', 'Contact Message')
 
 @section('pageside')
   @include('admin.layout.sidebar',['page' => 'contact'])
@@ -44,12 +44,12 @@
 @section('bodyContent')
 
     <div class="container">
-        <div class="page-inner" style="padding:0px 10px!important">
+        <div class="page-inner">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header p-2">
-                            <h5 class="card-title ">ALL Messages</h5>
+                            <h5 class="card-title ">All Messages</h5>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -118,6 +118,7 @@
                 </div>
             </div>
         </div>
+    </div>
 @endsection
 
     @push('script')

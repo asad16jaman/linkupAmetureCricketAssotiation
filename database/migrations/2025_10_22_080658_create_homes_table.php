@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('authmessages', function (Blueprint $table) {
+        Schema::create('homes', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->string('name');
-            $table->string('img')->nullable();
-            $table->string('designation')->nullable();
-            $table->longText('speech');
+            $table->text('impact');
+            $table->string('batsman');
+            $table->string('bowler');
+            $table->string('trophies');
+            $table->string('awart');
+            $table->string('total_crickter');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('authmessages');
+        Schema::dropIfExists('homes');
     }
 };

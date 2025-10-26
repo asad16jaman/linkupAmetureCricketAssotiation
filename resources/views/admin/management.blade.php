@@ -1,39 +1,43 @@
 @extends('admin.layout.app')
 
-@section('title', 'Admin Page')
+@section('title', 'Create Player')
 
 @section('style')
-<style>
-    .table > tbody > tr > td{
-        padding: 0px !important;
-        margin-bottom: 2px;
-    }
-    .iconsize{
-        font-size: 15px;
-    }
-    .profileImg{
-        width: auto;
-        height: 50px; 
-        object-fit: cover;
-        border: 2px dashed #ccc;
-        border-radius: 6px;
-    }
-    .tablepicture{
-        width: 30px;
-        height: 30px;
-        object-fit: fill;
-    }
-    .headbg > tr > th{
-        background-color: #3c5236;
-        color: #fff;
-        padding: 2px !important;
-        margin-bottom: 2px;
-    }
-</style>
+    <style>
+        .table>tbody>tr>td {
+            padding: 0px !important;
+            margin-bottom: 2px;
+        }
+
+        .iconsize {
+            font-size: 15px;
+        }
+
+        .profileImg {
+            width: auto;
+            height: 50px;
+            object-fit: cover;
+            border: 2px dashed #ccc;
+            border-radius: 6px;
+        }
+
+        .tablepicture {
+            width: 30px;
+            height: 30px;
+            object-fit: fill;
+        }
+
+        .headbg>tr>th {
+            background-color: #3c5236;
+            color: #fff;
+            padding: 2px !important;
+            margin-bottom: 2px;
+        }
+    </style>
 @endsection
 
 @section('pageside')
-  @include('admin.layout.sidebar',['page' => 'management'])
+    @include('admin.layout.sidebar', ['page' => 'management'])
 @endsection
 @section('bodyContent')
     <div class="container">
@@ -50,12 +54,12 @@
                                 <div class="row mb-2">
                                     <div class="col-md-3 col-12">
                                         <div class="">
-                                            <label for="email2">Name :</label> 
+                                            <label for="email2">Name :</label>
                                         </div>
                                     </div>
                                     <div class="col-md-9 col-12">
                                         <input type="text" class="form-control p-1 @error('name') is-invalid
-                                        @enderror"  name="name" value="{{ old('name',optional($editTeam)->name)  }}"
+                                        @enderror" name="name" value="{{ old('name', optional($editTeam)->name)  }}"
                                             placeholder="Enter Full Name">
                                         @error('name')
                                             <p class="text-danger">{{ $message }}</p>
@@ -69,8 +73,9 @@
                                         </div>
                                     </div>
                                     <div class="col-md-9 col-12">
-                                         <input type="text" class="form-control p-1  @error('designation') is-invalid
-                                        @enderror"  name="designation" value="{{  old('designation',optional($editTeam)->designation)  }}"
+                                        <input type="text" class="form-control p-1  @error('designation') is-invalid
+                                        @enderror" name="designation"
+                                            value="{{  old('designation', optional($editTeam)->designation)  }}"
                                             placeholder="Enter Designation">
                                         @error('designation')
                                             <p class="text-danger">{{ $message }}</p>
@@ -80,33 +85,32 @@
                             </div>
 
                             <div class="col-md-6 col-12">
-                                             <div class="row">
-                                                <div class="col-md-12 col-12 d-flex justify-content-center mt-1">
-                                                    <label style="cursor: pointer;" class="me-2">
-                                                        <!-- (placeholder) -->
-                                                         Player
-                                                    </label>
+                                <div class="row">
+                                    <div class="col-md-12 col-12 d-flex justify-content-center mt-1">
+                                        <label style="cursor: pointer;" class="me-2">
+                                            <!-- (placeholder) -->
+                                            Player
+                                        </label>
 
-                                                    <!-- hidden input -->
-                                                    <div class="me-3">
-                                                        <input type="file" class="form-control" name="photo" id="imageInput" accept="image/*">
-                                                    </div>
-                                                    <img id="previewImage" 
-                                                            src="{{ $editTeam ?  asset('storage/'.$editTeam->photo) : asset('assets/admin/img/demoProfile.png') }}" 
-                                                            alt="Demo Image" 
-                                                            class="profileImg"
-                                                            style="">
-                                                    @error('photo')
-                                                    <p class="text-danger text-center">{{ $message }}</p>
-                                                 @enderror
-                                                </div>
-                                                
-                                                
-                                            </div>
+                                        <!-- hidden input -->
+                                        <div class="me-3">
+                                            <input type="file" class="form-control" name="photo" id="imageInput"
+                                                accept="image/*">
+                                        </div>
+                                        <img id="previewImage"
+                                            src="{{ $editTeam ? asset('storage/' . $editTeam->photo) : asset('assets/admin/img/demoProfile.png') }}"
+                                            alt="Demo Image" class="profileImg" style="">
+                                        @error('photo')
+                                            <p class="text-danger text-center">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+
+
+                                </div>
                             </div>
                         </div>
                         <div class="d-flex justify-content-end">
-                           <input type="submit" value="Submit" class="btn btn-primary me-3 p-2">
+                            <input type="submit" value="Submit" class="btn btn-primary me-3 p-2">
                         </div>
                     </div>
                 </form>
@@ -114,107 +118,74 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header p-2">
-                            <h5 class="card-title ">All Player</h5>
+                        <div class="card-header">
+                            <h4 class="card-title">All Players</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-6 offset-md-6">
-                                            <div id="basic-datatables_filter" class="dataTables_filter">
-                                                <label class="d-flex justify-content-end">Search:
-                                                    <form>
-                                                        <input type="search" value="{{ request()->query('search') }}" name="search" class="form-control form-control-sm"
-                                                            placeholder="" aria-controls="basic-datatables">
+                                <table id="basic-datatables" class="display table table-striped table-hover">
+                                    <thead class="headbg">
+                                        <tr role="row bg-dark">
+                                            <th style="width: 136.031px;">SL NO:</th>
+                                            <th style="width: 214.469px;">Picture</th>
+                                            <th style="width: 214.469px;">Name</th>
+                                            <th style="width: 214.469px;">Type</th>
+                                            <th style="width: 81.375px;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse($allteam as $team)
+                                            <tr role="row" class="odd">
+                                                <td class="sorting_1">{{ $loop->iteration }}</td>
+                                                <td>
+                                                    <img class="tablepicture"
+                                                        src="{{ $team->photo ? asset('storage/' . $team->photo) : asset('assets/admin/img/demoProfile.png') }}"
+                                                        alt="user profile picture">
+                                                </td>
+                                                <td>{{ $team->name }}</td>
+                                                <td>{{ $team->designation }}</td>
+
+
+                                                <td class="d-flex justify-content-center">
+
+                                                    <a href="{{ route('admin.management', ['id' => $team->id, 'page' => request()->query('page'), 'search' => request()->query('search')]) }}"
+                                                        class="btn btn-info p-1 me-1">
+                                                        <i class="fas fa-edit iconsize"></i>
+                                                    </a>
+
+                                                    <form action="{{ route('admin.management.delete', ['id' => $team->id]) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        <!-- <input type="submit" value="Delete"> -->
+                                                        <button type="submit" class="btn btn-danger p-1 deleteBtn"><i
+                                                                class="fas fa-trash-alt iconsize"></i></button>
                                                     </form>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <table id="basic-datatables"
-                                                class="display table table-striped table-hover dataTable" role="grid"
-                                                aria-describedby="basic-datatables_info">
-                                                <thead class="headbg">
-                                                    <tr role="row bg-dark" >
-                                                        <th style="width: 136.031px;">SL NO:</th>
-                                                        <th style="width: 214.469px;">Picture</th>
-                                                        <th style="width: 214.469px;">Name</th>
-                                                        <th style="width: 214.469px;">Type</th>
-                                                        <th style="width: 81.375px;">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                @forelse($allteam as $team)
-                                                    <tr role="row" class="odd" >
-                                                        <td class="sorting_1">{{ $loop->iteration }}</td>
-                                                        <td>
-                                                            <img class="tablepicture" src="{{ $team->photo ?  asset('storage/'.$team->photo ) : asset('assets/admin/img/demoProfile.png') }}" alt="user profile picture">
-                                                        </td>
-                                                        <td>{{ $team->name }}</td>
-                                                        <td>{{ $team->designation }}</td>
-                                                      
-                                                        
-                                                        <td class="d-flex justify-content-center">
-                                                            
-                                                            <a href="{{ route('admin.management',['id'=>$team->id,'page'=>request()->query('page'),'search'=>request()->query('search')]) }}" class="btn btn-info p-1 me-1">
-                                                                <i class="fas fa-edit iconsize"></i>
-                                                            </a>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <p>there is no player</p>
 
-                                                            <form action="{{ route('admin.management.delete',['id' => $team->id]) }}" method="post">
-                                                                @csrf
-                                                                <!-- <input type="submit" value="Delete"> -->
-                                                                 <button type="submit" class="btn btn-danger p-1 deleteBtn"><i class="fas fa-trash-alt iconsize"></i></button>
-                                                            </form>
-                                                        </td>
-                                                    </tr>
-                                                @empty
-                                                    <p>there is no player</p>
-
-                                                @endforelse
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-12 d-flex justify-content-end me-2">
-                                            @if ($allteam->previousPageUrl())
-                                                <a href="{{ $allteam->previousPageUrl() }}"
-                                                    class="btn btn-primary mx-2 p-1"><i class="fas fa-hand-point-left"></i></a>
-                                            @endif
-
-                                            @if ($allteam->nextPageUrl())
-                                                <a href="{{ $allteam->nextPageUrl() }}" class="btn btn-primary mx-2 p-1"><i
-                                                        class="fas fa-hand-point-right "></i></a>
-                                            @endif
-
-                                        </div>
-                                    </div>
-                                    
-
-                                   
-                                </div>
+                                        @endforelse
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
 
-
             </div>
         </div>
-
+</div>
 @endsection
 
-@push('script')
-<script>
-   
+    @push('script')
+        <script src="{{ asset('/assets/admin/js/plugin/datatables/datatables.min.js') }}"></script>
+        <script>
 
-   
 
-   $(document).on("click", ".deleteBtn", function (e) {
+
+
+            $(document).on("click", ".deleteBtn", function (e) {
                 e.preventDefault();
                 let form = $(this).closest("form"); // nearest form select korbe
 
@@ -243,23 +214,29 @@
             });
 
 
-    const imageInput = document.getElementById('imageInput');
-    const previewImage = document.getElementById('previewImage');
+            const imageInput = document.getElementById('imageInput');
+            const previewImage = document.getElementById('previewImage');
 
-    imageInput.addEventListener('change', function () {
-        const file = this.files[0];
-        if (file) {
-            const reader = new FileReader();
+            imageInput.addEventListener('change', function () {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
 
-            reader.onload = function (e) {
-                previewImage.src = e.target.result;
-            };
+                    reader.onload = function (e) {
+                        previewImage.src = e.target.result;
+                    };
 
-            reader.readAsDataURL(file);
-        }
-    })
+                    reader.readAsDataURL(file);
+                }
+            })
+           
+            $(document).ready(function(){
+                 $("#basic-datatables").DataTable({
+                sort: false
+            });
+            })
 
 
-</script>
+        </script>
 
-@endpush
+    @endpush

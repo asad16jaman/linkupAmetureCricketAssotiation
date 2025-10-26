@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('title', 'Admin Page')
+@section('title', 'Create Welcome')
 
 @section('style')
     <style>
@@ -13,7 +13,13 @@
             font-size: 15px;
         }
 
-       
+        .profileImg {
+            width: auto;
+            height: 100px;
+            object-fit: cover;
+            border: 2px dashed #ccc;
+            border-radius: 6px;
+        }
 
         .tablepicture {
             width: 30px;
@@ -72,7 +78,7 @@
         <div class="page-inner">
             <div class="card mb-1">
                 <div class="card-header pt-1 pb-0">
-                    <h4 class="text-center">Create Wellcome Node</h4>
+                    <h4 class="text-center">Create Welcome Note</h4>
                 </div>
                 <form method="post" id="productForm" enctype="multipart/form-data">
                     @csrf
@@ -87,15 +93,64 @@
                                     </div>
                                     <div class="col-md-9 col-12">
                                         <input type="text" id="title" class="form-control p-1 @error('title') is-invalid
-                                        @enderror" name="title" value="{{ old('title',optional($editItem)->title)}}"
+                                        @enderror" name="title" value="{{ old('title', optional($editItem)->title)}}"
                                             placeholder="Enter Product Name">
                                         @error('title')
                                             <p class="text-danger">{{  $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
-
                             </div>
+
+                            <div class="col-md-6 col-12">
+
+                                <div class="row">
+                                    <div class="col-md-6 col-12 ">
+                                        <div class="w-100 d-flex justify-content-center mt-1">
+                                            
+                                            <label for="imageInput" style="cursor: pointer;">
+                                                <p>Background Image :</p>
+                                                <!-- (placeholder) -->
+                                                <img id="previewImage"
+                                                    src="{{ ($editItem && $editItem->image_1) ? asset('storage/' . $editItem->image_1) : asset('assets/admin/img/demoUpload.jpg') }}"
+                                                    alt="Demo Image" class="profileImg" style="">
+                                            </label>
+                                            <!-- hidden input -->
+                                            <input type="file" name="image_1" id="imageInput" accept="image/*"
+                                                style="display: none;">
+                                        </div>
+                                        @error('image_1')
+                                            <p class="text-danger text-center">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6 col-12 ">
+                                        <div class="w-100 d-flex justify-content-center mt-1">
+                                            <label for="imageInput2" style="cursor: pointer;">
+                                                <p>Image :</p>
+                                                <!-- (placeholder) -->
+                                                <img id="previewImage2"
+                                                    src="{{ ($editItem && $editItem->image_2) ? asset('storage/' . $editItem->image_2) : asset('assets/admin/img/demoUpload.jpg') }}"
+                                                    alt="Demo Image" class="profileImg" style="">
+                                                
+                                            </label>
+                                            <!-- hidden input -->
+                                            <input type="file" name="image_2" id="imageInput2" accept="image/*"
+                                                style="display: none;">
+                                        </div>
+                                        @error('image_2')
+                                            <p class="text-danger text-center">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <p class="text-danger text-center" style="font-size:12px;margin-top:10px">JPG/JPEG/PNG . 1200px X 650px</p>
+
+                                </div>
+                            </div>
+
+
+
+
+
+
                         </div>
 
                         <div class="row">
@@ -114,49 +169,76 @@
                     </div>
                 </form>
             </div>
-            
-        </div>
 
+        </div>
+    </div>
 @endsection
 
-    @push('script')
-        <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
-        <script>
-            ClassicEditor
-                .create(document.querySelector('#description'), {
-                })
-                .catch(error => {
-                    console.error('CKEditor Error:', error);
-                });
-
-            $(document).on("click", ".deleteBtn", function (e) {
-                e.preventDefault();
-                let form = $(this).closest("form"); // nearest form select korbe
-
-                swal({
-                    title: "Are you sure?",
-                    text: "You Want To Delete",
-                    icon: "warning",
-                    buttons: {
-                        cancel: {
-                            text: "Cancel",
-                            visible: true,
-                            className: "btn btn-danger"
-                        },
-                        confirm: {
-                            text: "Yes, delete it!",
-                            className: "btn btn-success"
-                        }
-                    },
-                    dangerMode: true,
-                }).then((willDelete) => {
-                    console.log(willDelete)
-                    if (willDelete) {
-                        form.submit(); // confirm hole form submit hobe
-                    }
-                });
+@push('script')
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#description'), {
+            })
+            .catch(error => {
+                console.error('CKEditor Error:', error);
             });
 
-        </script>
 
-    @endpush
+        const imageInput = document.getElementById('imageInput');
+        const previewImage = document.getElementById('previewImage');
+        imageInput.addEventListener('change', function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImage.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        })
+
+        const imageInput2 = document.getElementById('imageInput2');
+        const previewImage2 = document.getElementById('previewImage2');
+        imageInput2.addEventListener('change', function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImage2.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        })
+
+        $(document).on("click", ".deleteBtn", function (e) {
+            e.preventDefault();
+            let form = $(this).closest("form"); // nearest form select korbe
+
+            swal({
+                title: "Are you sure?",
+                text: "You Want To Delete",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Cancel",
+                        visible: true,
+                        className: "btn btn-danger"
+                    },
+                    confirm: {
+                        text: "Yes, delete it!",
+                        className: "btn btn-success"
+                    }
+                },
+                dangerMode: true,
+            }).then((willDelete) => {
+                console.log(willDelete)
+                if (willDelete) {
+                    form.submit(); // confirm hole form submit hobe
+                }
+            });
+        });
+
+    </script>
+
+@endpush

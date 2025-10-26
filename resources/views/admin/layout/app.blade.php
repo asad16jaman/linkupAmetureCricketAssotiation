@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>@yield('title')</title>
+    <title>@yield('title') || {{ optional($company)->name }}</title>
     <meta
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
       name="viewport"
@@ -61,15 +61,13 @@
 
 
         <!-- main content header section start... -->
-            @include('admin.layout.header')
+        @include('admin.layout.header')
         <!-- main content header section end... -->
-
-        
+         
         @yield('bodyContent')
         
-
         <!-- main content footer is start  -->
-                @include('admin.layout.footer')
+        @include('admin.layout.footer')
         <!-- main content footer is end  -->
 
 

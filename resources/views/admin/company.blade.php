@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('title', 'Admin Page')
+@section('title', 'Create Company')
 
 @section('style')
 <style>
@@ -195,6 +195,7 @@
                 </form>
 			</div>
         </div>
+</div>
 @endsection
 
 @section('pageside')

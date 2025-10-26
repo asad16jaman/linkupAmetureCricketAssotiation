@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Home;
 use Exception;
 use App\Models\Company;
 use Illuminate\Http\Request;
@@ -13,10 +14,9 @@ class CompanyController extends Controller
 {
     //
 
-
     public function index()
     {
-        $company = Company::all()->first();
+        $company = Company::first();
         return view("admin.company", compact("company"));
     }
 

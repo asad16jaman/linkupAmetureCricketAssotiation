@@ -4,25 +4,44 @@
 @endsection
 @push('css')
     <style>
+         .owl-prev:after,
+        .owl-next:after {
+            content: "";
+            font-family: "FontAwesome";
+            position: absolute;
+            font-size: 17px;
+            color: #fff !important;
+            padding: 13px 19px;
+            background: #2bb679;
+            border-radius: 50%;
+        }
+
+        .owl-nav {
+            display: flex;
+            position: absolute;
+            width: 100%;
+            top: 36%;
+        }
+
         .owl-player-custom-nav {
             display: flex;
             gap: 10px;
         }
 
         .owl-player-custom-nav .btn {
-            background: #C40E00;
-            color: #fff;
-            border-radius: 10%;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.3s ease;
+                background: #ffffff;
+                color: #fff;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: 0.3s ease;
         }
 
         .owl-player-custom-nav .btn:hover {
-            background: #C40E00;
+            background: #ffffff;
             transform: scale(1.1);
         }
 
@@ -48,8 +67,6 @@
             transform: scale(1.1);
         }
 
-
-
         .owl-video-custom-nav {
             display: flex;
             gap: 10px;
@@ -71,7 +88,6 @@
             background: #C40E00;
             transform: scale(1.1);
         }
-
 
         .owl-patner-custom-nav {
             display: flex;
@@ -95,13 +111,12 @@
             transform: scale(1.1);
         }
 
-        .owl-stage-outer{
+        .owl-stage-outer {
             padding: 10px 0px;
         }
 
-
         .player-card .card {
-            border: 1px solid #C40E00 !important;
+            /* border: 1px solid #C40E00 !important; */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -109,7 +124,6 @@
             transform: translateY(-6px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
-
 
         .social-icons {
             position: absolute;
@@ -136,6 +150,15 @@
             align-items: center;
             justify-content: center;
             transition: 0.3s ease;
+        }
+
+        .join-us-button {
+            font-size: 18px;
+            background: #bd9b0c;
+            display: inline-block;
+            padding: 7px 12px;
+            border-radius: 11px;
+            margin-top: 41px;
         }
 
         .btn-social:hover {
@@ -173,12 +196,20 @@
             background: rgba(0, 0, 0, 0.55);
             padding: 10px 15px;
             border-radius: 8px;
-            max-width: 90%;
+            max-width: 100%;
+            left: 0px !important;
+            right: 0px !important;
+            top: 0px !important;
+            bottom: 0px !important;
         }
 
         .banner-part-content h1 {
-            font-size: 1.6rem;
+            font-size: 40px;
             line-height: 1.3;
+        }
+
+        .banner-part-content p {
+            font-size: 16px;
         }
 
         .banner-part-content .btn-danger {
@@ -192,23 +223,45 @@
             transform: translateY(-2px);
         }
 
-
         .carousel-inner img {
             width: 100%;
             height: auto;
-            max-height: 430px;
+            /* max-height: 430px; */
             object-fit: cover;
         }
 
+        .border-container {
+            position: relative;
+            padding-bottom: 10px;
+            overflow: hidden;
+            margin-bottom: 50px;
+        }
+
+        .border-container::after {
+            content: "";
+            position: absolute;
+            width: 326px;
+            height: 126px;
+            /* background-color: red; */
+            border: 3px solid #ffdc0c;
+            border-radius: 66%;
+            left: -99px;
+            bottom: -113px;
+        }
+        .liveCardImgSize{
+            width: 41px;
+            height: 25px;
+            object-fit: contain;
+        }
 
         @media (max-width: 768px) {
             .banner-part-content h1 {
                 font-size: 1.2rem;
             }
 
-            .carousel-inner img {
-                max-height: 280px;
-            }
+            /* .carousel-inner img {
+                                                                                max-height: 280px;
+                                                                            } */
 
             .carousel-caption {
                 font-size: 0.9rem;
@@ -225,26 +278,26 @@
             }
         }
 
-
         @media (min-width: 769px) and (max-width: 1200px) {
             .banner-part-content h1 {
                 font-size: 1.4rem;
             }
 
-            .carousel-inner img {
-                max-height: 380px;
-            }
-
+            /* .carousel-inner img {
+                        max-height: 380px;
+                    } */
             .carousel-caption {
                 font-size: 1rem;
             }
         }
 
-
         @media (min-width: 1201px) and (max-width: 1440px) {
+
             .carousel-inner img {
-                height: 555px;
+                height: 542px;
             }
+
+
         }
 
 
@@ -309,12 +362,170 @@
             border: 1px solid #C40E00 !important;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
+        .carousel_indecator {
+            background-color: #bd9b0c;
+            padding: 1px 15px;
+            color: #ffffff;
+            z-index: 9999;
+            font-size: 30px;
+            border-radius: 46%;
+        }
+
+        .handleCaption {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .welcome-section {
+            width: 100%;
+            padding: 100px 0px;
+            background:
+                linear-gradient(to right, rgb(0 0 0 / 91%), rgb(0 0 0 / 91%)),
+                url("{{ optional($wellcomeNode)->image_1 ? asset('storage/' . $wellcomeNode->image_1) : asset('frontend/images/welcome/bg.jpg') }}") no-repeat center center / cover;
+        }
+
+        .servcard {
+
+            padding: 35px 16px;
+            border-radius: 30px;
+        }
+
+        .bg-yellow {
+            background-color: #fecd05;
+        }
+
+        .bg-light-aqua {
+            background-color: #daf5f5;
+        }
+
+        .servcard h3 {
+            font-weight: 600;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .servcard p {
+            font-size: 16px;
+            margin-bottom: 26px;
+        }
+
+        .btn-white {
+            background: #ffffff;
+        }
+
+        .servcard a {
+            padding: 8px 22px;
+            border-radius: 19px;
+            font-weight: 600;
+        }
+
+        .formerCoach {
+            background: #1e2938;
+            color: #ffffff;
+        }
+
+        .separate_indecator {
+            display: inline-block;
+            width: 50px;
+            height: 3px;
+            background: black;
+            margin-bottom: 10px;
+            background-color: #ffffff;
+        }
+
+        .speech {
+            margin-bottom: 50px;
+            font-size: 48px;
+            text-align: left;
+            font-weight: 700;
+            margin-bottom: 50px
+        }
+
+        .feedback-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            min-height: 250px;
+        }
+
+        .feedback-note {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .feedback-img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ddd;
+        }
+        .feedbackImage{
+            width: 59px !important;
+            height: 60px;
+            object-fit: cover;
+            border: 2px solid #c2c5bc;
+            border-radius: 50%;
+            padding: 2px;
+            object-fit: fill;
+        }
+        .feedbackSection{
+            padding: 30px;
+            
+        }
+        .f-12{
+            font-size: 13px;
+        }
+        .f-11{
+            font-size: 11px;
+        }
+        .pl-13{
+                margin-left: 13px;
+        }
+        .mt-8{
+            margin-top: 8px;
+        }
+        .test{
+            background: red;
+            padding: 2px 6px;
+            border-radius: 13px;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .t20{
+            background: #3a3737;
+            padding: 2px 6px;
+            border-radius: 13px;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .odi{
+             background: #096b2c;
+            padding: 2px 6px;
+            border-radius: 13px;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        #matchCards{
+            position: relative;
+        }
+        .py{
+        padding: 70px 0px;
+    }
+        
     </style>
 @endpush
 @section('content')
-    <section class="banner-part-content w-100 float-start w3-white">
+    <section class="banner-part-content w-100 w3-white" style="margin-top: -12px;">
         <div class="row g-0">
-            <div class="col-lg-9">
+            <div class="col-lg-12">
                 <div id="carouselExampleFade" class="carousel slide carousel-fade w-100" data-bs-ride="carousel">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="0"
@@ -326,9 +537,13 @@
                             <div class="carousel-item {{ ($loop->iteration == 1) ? 'active' : '' }}">
                                 <img src="{{ asset('storage/' . $slider->img) }}" class="d-block w-100" alt="Slide 1">
                                 <div class="carousel-caption text-start d-none d-md-block">
-                                    <h1 class="fw-bold">{{ $slider->title }}</h1>
-                                    <p class="mt-1">{{ $slider->description }}
-                                    </p>
+                                    <div class="handleCaption">
+                                        <div style="width: 70%;">
+                                            <h1 class="fw-bold">{{ $slider->title }}</h1>
+                                            <p class="mt-1">{{ $slider->description }} </p>
+                                            <a href="{{ route('welocme.contactus') }}" class="join-us-button">Join With Us</a>
+                                        </div>
+                                    </div>
                                     <!-- <a href="#" class="btn btn-danger btn-lg px-4 mt-1">See More</a> -->
                                 </div>
                             </div>
@@ -337,379 +552,315 @@
                     <!-- Controls -->
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
                         data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon bg-dark p-3" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
+                        <!-- <span class="carousel-control-prev-icon bg-dark p-3" aria-hidden="true"></span> -->
+                        <span class="carousel_indecator">
+                            < </span>
+                                <span class="visually-hidden">Previous</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
                         data-bs-slide="next">
-                        <span class="carousel-control-next-icon bg-dark p-3" aria-hidden="true"></span>
+                        <!-- <span class="carousel-control-next-icon bg-dark p-3" aria-hidden="true"></span> -->
+                        <span class="carousel_indecator">></span>
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
             </div>
 
-            <!-- Card -->
-            <div class="col-lg-3 mt-2 mt-md-0">
-                <div class="card shadow-sm h-100">
-                    <div class="card-header bg-danger text-white fw-bold">
-                        Message From {{ optional($auth_message)->designation }}
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex align-items-center mb-2">
-                            <div class="me-3">
-                                <img src="{{ ($auth_message && $auth_message->img) ? asset('storage/' . $auth_message->img) : asset('/frontend/images/Lalon_Hossain.png') }}"
-                                    class="img-fluid rounded border border-2" width="80" alt="Chairman">
-                            </div>
-                            <div style="color: #000">
-                                <h6 class="mb-0"><b>{{ optional($auth_message)->name }}</b></h6>
-                                <small>{{ optional($auth_message)->designation }}</small>
-                                <h6 class="w3-tiny">{{ optional($company)->name }}</h6>
-                            </div>
-                        </div>
-                        <p class="limited-text mb-2"
-                            style="font-size: 0.9rem; text-align: justify; line-height:1.5; color: #000;">
-                            @php
-                                $txt = strip_tags(optional($auth_message)->speech);
 
-                                $txt = substr($txt, 0, 500);
-                                if (strlen(optional($auth_message)->speech) > 500) {
-                                    $txt = $txt . "...";
-                                }
-                               @endphp
-                            {{ $txt }}
-                        </p>
-                    </div>
-                    <div class="card-footer py-1">
-                        <a href="{{ route('welcome.messageDetails') }}"
-                            class="text-decoration-none w3-medium text-danger fw-semibold float-end">
-                            Read more &gt;&gt;
-                        </a>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
-    <section class="welcome-section w3-light-gray">
+    <section>
+        <div class="container">
+           {{--  include('frontend.home.livescore') --}}
+            <div id="matchCards" class="score_carousel owl-carousel owl-theme mt-0 py-2"></div>
+        </div>
+    </section>
+    <!-- Impact section Start -->
+    @include('frontend.home.impact', ['data' => $homedata])
+    <!-- Impact section End -->
+
+    <!-- wellcome Node Section start hare -->
+    <section class="welcome-section text-white">
         <div class="container py-2">
-            <div class="row pt-5">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h1 class="display-5 fw-bold mb-3">
-                        <div class="heading sideheading">
-                            <div class="sub">
-                                <h6 class="" style="font-size: 20px;">Welcome to</h6>
-                            </div>
-                            <h2 class="font-weight-bold">{{ optional($wellcomeNode)->title }}</h2>
-                            <hr class="styled-hr py-0 mb-2 mt-2">
+            <div class="row">
+                <div class="col-lg-6 mb-4 mb-lg-0 px-3">
+                    <div class="leftcontainer">
+                        <div class="top">
+                            <h1 class="f-900">Wellcome to {{ optional($wellcomeNode)->title }}</h1>
                         </div>
-                    </h1>
-                    <p class="lead justify w3-medium" style="text-align: justify!important;">
-                        {!! optional($wellcomeNode)->note !!}
-                    </p>
-
-                    <div class="text-end">
-                        <a href="{{ route('welocme.aboutus') }}" class="btn mx-auto mt-2 w3-text-white bt-sm py-1"
-                            style="background: #C40E00;">
-                            See More &gt;&gt;</a>
+                        <p>{!! optional($wellcomeNode)->note !!}
+                        </p>
+                        <div class="text-end">
+                            <a href="{{ route('welocme.aboutus') }}" class="btn mx-auto mt-2 w3-text-white bt-sm py-1"
+                                style="background: #C40E00;">
+                                See More &gt;&gt;</a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <div class="card border p-2">
-                        <div class="card-header">
-                            <h4 class="text-center">Live Cricket Scores</h4>
-                        </div>
-                        <div class="card-body px-0">
-                            <div id="cricket-scores">
-                                <div id="score-list" class="list-group">
-                                    <!-- Scores will load here -->
-                                </div>
-                            </div>
+                <div class="col-lg-6 mb-4 mb-lg-0 px-5">
+                    <img src="{{ optional($wellcomeNode)->image_2 ? asset('storage/' . $wellcomeNode->image_2) : asset('frontend/images/welcome/bg.jpg') }}"
+                        alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- wellcome Node Section end hare -->
+    <section class="servSection py">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-12 d-flex flex-row justify-content-center align-items-center mb-3 mb-md-0">
+                    <div class="servcard">
+                        <h2 class="border-container" style="margin-bottom:15px">Served Over</h2>
+                        <h1>{{ $homedata->total_crickter }}</h1>
+                        <h2>Cricketers</h2>
+                    </div>
+                </div>
+                <div
+                    class="col-md-4 col-12 d-flex flex-row justify-content-center align-items-center text-center mb-3 mb-md-0">
+                    <div class="servcard bg-yellow">
+                        <img style="width: 50px;" src="{{ asset('frontend/images/home/crickter.png') }}" alt="">
+                        <h3>Become a Cricketer</h3>
+                        <p>Improve your game with world-class coaching and real match practice. Our training helps you
+                            master batting, bowling, and fielding to shine on every stage.</p>
+                        <a href="{{ route('welocme.contactus') }}" class="btn-white">Join With Us</a>
+                    </div>
+                </div>
+                <div
+                    class="col-md-4 col-12 d-flex flex-row justify-content-center align-items-center text-center mb-3 mb-md-0">
+                    <div class="text-center">
+                        <div class="servcard bg-light-aqua">
+                            <img style="width: 50px;" src="{{ asset('frontend/images/home/umpire.png') }}" alt="">
+                            <h3>Become a Umpire</h3>
+                            <p>Learn the laws of cricket and gain confidence to make the right calls every time. Get trained
+                                by experienced professionals and become a trusted face in every competitive match.</p>
+                            <a href="{{ route('welocme.contactus') }}" class="bg-yellow">Join With Us</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="float-start w-100 body-part pt-0">
-        <div class="shop-apge-div py-0 my-3">
-            <div class="container">
+    <section class="authmessage bg-light py">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 col-12">
+                    <h1 class="border-container">{{ $auth_message->title }}</h1>
+                    <p>{!! $auth_message->speech !!}</p>
+                    <div class="py-3">
+                        <p>{{ $auth_message->name }}</p>
+                        <span>{{ $auth_message->designation }}</span>
+                    </div>
+                </div>
+                <div class="col-md-5 col-12">
+                    <div>
+                        <img src="{{ asset('storage/' . $auth_message->img) }}" class="img-fluid p-5" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="formerCoach py">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <img src="{{ asset('frontend/images/home/coach.jpg') }}" alt="">
+                </div>
+                <div class="col-md-6 col-12">
+                    <h1 class="speech"> "Great playears are made in great academies <span class="separate_indecator"></span>
+                        it all starts with the right guidance"
+                    </h1>
+                    <div class="d-flex justify-content-start  align-items-center">
+                        <div style="background: #d6d605;padding: 18px;border-radius: 5px;display:inline-block"><i
+                                class="fas fa-quote-left"></i>
+                        </div>
+                        <div class="ps-3">
+                            Ricky Martin<br>
+                            <small>Former Coach</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="feedbackSection bg-yellow">
+        <div class="container">
+            <div class="row">
                 <div class="row">
                     <div class="col-12">
                         <div class="card-">
                             <div class="card-header-">
                                 <div class="d-flex align-items-center justify-content-between">
-                                    <h2 class="main-hed01" style="font-size: 28px;">Our Team Members</h2>
+                                    <h2 class="main-hed01" style="font-size: 28px;">Voice From Our Cricketers</h2>
                                     <div class="owl-player-custom-nav">
-                                        <button class="btn btn-asee prev"><i class="fas fa-angle-left"></i></button>
-                                        <button class="btn btn-asee next"><i class="fas fa-angle-right"></i></button>
+                                        <button class="btn btn-asee prev"><i class="fas fa-angle-left text-dark"></i></button>
+                                        <button class="btn btn-asee next"><i class="fas fa-angle-right text-dark"></i></button>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body px-0 pb-0">
                                 <div class="shop-slider owl-carousel owl-theme mt-0 py-2">
-                                    @foreach ($players as $player)
+                                    @foreach ($feedbacks as $fedbck)
                                         <div class="player-card">
-                                            <div class="card border">
-                                                <div class="position-relative">
-                                                    <img src="{{ asset('storage/' . $player->photo) }}" style="height: 170px;" class="card-img-top"
-                                                        alt="Clive Radley">
-
-
-                                                    <ul class="social-icons list-unstyled d-flex justify-content-center">
-                                                        <li><a href="#" class="btn btn-social"><i
-                                                                    class="fab fa-facebook-f"></i></a></li>
-                                                        <li><a href="#" class="btn btn-social"><i
-                                                                    class="fab fa-linkedin-in"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="card-body text-center">
-                                                    <a href="/Players/Clive Radley" data-discover="true">
-                                                        <h5 class="card-title mb-1">{{ optional($player)->name }}</h5>
-                                                    </a>
-                                                    <p class="text-muted mb-0">{{ optional($player)->designation }}</p>
+                                            <div class="card border-0 shadow-sm p-4 rounded-3 feedback-card">
+                                                <p class="feedback-note mb-4">
+                                                    “{{ $fedbck->note }}”
+                                                </p>
+                                                <div class="d-flex align-items-center">
+                                                    <img class="feedbackImage" src="{{ asset('storage/' . $fedbck->photo) }}" alt="{{ $fedbck->name }}"
+                                                        class="feedback-img me-3">
+                                                    <div class="text-start">
+                                                        <h6 class="mb-0 fw-bold">{{ optional($fedbck)->name }}</h6>
+                                                        <small class="text-muted">{{ optional($fedbck)->profession }}</small>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     @endforeach
                                 </div>
-                                <div class="text-end">
-                                    <a href="{{ route('welocme.teamMembers') }}"
-                                        class="btn mx-auto mt-2 w3-text-white bt-sm py-1" style="background: #C40E00;">
-                                        See More &gt;&gt;</a>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- blog section start -->
-        <div class="latest-blogs pt-3 pb-2 w3-light-gray">
-            <div class="container">
-                <div class="d-flex align-items-center justify-content-between mb-2">
-                    <h2 class="main-hed01" style="font-size: 28px;">Latest Blogs</h2>
-                </div>
-                <!-- owl-carousel wrapper -->
-                <div class="owl-carousel blog-carousel">
-                    <!-- Blog Item -->
-                     @foreach ($blogs as $blog)
-                          <div class="item" >
-                                <a href="#" class="text-decoration-none text-dark">
-                                    <div class="card border-0 shadow-sm h-100 blog-card">
-                                        <div class="position-relative">
-                                            <img style="height:160px" src="{{ asset('storage/'.$blog->picture) }}" class="card-img-top" alt="Blog">
-                                            <div class="blog-date-badge bg-danger text-white text-center">
-                                                
-                                                @php
-                                                    $date = \Carbon\Carbon::parse($blog->event_date);
-                                                    $dayName = $date->format('D'); // Fri
-                                                    $dayNum  = $date->format('d'); // 15
-                                                    $month   = $date->format('M'); // Aug
-                                                @endphp
-                                                {{ $dayName }} <br><span>{{ $dayNum }}</span>{{ $month }}
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <span class="badge bg-danger mb-2 text-uppercase">{{ $blog->eventType->name }}</span>
-                                            <h5 class="card-title fw-semibold w3-medium" style="text-align:left;height: 37px;">{{ substr(optional($blog)->name,0,40) }}</h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>      
-                     @endforeach
-                </div>
-
-                <div class="text-end">
-                    <a href="{{ route('welocme.blogs') }}" class="btn mx-auto mt-2 w3-text-white bt-sm py-1"
-                        style="background: #C40E00;">
-                        See More &gt;&gt;
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- blog section End -->
-
-
-        <!-- Photo Gallery section start -->
-        <div class="pt-3 pb-2">
-            <div class="container">
-                <div class="d-flex align-items-center justify-content-between pb-2">
-                    <h2 class="main-hed01" style="font-size: 28px;">Photo Gallery</h2>
-                </div>
-                <div class="photo-gallery owl-carousel owl-theme">
-                    @foreach ($p_gallery as $gallery)
-                        <div class="item p-0 m-0">
-                            <a data-fancybox="wk" href="{{asset('storage/' . $gallery->img)}}" class="comon-links-divb05">
-                                <figure>
-                                    <img src="{{asset('storage/' . $gallery->img)}}" alt="pbnm" />
-                                    <figcaption>{{ $gallery->title  }}</figcaption>
-                                </figure>
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
-                <div class="text-end">
-                    <a href="{{ route('welocme.photoGalleries') }}" class="btn mx-auto mt-2 w3-text-white bt-sm py-1"
-                        style="background: #C40E00;">
-                        See More &gt;&gt;</a>
-                </div>
-            </div>
-        </div>
-        <!-- Photo Gallery section End -->
-
-        <!-- Video Gallery section start -->
-        <div class="video-section d-inline-block w-100 w3-light-gray">
-            <div class="container">
-                <div class="d-flex align-items-center justify-content-between pb-3">
-                    <h2 class="main-hed01" style="font-size: 36px;">Video Gallery</h2>
-                    <div class="owl-video-custom-nav">
-                        <button class="btn btn-asee prev"><i class="fas fa-angle-left"></i></button>
-                        <button class="btn btn-asee next"><i class="fas fa-angle-right"></i></button>
-                    </div>
-                </div>
-                <div class="coverages-slider  owl-carousel owl-theme mt-4">
-                    @foreach ($v_gallery as $gallery)
-                        <a data-url="{!! $gallery->video_url !!}" data-bs-toggle="modal" data-bs-target="#myModal"
-                            class="play-button comon-vedo-divu d-inline-block w-100 position-relative">
-                            <div class="vio-imghj">
-                                <img alt="su" src="{{asset('storage/' . $gallery->img)}}" />
-                                <span class="btn"> <i class="fas fa-play"></i> {{ $gallery->duration }} </span>
-                            </div>
-                        </a>
-                    @endforeach
-                </div>
-                <div class="text-end">
-                    <a href="#" class="btn btn-asee mt-3 mx-auto w3-text-white " style="background: #C40E00;"> More Videos
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- Video Gallery section End -->
-         
-        <!-- video modal start hare                      -->
-        <div class="modal fade youtube-video" id="myModal">
-            <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div id="video-container" class="video-container">
-                            <iframe id="youtubevideo" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- video modal end hare -->
-
-        <div class="sponcer-logo d-inline-block w-100 py-0 my-0">
-            <div class="container py-0 my-0">
-                <div class="sponj-slide owl-carousel owl-theme">
-                    @foreach ($clients as $client)
-                        <div class="corm-iteml py-0 border my-2 patner-card">
-                            <figure class="m-auto">
-                                <img src="{{ asset('storage/' . $client->img) }}" alt="jok" />
-                            </figure>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-
     </section>
 @endsection
-
 @push('js')
-    {{--
     <script>
-            cricket live score----------------
-            function fetchFromOffset(offset, cb) {
-                $.post('https://api.cricapi.com/v1/countries?apikey=cdce7f65-b9a1-44ff-8322-d36d346d9d59&offset=' + offset, function (data) {
-                    if (data.status != "success") { alert("Failed"); return; }
-                    let datarray = data.data;
-                    if (!datarray)
-                        cb([]);
-                    else if (offset >= data.info.totalRows)
-                        cb(datarray);
-                    else
-                        fetchFromOffset(offset + 25, function (data) {
-                            cb(datarray.concat(data));
-                        });
-                });
-            }
-        fetchFromOffset(0, function (data) {
-            console.log("Complete data got!", data);
-        });
-
-            cricket live score----------------
-    </script> --}}
-
-    <script>
-            const API_KEY = "cdce7f65-b9a1-44ff-8322-d36d346d9d59";
+        const API_KEY = "cdce7f65-b9a1-44ff-8322-d36d346d9d59";
         const API_URL = "https://api.cricapi.com/v1/currentMatches?apikey=" + API_KEY;
 
-        function loadScores() {
-            $.get(API_URL, function (response) {
-                if (response.status !== "success") {
-                    $("#score-list").html("<div class='p-2 text-danger'>Failed to fetch scores</div>");
-                    return;
-                }
+         function loadScores() {
+    $.get(API_URL, function (response) {
+        if (response.status !== "success") return;
 
-                let matches = response.data;
-                if (!matches || matches.length === 0) {
-                    $("#score-list").html("<div class='p-2 text-muted'>No live matches right now</div>");
-                    return;
-                }
+        let matches = response.data;
+        if (!matches || matches.length === 0) return;
 
-                $("#score-list").empty();
-                matches.forEach(match => {
-                    let matchInfo = `
-                        <div class="list-group-item">
-                            <strong>${match.name}</strong><br>
-                            ${match.status}<br>
-                            <span class="text-primary">${match.teams[0]} vs ${match.teams[1]}</span><br>
-                            <small>${match.venue}</small>
-                        </div>
-                    `;
-                    $("#score-list").append(matchInfo);
-                });
-            });
-        }
-        loadScores();
-        setInterval(loadScores, 60000);
+        const container = $('#matchCards'); // jQuery object
+        container.trigger('destroy.owl.carousel'); // destroy previous instance
+        container.html(matches.map(match => createCard(match)).join("")); // replace cards
 
-
-        $('.blog-carousel').owlCarousel({
+        // reinitialize owlCarousel
+        container.owlCarousel({
             loop: true,
             margin: 20,
-            autoplay: true,
-             rtl: true,
+            autoplay: false,
+            rtl: false,
             nav: true,
             dots: false,
             responsive: {
+                0: { items: 1 },
+                600: { items: 2 },
+                1000: { items: 3 },
+                1200: { items: 4 }
+            }
+        });
+    });
+}
+loadScores();
+function createCard(match) {
+        const team1 = match.teamInfo[0];
+        const team2 = match.teamInfo[1];
+        const score = match.score || [];
+        const score1 = getScoreByTeam(team1.name, score);
+        const score2 = getScoreByTeam(team2.name, score);
+        return `
+            <div class="item"> <!-- Owl Carousel item -->
+                <div class="card shadow">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                    <p class="text-truncate f-11">${match.name}</p>
+                    <span class="f-12 text-uppercase">${match.matchType}</span>
+                    </div>
+
+                    <div>
+                    <div class="first-team d-flex justify-content-between align-items-center mt-2">
+                        <div class="f-12 d-flex align-items-center">
+                        <div class="card"><div class="card-body p-0">
+                            <img class="liveCardImgSize" src="${team1.img}" alt="">
+                        </div></div>
+                        <span class="f-12 pl-2">${team1.shortname}</span>
+                        </div>
+                        <div class="f-12">${score1}</div>
+                    </div>
+                    <div class="second-team d-flex justify-content-between align-items-center mt-2">
+                        <div class="d-flex align-items-center">
+                        <div class="card"><div class="card-body p-0">
+                            <img class="liveCardImgSize" src="${team2.img}" alt="">
+                        </div></div>
+                        <span class="f-12 pl-2">${team2.shortname}</span>
+                        </div>
+                        <div class="f-12">${score2}</div>
+                    </div>
+                    </div>
+                    <div class="mt-2">
+                    <p class="text-truncate f-11">${match.status}</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+            `;
+    }
+
+    function getScoreByTeam(teamName, scores) {
+        const teamScores = scores.filter(s =>
+            s.inning.toLowerCase().includes(teamName.toLowerCase())
+        );
+        if (teamScores.length === 0) return "-";
+        if (teamScores.length === 1) {
+            const s = teamScores[0];
+            return `${s.r}-${s.w} (${s.o})`;
+        }
+        const firstInning = teamScores[0];
+        const lastInning = teamScores[teamScores.length - 1];
+        return `${firstInning.r} & ${lastInning.r}-${lastInning.w} (${lastInning.o})`;
+    }
+        // setInterval(loadScores, 60000);
+        var shopSlider = $('.shop-slider');
+        shopSlider.owlCarousel({
+            loop: true,
+            margin: 30,
+            autoplay: false,
+            nav: false,
+            dots: true,
+            responsive: {
                 0: {
-                    items: 1,
-                    nav: false,
+                    items: 1
                 },
                 600: {
+                    items: 1
+                },
+                667: {
                     items: 2
                 },
                 1000: {
-                    items: 3
-                },
-                1200: {
-                    items: 4
+                    items: 2
                 }
             }
         });
-
+         $('.score_carousel').owlCarousel({
+            loop: true,
+            margin: 20,
+            autoplay: false,
+            rtl: false,
+            nav: true,
+             
+            dots: false,
+            responsive: {
+                0: { items: 1 },
+                600: { items: 2 },
+                1000: { items: 3 },
+                1200: { items: 4 }
+            }
+            });
     </script>
-
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             var myCarousel = document.querySelector('#carouselExampleFade')
             var carousel = new bootstrap.Carousel(carouselExampleFade, {
-                interval: 2000,
+                interval: 5000000,
             })
         });
     </script>

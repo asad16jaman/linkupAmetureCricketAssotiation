@@ -9,6 +9,8 @@ use App\Models\Client;
 use App\Models\Contact;
 use App\Models\Event;
 use App\Models\EventType;
+use App\Models\Feedback;
+use App\Models\Home;
 use App\Models\Management;
 use App\Models\PhotoGallery;
 use App\Models\VideoGallery;
@@ -27,12 +29,13 @@ class WelcomeController extends Controller
       $auth_message = Authmessage::first();
       $wellcomeNode = WelcomeNode::first();
       $players = Management::latest()->take(8)->get();
-      $p_gallery = PhotoGallery::latest()->take(8)->get();
-      $v_gallery = VideoGallery::latest()->take(8)->get();
-      $clients = Client::latest()->get();
+      // $p_gallery = PhotoGallery::latest()->take(8)->get();
+      // $v_gallery = VideoGallery::latest()->take(8)->get();
+      // $clients = Client::latest()->get();
+      $feedbacks = Feedback::latest()->get();
       $blogs = Event::with('eventType')->latest()->take(8)->get();
-      // return response()->json($blogs);
-      return view('frontend.welcome.home',compact("sliders", "players",'auth_message','wellcomeNode','p_gallery','v_gallery','clients','blogs'));
+      $homedata = Home::first();
+      return view('frontend.welcome.home',compact("sliders", "players",'auth_message','wellcomeNode','blogs','homedata','feedbacks'));
     }
 
     public function blogs( ?string $type = null)

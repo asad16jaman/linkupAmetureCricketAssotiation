@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('title', 'Admin Page')
+@section('title', 'Create About')
 
 @section('style')
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
@@ -32,20 +32,16 @@
             background-color: #3c5236;
             color: #fff;
         }
-        
     </style>
 @endsection
 
 @section('pageside')
-  @include('admin.layout.sidebar',['page' => 'about'])
+    @include('admin.layout.sidebar', ['page' => 'about'])
 @endsection
 
 @section('bodyContent')
-
     <div class="container">
-
         <div class="page-inner">
-
             <div class="card">
                 <div class="card-header pt-1 pb-0">
                     <h4 class="text-center">Create About</h4>
@@ -59,7 +55,7 @@
                                     <div class="col-md-12 col-12">
                                         <label for="email2">Title :</label>
                                         <input type="text" class="form-control p-1 @error('title') is-invalid
-                                        @enderror" name="title" value="{{  old('title',optional($about)->title) }}"
+                                        @enderror" name="title" value="{{  old('title', optional($about)->title) }}"
                                             placeholder="Enter About Company">
                                         @error('title')
                                             <p class="text-danger">{{ $message }}</p>
@@ -71,17 +67,20 @@
                                 <div class="col-md-12 col-12 d-flex justify-content-center mt-1">
                                     <label for="imageInput" style="cursor: pointer;">
                                         <!-- (placeholder) -->
-                                        <img id="previewImage" src="{{ ($about && $about->picture) ? asset('storage/'.$about->picture )  : asset('assets/admin/img/demoUpload.jpg') }}"
+                                        <img id="previewImage"
+                                            src="{{ ($about && $about->picture) ? asset('storage/' . $about->picture) : asset('assets/admin/img/demoUpload.jpg') }}"
                                             alt="Demo Image" class="profileImg" style="">
                                     </label>
                                     <!-- hidden input -->
-                                    <input type="file" name="picture" id="imageInput" accept="image/*" style="display: none;">
+                                    <input type="file" name="picture" id="imageInput" accept="image/*"
+                                        style="display: none;">
                                 </div>
                             </div>
                         </div>
-                        <div class="row mb-2 mt-2 ms-2"> 
+                        <div class="row mb-2 mt-2 ms-2">
                             <label for="long_Description">about :</label>
-                            <textarea name="about" class="form-control  $error('about') is-invalid $enderror"  id="description">{{ old('about',optional($about)->about) }}</textarea>      
+                            <textarea name="about" class="form-control  $error('about') is-invalid $enderror"
+                                id="description">{{ old('about', optional($about)->about) }}</textarea>
                         </div>
                         <div class="d-flex justify-content-end">
                             <input type="submit" value="Submit" class="btn btn-primary me-3 p-2">
@@ -90,15 +89,16 @@
                 </form>
             </div>
         </div>
+</div>
 @endsection
     @push('script')
         <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
-    
+
         <script>
-                ClassicEditor
+            ClassicEditor
                 .create(document.querySelector('#description'))
                 .catch(error => {
-                        console.error('CKEditor Error:', error);
+                    console.error('CKEditor Error:', error);
                 });
             //for text editor end
             const imageInput = document.getElementById('imageInput');

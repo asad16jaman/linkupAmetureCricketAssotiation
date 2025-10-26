@@ -30,16 +30,13 @@
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
           <div class="sidebar-content">
             <ul class="nav nav-secondary">
-
                 <li class="nav-item {{ ($page=='home') ? 'active' : '' }}">
                   <a href="/admin">
                     <i class="fas fa-home"></i>
                     <p>Dashboard</p>
                   </a>
                 </li>
-
-              
-                <li class="nav-item {{ ($page == 'slider' || $page == 'users' || $page == 'client' || $page == 'wellcome') ? 'active' : "" }}">
+                <li class="nav-item {{ ($page == 'slider' || $page == 'users' || $page == 'client' || $page == 'wellcome') || $page == 'homedata' || $page == 'feedback' ? 'active' : "" }}">
                 <a data-bs-toggle="collapse" href="#web">
                   <i class="fas fa-globe"></i> 
                   <p>Web Content</p>
@@ -50,7 +47,6 @@
                     <li>
                       <a href="{{ route('admin.slider') }}" style="padding: 5px 24px !important">
                         <p class="{{ ($page == 'slider') ? 'sub-item' : 'pl' }}">Slider</p>
-                      
                       </a>
                     </li>
                     <li>
@@ -58,32 +54,29 @@
                         <p class="{{($page == 'wellcome') ? 'sub-item' : "pl" }}">Wellcome</p>
                       </a>
                     </li>
-
-                    <!-- <li>
-                      <a href=" route('admin.management') }}" style="padding: 5px 24px !important">
-                        <p class=" ($page == 'management') ? 'sub-item' : "pl" }}">Management</p>
+                    <li>
+                      <a href="{{ route('admin.home_data') }}" style="padding: 5px 24px !important">
+                        <p class="{{($page == 'homedata') ? 'sub-item' : "pl" }}">Home Page</p>
                       </a>
-                    </li> -->
-
+                    </li>
+                   <li>
+                      <a href="{{ route('admin.feedback') }}" style="padding: 5px 24px !important">
+                        <p class="{{ ($page == 'feedback') ? 'sub-item' : "pl" }}">Feedback</p>
+                      </a>
+                    </li> 
                      <li>
                       <a href="{{ route('admin.client') }}" style="padding: 5px 24px !important">
                         <p class="{{ ($page == 'client') ? 'sub-item' : "pl" }}">Client</p>
                       </a>
                     </li> 
-
                       <li class="" >
                         <a href="{{ route('admin.users') }}" style="padding: 5px 24px !important">
                           <p class="{{ ($page == 'users') ? 'sub-item' : "pl" }}">Users</p>
                         </a>
                       </li>
-                   
-
                   </ul>
                 </div>
               </li>
-              
-
-             
                 <li class="nav-item {{ $page == 'review' ? 'active' : "" }}">
                 <a data-bs-toggle="collapse" href="#productss">
                   <i class="fas fa-project-diagram"></i>
@@ -99,7 +92,6 @@
                       </a>
                     </li>
                    --}}
-
                     {{-- 
                       <li>
                       <a href="{{ route('admin.book') }}" style="padding: 5px 24px !important">
@@ -107,19 +99,16 @@
                       </a>
                     </li>
                     --}}
-
                      <li>
                       <a href="{{ route('admin.eventType') }}" style="padding: 5px 24px !important">
                         <p class="{{ ($page == 'brand') ? 'sub-item' : 'pl' }}"> Type</p>
                       </a>
                     </li>
-
                     <li>
                       <a href="{{ route('admin.event') }}" style="padding: 5px 24px !important">
                         <p class="{{ ($page == 'product') ? 'sub-item' : 'pl' }}">Blog</p>
                       </a>
                     </li>
-                    
                     {{-- 
                       <li>
                       <a href="{{ route('admin.product.review') }}" style="padding: 5px 24px !important">
@@ -127,12 +116,9 @@
                       </a>
                     </li>
                     --}}
-                    
                   </ul>
                 </div>
               </li>
-              
-              
               {{-- 
                 <li class="nav-item {{ ($page=='service') ? 'active' : '' }}">
                 <a href="{{ route('admin.service') }}">
@@ -166,7 +152,7 @@
               <li class="nav-item {{ ($page=='ch') ? 'active' : '' }}">
                 <a href="{{ route('admin.ch-message') }}">
                   <i class="fas fa-feather-alt"></i>
-                  <p>Chairman-message</p>
+                  <p>message</p>
                   
                 </a>
               </li>

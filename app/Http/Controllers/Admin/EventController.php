@@ -14,23 +14,13 @@ class EventController extends Controller
 
     public function index(?int $id = null)
     {
-        $searchValue = request()->query("search", null);
-
         $editItem = null;
         if (!is_null($id)) {
             $editItem = Event::with('eventType')->findOrFail($id);
         }
-
         $eventTypes = EventType::all();
-
-        if ($searchValue != null) {
-            $allevents = Event::with('eventType')->where("name", "like", "%" . $searchValue . "%")->orderBy('id', 'desc')->simplePaginate(3)->appends(request()->only('search'));
-        } else {
-            $allevents = Event::with('eventType')->orderBy('id', 'desc')->simplePaginate(3)->appends(request()->only('search'));
-        }
-
+        $allevents = Event::with('eventType')->orderBy('id', 'desc')->get();
         // return response()->json($products);
-
         return view('admin.event', compact(['allevents', 'eventTypes', 'editItem']));
     }
     // generating qr code of a product

@@ -1,89 +1,64 @@
-<footer class="footer float-start w-100 pt-4">
+<footer class="footer float-start w-100">
     <div class="container">
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 gy-4 gy-lg-0">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 gy-4 gy-lg-0 py">
             <!-- Logo + Social -->
-            <div class="col">
-                <div class="comonft-sec w-100  text-lg-start">
-                    {{-- <a class="logo d-inline-block mb-4 d-flex " href="/">
-                        <img src="{{ route('imagecache', ['template' => 'original', 'filename' => $ws->logo()]) }}" alt="logo" style="max-width: 150px;">
-                         <a href="{{url('/')}}" class="company-name element">Cricket Association </a>
-
-                    </a> --}}
-
-                    {{-- <a class="navbar-brand- text-alingn-center py-0" href="{{ url('/') }}">
-                        <img src="{{ route('imagecache', ['template' => 'original', 'filename' => $ws->logo()]) }}"
-                            width="55" alt="logo" />
-
-                        <a href="{{ url('/') }}" class="company-name element" style="padding-left: 5px;">Cricket
-                            Association </a>
-
-                    </a> --}}
-
+            <div class="col-md-6 col-12">
+                <div>
                     <a href="{{ url('/') }}" class="d-flex align-items-center text-decoration-none">
-                  <div class="me-2">
-                      <img src="{{ asset('storage').'/'.optional($company)->logo }}"
-                          alt="logo"
-                          style="height: 50px; width: auto; object-fit: contain;" />
-                  </div>
-                  <span class="company-name fw-bold fs-5 text-white" style="font-size: 16px !important">
-                     {{ optional($company)->name }}
-                  </span>
-              </a>
-
-                    <p class="footer-text pt-3">{{ optional($company)->footer_text }}</p>
-
-                    <div class="social d-flex gap-3 justify-content-lg-start mt-3">
-                        <a target="_blank" href="{{ optional($company)->facebook }}"><i class="fab fa-facebook-f"></i></a>
-                        <a target="_blank" href="{{ optional($company)->twiter }}"><i class="fab fa-instagram"></i></a>
-                        <a target="_blank" href="{{ optional($company)->linkdin }}"><i class="fab fa-linkedin-in"></i></a>
+                        <div class="me-2">
+                            <img src="{{ asset('storage') . '/' . optional($company)->logo }}" alt="logo"
+                                style="height: 50px; width: auto; object-fit: contain;" />
+                        </div>
+                        <span class="company-name fw-bold fs-5 text-white" style="font-size: 16px !important">
+                            {{ optional($company)->name }}
+                        </span>
+                    </a>
+                </div>
+                <div>
+                    <p class="footer-text pt-3 footer-mr">{{ optional($company)->footer_text }}</p>
+                </div>
+                <div>
+                    <a target="_blank" class="socialIcon" href="{{ optional($company)->facebook }}"><i class="fab fa-facebook-f"></i></a>
+                    <a target="_blank" class="socialIcon" href="{{ optional($company)->twiter }}"><i class="fab fa-instagram"></i></a>
+                    <a target="_blank" class="socialIcon" href="{{ optional($company)->linkdin }}"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="comonft-sec d-inline-block w-100">
+                            <h5 class="footer-title mb-3"> Usefull Links </h5>
+                            <ul>
+                                <li class="my-1"><a href="{{ route('welocme.blogs')}}">Blogs
+                                    </a></li>
+                                <li class="my-1"><a href="{{ route('welocme.teamMembers')}}">Teams
+                                    </a></li>
+                                <li class="my-1"><a href="{{ route('welocme.photoGalleries')}}">Photo Gallery
+                                    </a></li>
+                                <li class="my-1"><a href="{{ route('welocme.contactus') }}">Contact </a></li>
+                                <li class="my-1"><a href="{{ route('welocme.aboutus')}}"> About </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="comonft-sec d-inline-block w-100">
+                            <h5 class="footer-title mb-3">Contact Us</h5>
+                            <ul>
+                                <li class="my-1"><a href="{{ route('welocme.blogs')}}"> <i class="fa fa-phone contactfont"></i> 01788954321</li>
+                                <li class="my-1"><a href="{{ route('welocme.teamMembers')}}"><i class="fa fa-envelope contactfont"></i> asad@gmail.lcom
+                                    </a></li>
+                                <li class="my-1"><a href="{{ route('welocme.photoGalleries')}}"><i class="fa fa-map-marker contactfont"></i> flff,dkdlsd
+                                    </a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
 
 
 
-            <div class="col d-grid justify-content-lg-end">
-                <div class="comonft-sec d-inline-block w-100">
-                    <h5 class="footer-title mb-3"> Contact Info </h5>
-                    <ul>
-                        <li class="my-1"><a href="#"><i class="fas fa-phone text-danger"></i>&nbsp;
-                                {{ optional($company)->phone }} </a></li>
-                        <li class="my-1"><a href="#"><i class="fa fa-envelope text-danger"></i>&nbsp;
-                               {{ optional($company)->email }} </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
 
-
-
-            <div class="col d-grid justify-content-lg-end">
-                <div class="comonft-sec d-inline-block w-100">
-                    <h5 class="footer-title mb-3"> Quick Links </h5>
-                    <ul>
-                        <li class="my-1"><a href="{{ route('welocme.blogs')}}"><i class="fa fa-globe text-danger"
-                                    aria-hidden="true"></i>&nbsp; Blogs
-                            </a></li>
-                        <li class="my-1"><a href="{{ route('welocme.teamMembers')}}"><i class="fa fa-globe text-danger"
-                                    aria-hidden="true"></i>&nbsp; Teams
-                            </a></li>
-                        <li class="my-1"><a href="{{ route('welocme.photoGalleries')}}"><i class="fa fa-globe text-danger"
-                                    aria-hidden="true"></i>&nbsp; Photo Gallery
-                            </a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col d-grid justify-content-lg-end">
-                <div class="comonft-sec d-inline-block w-100">
-                    <h5 class="footer-title mb-3"> Support </h5>
-                    <ul>
-                        <li class="my-1"><a href="{{ route('welocme.contactus') }}"> Contact </a></li>
-                        <li class="my-1"><a href="{{ route('welocme.aboutus')}}"> About </a></li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -91,9 +66,9 @@
     <div class="footer-div1 mt-4">
         <div class="container">
             <div class="d-flex justify-content-between">
-
-                <p class="footer-copy mb-0">Copyright © {{ date('Y') }}. All Rights Reserved</p>
-                <p> Designed & Developed by:<a target="_blank" class="text-white" href="https://linktechbd.com/">{{ optional($company)->name }}</a> </p>
+                <p style="font-size:12px" class="footer-copy mb-0">Copyright © {{ date('Y') }}. All Rights Reserved</p>
+                <p style="font-size:12px"> Designed & Developed by:<a target="_blank" class="text-white" href="https://linktechbd.com/">Link-Up
+                        Technology Ltd.</a> </p>
             </div>
         </div>
     </div>
@@ -101,13 +76,36 @@
 
 
 <style>
-    .footer {
+    /* .footer {
         background: linear-gradient(#00000080, #0009),
-            url("{{ asset('frontend/images/footer.jpg') }}");
+            url(" asset('frontend/images/footer.jpg') }}");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         padding: 60px 0 0;
+        color: #fff;
+        font-weight: bold;
+    } */
+
+        .socialIcon{
+                padding: 4px 9px;
+    background: #2bb679;
+    border-radius: 49%;
+    margin-right: 10px;
+        }
+        .contactfont{
+            color: yellow;
+            margin-right: 24px;
+            margin-top: 10px;
+        }
+        
+
+    .footer {
+        background: #2c2c2c;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        /* padding: 60px 0 0; */
         color: #fff;
         font-weight: bold;
     }
@@ -117,7 +115,7 @@
         margin-bottom: 15px;
         font-size: 18px;
         font-weight: bold;
-        border-bottom: 2px solid #C40E00;
+        /* border-bottom: 2px solid #C40E00; */
         display: inline-block;
         padding-bottom: 5px;
     }
@@ -163,7 +161,7 @@
 
 
     .footer-div1 {
-        background: #C40E00;
+        background: #2bb679;
         /* padding: 12px 0;
     margin-top: 30px; */
     }
@@ -171,5 +169,11 @@
     .footer-copy {
         font-size: 14px;
         font-weight: bold;
+    }
+
+    @media screen and (min-width:1024px) {
+        .footer-mr {
+            padding-right: 90px;
+        }
     }
 </style>

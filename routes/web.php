@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\UsersController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\FeedbackController;
 use App\Http\Controllers\Admin\WellcomeController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventTypeController;
@@ -36,7 +38,6 @@ use App\Http\Controllers\Admin\VideoGalleryController;
 
    Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
 
-   
    Route::get('blogs/{type?}', [WelcomeController::class, 'blogs'])->name('welocme.blogs');
    Route::get('blogs/{uid}/detail', [WelcomeController::class, 'blogsDetail'])->name('welocme.blogs.detial');
    Route::get('about', [WelcomeController::class, 'aboutus'])->name('welocme.aboutus');
@@ -46,7 +47,6 @@ use App\Http\Controllers\Admin\VideoGalleryController;
 
    Route::get('message_details', [WelcomeController::class, 'messageDetails'])->name('welcome.messageDetails');
    Route::get('welcome/note', [WelcomeController::class, 'welocmeNote'])->name('welocme.note');
-
 
    Route::get('team/members', [WelcomeController::class, 'teamMembers'])->name('welocme.teamMembers');
    Route::get('photo/galleries', [WelcomeController::class, 'photoGalleries'])->name('welocme.photoGalleries');
@@ -81,6 +81,10 @@ Route::group(['prefix'=> '/admin','middleware'=>'auth','as'=>'admin.'], function
     //company maintain url
     Route::get("/company",[CompanyController::class,"index"])->name("company");
     Route::post("/company",[CompanyController::class,"create"])->name("company");
+
+    //Home Page Url url
+    Route::get("/home-data",[HomeController::class,"index"])->name("home_data");
+    Route::post("/home-data",[HomeController::class,"create"])->name("home_data");
 
     //slider maintaining url
     Route::get("/sliders/{id?}",[SliderController::class,"index"])->name("slider");
@@ -140,6 +144,11 @@ Route::group(['prefix'=> '/admin','middleware'=>'auth','as'=>'admin.'], function
     //Wellcome Node url hare
     Route::get('/create-wellcome-node',[WellcomeController::class,'index'])->name('wellcome');
     Route::post('/create-wellcome-node',[WellcomeController::class,'store'])->name('wellcome');
+
+    //feedback maintaining url
+    Route::get("/feedback/{id?}",[FeedbackController::class,"index"])->name("feedback");
+    Route::post("/feedback/{id?}",[FeedbackController::class,"store"])->name("feedback");
+    Route::post("/feedback/{id}/delete",[FeedbackController::class,"destroy"])->name("feedback.delete");
 
     //admin logout
     Route::get('/logout',[DashboardController::class,'logout'])->name('logout');

@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('title', 'Admin Page')
+@section('title', 'Create Blog Type')
 
 @section('style')
 <style>
@@ -38,7 +38,7 @@
 
 @section('bodyContent')
     <div class="container">
-        <div class="page-inner" style="min-height:80vh">
+        <div class="page-inner">
             <div class="row">
                 <div class="col-md-6 col-12">
                     <div class="card mb-1">
@@ -178,6 +178,7 @@
                 </div>
             </div>
         </div>
+    </div>
 @endsection
 
 @push('script')

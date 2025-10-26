@@ -1,8 +1,8 @@
 @extends('admin.layout.app')
 
-@section('title', 'Admin Page')
+@section('title', 'Create Blog')
 
-@section('style') 
+@section('style')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.css" rel="stylesheet">
     <style>
         .table>tbody>tr>td {
@@ -80,6 +80,9 @@
         .note-dialog {
             z-index: 20000 !important;
         }
+        .b_tbody tr td{
+            text-align: center;
+        }
     </style>
 @endsection
 
@@ -90,6 +93,7 @@
 @section('bodyContent')
     <div class="container">
         <div class="page-inner">
+
             <div class="card mb-1">
                 <div class="card-header pt-1 pb-0">
                     <h4 class="text-center">Create Blog</h4>
@@ -123,7 +127,9 @@
                                         </div>
                                     </div>
                                     <div class="col-md-9 col-12">
-                                        <input type="date" class="form-control p-1 @error('event_date') is-invalid @enderror"  name="event_date" value="{{ old('event_date',optional($editItem)->event_date)}}"
+                                        <input type="date"
+                                            class="form-control p-1 @error('event_date') is-invalid @enderror"
+                                            name="event_date" value="{{ old('event_date', optional($editItem)->event_date)}}"
                                             placeholder="Enter Product Price">
                                         @error('event_date')
                                             <p class="text-danger">{{ $message }}</p>
@@ -131,9 +137,9 @@
 
                                     </div>
                                 </div>
-                                
 
-                                 <div class="row mb-2">
+
+                                <div class="row mb-2">
                                     <div class="col-md-3 col-12">
                                         <div class="">
                                             <label for="email2">Blog Type :</label>
@@ -143,7 +149,7 @@
                                         <select name="event_type_id" id="" class="form-control p-1 @error('event_type_id') is-invalid
                                         @enderror">
                                             <!-- <option value="1">dkslk</option>
-                                                        <option value="1">dkslk</option> -->
+                                                            <option value="1">dkslk</option> -->
                                             <option value="">-- Select Type --</option>
                                             @if($editItem != null)
                                                 @foreach ($eventTypes as $event)
@@ -161,7 +167,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
 
                             <div class="col-md-6 col-12">
                                 <div class="row">
@@ -201,47 +207,29 @@
                 </form>
             </div>
 
-            
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header p-2">
-                            <h5 class="card-title ">ALL Blog</h5>
+                        <div class="card-header">
+                            <h4 class="card-title">All Blogs</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-6 offset-md-6">
-                                            <div id="basic-datatables_filter" class="dataTables_filter">
-                                                <label class="d-flex justify-content-end">Search:
-                                                    <form>
-                                                        <input type="search" value="{{ request()->query('search') }}"
-                                                            name="search" class="form-control form-control-sm"
-                                                            placeholder="" aria-controls="basic-datatables">
-                                                    </form>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <table id="basic-datatables"
-                                                class="display table table-striped table-hover dataTable" role="grid"
-                                                aria-describedby="basic-datatables_info">
-                                                <thead class="headbg">
-                                                    <tr role="row bg-dark">
-                                                        <th style="width: 136.031px;">SL NO:</th>
-                                                        <th style="width: 35.875px;">Image</th>
-                                                        <th style="width: 214.469px;">Name</th>
-                                                        <th style="width: 214.469px;">Type</th>
-                                                        <th style="width: 214.469px;">Event Date</th>
-                                                        <th style="width: 214.469px;">Description</th>
-                                                        <th style="width: 81.375px;">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @forelse($allevents as $product)
+                                <table id="basic-datatables" class="display table table-striped table-hover">
+                                    <thead>
+                                        <tr role="row bg-dark">
+                                            <th style="width: 136.031px;">SL NO:</th>
+                                            <th style="width: 35.875px;">Image</th>
+                                            <th style="width: 214.469px;">Name</th>
+                                            <th style="width: 214.469px;">Blog Type</th>
+                                            <th style="width: 214.469px;">Date</th>
+                                            <th style="width: 214.469px;">Description</th>
+                                            <th style="width: 81.375px;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="b_tbody">
+                                        @forelse($allevents as $product)
                                                         <tr role="row" class="odd">
                                                             <td class="sorting_1">{{ $loop->iteration }}</td>
                                                             <td>
@@ -255,14 +243,11 @@
                                                             <td>{{ $product->name }}</td>
                                                             <td>{{ $product->eventType->name }}</td>
                                                             <td>{{ $product->event_date }}</td>
-                                                            
-                                                            
                                                             <td>
                                                                 <button type="button" class="btn btn-primary p-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{ $product->id }}">
                                                                     View
                                                                 </button>
                                                             </td>
-
                                                             <td class="d-flex justify-content-center">
                                                                 <a href="{{ route('admin.event', ['id' => $product->id, 'page' => request()->query('page'), 'search' => request()->query('search')]) }}"
                                                                     class="btn btn-info p-1 me-1">
@@ -279,8 +264,6 @@
                                                                 </form>
                                                             </td>
                                                         </tr>
-
-
                                                         <!-- Modal -->
                                                                 <div class="modal fade" id="staticBackdrop{{ $product->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                                                     <div class="modal-dialog">
@@ -297,42 +280,27 @@
                                                                                 
                                                                             </div>
                                                                             <div class="modal-footer">
-                                                                                
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                     @empty
-                                                        <p>there is no Event</p>
+                                                        <p>there is no Blogs</p>
                                                     @endforelse
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12 d-flex justify-content-end me-2">
-                                            @if ($allevents->previousPageUrl())
-                                                <a href="{{ $allevents->previousPageUrl() }}" class="btn btn-primary mx-2 p-1"><i
-                                                        class="fas fa-hand-point-left"></i></a>
-                                            @endif
-                                            @if ($allevents->nextPageUrl())
-                                                <a href="{{ $allevents->nextPageUrl() }}" class="btn btn-primary mx-2 p-1"><i
-                                                        class="fas fa-hand-point-right "></i></a>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+</div>
 @endsection
 
     @push('script')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.js"></script>
+        <script src="{{ asset('/assets/admin/js/plugin/datatables/datatables.min.js') }}"></script>
         <script>
             const imageInput = document.getElementById('imageInput');
             const previewImage = document.getElementById('previewImage');
@@ -347,21 +315,25 @@
                 }
             })
 
-            $(document).ready(function() {
-            $('.summernote').summernote({
-                height: 200,
-                toolbar: [
-                    ['style', ['bold', 'italic', 'underline', 'clear']],
-                    ['font', ['fontsize', 'color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview']]
-                ]
+            $(document).ready(function () {
+                $('.summernote').summernote({
+                    height: 200,
+                    toolbar: [
+                        ['style', ['bold', 'italic', 'underline', 'clear']],
+                        ['font', ['fontsize', 'color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['insert', ['link', 'picture', 'video']],
+                        ['view', ['fullscreen', 'codeview']]
+                    ]
+                });
+
+                $("#basic-datatables").DataTable({
+                    sort:false
+                });
             });
-        });
 
 
-           
+
 
             $(document).on("click", ".deleteBtn", function (e) {
                 e.preventDefault();

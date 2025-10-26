@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('title', 'Admin Page')
+@section('title', 'Create Gallery')
 
 @section('style')
 <style>
@@ -102,7 +102,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header p-2">
-                            <h5 class="card-title ">ALL Galleries</h5>
+                            <h5 class="card-title ">All Galleries</h5>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -187,7 +187,7 @@
 
             </div>
         </div>
-
+</div>
 @endsection
 
 @push('script')

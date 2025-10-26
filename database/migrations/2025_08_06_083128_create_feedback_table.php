@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('authmessages', function (Blueprint $table) {
+        Schema::create('feedback', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
             $table->string('name');
-            $table->string('img')->nullable();
-            $table->string('designation')->nullable();
-            $table->longText('speech');
+            $table->string('profession')->nullable();
+            $table->string('photo')->nullable();
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('authmessages');
+        Schema::dropIfExists('feedback');
     }
 };

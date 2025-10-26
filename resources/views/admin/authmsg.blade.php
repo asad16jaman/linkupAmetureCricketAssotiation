@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('title', 'Admin Page')
+@section('title', 'Create Message')
 
 @section('style')
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
@@ -48,13 +48,24 @@
 
             <div class="card">
                 <div class="card-header pt-1 pb-0">
-                    <h4 class="text-center">Create Chairman Message</h4>
+                    <h4 class="text-center">Home Page Message</h4>
                 </div>
                 <form method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body p-3 ">
                         <div class="row">
                             <div class="col-md-8 col-12">
+                                <div class="row mb-2">
+                                    <div class="col-md-12 col-12">
+                                        <label for="email2">Heading :</label>
+                                        <input type="text" class="form-control p-1 @error('title') is-invalid
+                                        @enderror" name="title" value="{{  old('title',optional($ch)->title) }}"
+                                            placeholder="Enter Heading">
+                                        @error('title')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
                                 <div class="row mb-2">
                                     <div class="col-md-12 col-12">
                                         <label for="email2">Name :</label>
@@ -66,7 +77,7 @@
                                         @enderror
                                     </div>
                                 </div>
-
+                                 
                                 <div class="row mb-2">
                                     <div class="col-md-12 col-12">
                                         <label for="email2">Designation :</label>
@@ -89,7 +100,7 @@
                                     <!-- hidden input -->
                                     <input type="file" name="img" id="imageInput" accept="image/*" style="display: none;">
                                 </div>
-                                <p class="text-danger text-center" style="font-size:12px;margin-bottom:0px;margin-top:3px">JPG/JPEG/PNG . Ratio:1/1</p>
+                                <p class="text-danger text-center" style="font-size:12px;margin-bottom:0px;margin-top:3px">JPG/JPEG/PNG . 450px X 700px</p>
                             </div>
                         </div>
                         <div class="row mb-2 mt-2 ms-2"> 
@@ -103,6 +114,7 @@
                 </form>
             </div>
         </div>
+</div>
 @endsection
     @push('script')
         <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>

@@ -30,10 +30,16 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/jquery.fancybox.min.css') }}">
 
     <style>
+        .sub-main-banner {
+            margin-top: -12px;
+        }
         body {
             padding-top: 105px;
         }
 
+        .f-900{
+            font-weight: 900;
+        }
         header {
             z-index: 1030;
         }
@@ -470,28 +476,7 @@
                 }
             })
 
-            var shopSlider = $('.shop-slider');
-            shopSlider.owlCarousel({
-                loop: true,
-                margin: 30,
-                autoplay: true,
-                nav: false, 
-                dots: true,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    600: {
-                        items: 2
-                    },
-                    667: {
-                        items: 2
-                    },
-                    1000: {
-                        items: 6
-                    }
-                }
-            });
+            
 
             // Custom Next Prev
             $('.owl-player-custom-nav .next').click(function() {
@@ -499,7 +484,7 @@
             });
 
             $('.owl-player-custom-nav .prev').click(function() {
-                shopSlider.trigger('prev.owl.carousel', [300]); // 300ms animation speed
+                shopSlider.trigger('prev.owl.carousel', [300]); 
             });
 
 
@@ -669,7 +654,7 @@
         $(document).ready(function() {
             var myCarousel = document.querySelector('#carouselExampleFade')
             var carousel = new bootstrap.Carousel(carouselExampleFade, {
-                interval: 2000,
+                interval: 90000,
             })
         });
     </script>
