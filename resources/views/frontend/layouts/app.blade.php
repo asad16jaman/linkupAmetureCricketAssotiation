@@ -1,25 +1,17 @@
 <!doctype html>
 <html lang="en">
-
 <!-- Mirrored from oxentictemplates.in/templatemonster/cricket-new/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 Sep 2025 11:43:49 GMT -->
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
-    
     <link rel="icon" type="image/png" href="{{ asset('storage').'/'.optional($company)->logo }}">
-
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/font-awesome.min.css') }}">
-
-
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&amp;family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;0,9..40,1000;1,9..40,700&amp;family=Dancing+Script:wght@400;500;600;700&amp;family=Montserrat:wght@200;300;400;500;600;700;800;900&amp;family=Open+Sans:wght@400;500;600;700&amp;family=Oswald:wght@300;400;500;600;700&amp;family=Poppins:wght@200;300;400;500;600;700;800;900&amp;family=Roboto:wght@300;400;500;700;900&amp;family=Teko:wght@400;500;600;700&amp;display=swap"
         rel="stylesheet" />
-
-
     <link href="{{ asset('frontend/css/w3.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/all.min.css') }}" rel="stylesheet">
@@ -36,14 +28,12 @@
         body {
             padding-top: 105px;
         }
-
         .f-900{
             font-weight: 900;
         }
         header {
             z-index: 1030;
         }
-
         .scroll-to-top {
             background-color: white;
             right: 40px;
@@ -58,11 +48,9 @@
             border: none;
             color: #fff !important;
         }
-
         :not(.portfolio-item) {
             transition: all .2s linear;
         }
-
         .scroll-to-top {
                 align-items: center;
                 background: #2bb679 !important;
@@ -79,12 +67,10 @@
                 z-index: 900 !important;
                 color: #fff !important;
         }
-
         .scroll-to-top:hover {
             transform: translateY(-4px);
             background: #000031;
         }
-
         .nav-item.dropdown:hover .dropdown-menu {
             display: block;
             margin-top: 0;
@@ -93,8 +79,6 @@
             visibility: visible;
 
         }
-
-
         .dropdown-menu {
             display: block;
             opacity: 0;
@@ -104,50 +88,39 @@
             top: 56px;
             background: #000031;
         }
-
         .nav-item.dropdown .dropdown-menu .dropdown-item:hover {
             background: #2bb679;
         }
-
         .dropdown-toggle::after {
             display: none !important;
         }
-
         .dropdown-toggle::before {
             display: none !important;
         }
-
-
         .company-name {
             font-size: 20px !important;
             font-weight: 700 !important;
             color: #fff;
             padding-left: 10px;
         }
-
         .company-name:hover {
             color: #fff;
 
         }
-
-
         .mobile-menu-sec ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-
         .mobile-menu-sec ul li {
             border-bottom: 1px solid #ddd;
         }
-
         .mobile-menu-sec ul li a {
             display: block;
             padding: 10px 15px;
             text-decoration: none;
             color: #000;
         }
-
         .mobile-menu-sec ul li.has-dropdown>a::after {
             content: "▾";
             /* Arrow */
@@ -155,21 +128,17 @@
             font-size: 14px;
             transition: transform 0.3s;
         }
-
         .mobile-menu-sec ul li.active-dropdown>a::after {
             transform: rotate(180deg);
         }
-
         .mobile-menu-sec ul .dropdown-menu {
             display: none;
             background: #f8f9fa;
             padding-left: 20px;
         }
-
         .mobile-menu-sec ul li.active-dropdown>.dropdown-menu {
             display: block;
         }
-
         @media screen and (max-width:500px){
             .company-name{
                 font-size: 12px !important;
@@ -182,12 +151,8 @@
 <body>
 
     @include('frontend.layouts.header')
-
     @yield('content')
-
     @include('frontend.layouts.footer')
-
-
 
     <div class="modal fade login-div-modal" id="memberModal">
         <div class="modal-dialog modal-dialog-centered">
@@ -195,7 +160,6 @@
                 <div class="modal-body">
                     <form action="https://oxentictemplates.in/templatemonster/cricket-new/index.html" method="get">
                         <div class="com-div-md">
-
                             <h5 class="text-center mb-3"> Become A Member </h5>
                             <button type="button" class="close" data-bs-dismiss="modal">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -205,7 +169,6 @@
                                 </svg>
                             </button>
                             <div class="login-modal-pn">
-
                                 <div class="cm-select-login mt-0">
                                     <div class="country-dp">
 
@@ -236,14 +199,9 @@
                                             and
                                             Cookie Policy</label>
                                     </div>
-
                                 </div>
-
-
-
                                 <button type="submit" name="submit" class="btn continue-bn"> Register </button>
                             </div>
-
                             <p class="text-center  mt-3"> Do not have an account?
                                 <a data-bs-toggle="modal" class="regster-bn" data-bs-target="#loginModal"
                                     data-bs-dismiss="modal"> Login </a>
@@ -255,9 +213,6 @@
             </div>
         </div>
     </div>
-
-
-
 
     <div class="offcanvas offcanvas-end" id="offcanvasRightmobile">
         <div class="offcanvas-header py-0">
@@ -275,94 +230,27 @@
                     <img src="{{ $company->logo ? asset('storage/'.$company->logo) : "" }}"
                         style="height: 50px; width: auto; object-fit: contain;" alt="logo" />
                 </a>
-
-                {{-- <div class="mobile-menu-sec mt-3">
-                  <ul>
-                    <li class="active-m">
-                      <a href="{{url('/')}}"> Home </a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)"> About </a>
-                    </li>
-
-                    <li>
-                      <a href="javascript:void(0)">Blog</a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)">Teams</a>
-                    </li>
-
-                    <div class="nav-item">
-                        <div class="dropdown-menu">
-                          <div class="nav-btn">
-                            Team
-                          </div>
-                        </div>
-                        <div class="dropdown-content">
-                          <div class="dropdown-item">
-                            <a href="https://falcon-react.asdesignsgalaxy.com/Team" data-discover="true">
-                              Team
-                            </a>
-                          </div>
-                          <div class="dropdown-item">
-                            <a href="https://falcon-react.asdesignsgalaxy.com/Coaches" data-discover="true">
-                              Coaches
-                            </a>
-                          </div>
-                          <div class="dropdown-item">
-                            <a href="https://falcon-react.asdesignsgalaxy.com/Coaches/Coach-Single"
-                            data-discover="true">
-                              Coach Single
-                            </a>
-                          </div>
-                          <div class="dropdown-item">
-                            <a href="https://falcon-react.asdesignsgalaxy.com/Players" data-discover="true">
-                              Players
-                            </a>
-                          </div>
-                          <div class="dropdown-item">
-                            <a href="https://falcon-react.asdesignsgalaxy.com/Players/Player-Single"
-                            data-discover="true">
-                              Player Single
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                  
-                  
-                  </ul>
-                </div> --}}
-
-
                 <div class="mobile-menu-sec mt-3">
                     <ul>
                         <li class="active-m">
                             <a href="{{ url('/') }}"> Home </a>
                         </li>
-
                         <li>
                             <a href="{{ route('welocme.aboutus') }}"> About </a>
                         </li>
                         <li>
                             <a href="{{ route('welocme.teamMembers') }}"> Teams </a>
                         </li>
-
-
-                        <!-- Dropdown Start -->
-                        <li class="has-dropdown">
-                            <a href="javascript:void(0)" class="dropdown-toggle"> Gallery </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{{ route('welocme.photoGalleries') }}">Photo Gallery</a></li>
-                                <li><a href="{{ route('welocme.videoGalleries') }}">Video Gallery</a></li>
-
-                            </ul>
-                        </li>
                         <!-- Dropdown End -->
-
+                        <li>
+                            <a href="{{ route('welocme.photoGalleries') }}"> Photo Gallery </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('welocme.videoGalleries') }}"> Video Gallery </a>
+                        </li>
                         <li>
                             <a href="{{ route('welocme.blogs') }}"> Blog </a>
                         </li>
-
                         <li>
                             <a href="{{ route('welocme.contactus') }}"> Contact </a>
                         </li>
