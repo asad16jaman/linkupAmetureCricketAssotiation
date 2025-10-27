@@ -50,45 +50,10 @@
             gap: 10px;
         }
 
-        .owl-gallery-custom-nav .btn {
-            background: #C40E00;
-            color: #fff;
-            border-radius: 10%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.3s ease;
-        }
-
-        .owl-gallery-custom-nav .btn:hover {
-            background: #C40E00;
-            transform: scale(1.1);
-        }
-
         .owl-video-custom-nav {
             display: flex;
             gap: 10px;
         }
-
-        .owl-video-custom-nav .btn {
-            background: #C40E00;
-            color: #fff;
-            border-radius: 10%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.3s ease;
-        }
-
-        .owl-video-custom-nav .btn:hover {
-            background: #C40E00;
-            transform: scale(1.1);
-        }
-
         .owl-patner-custom-nav {
             display: flex;
             gap: 10px;
@@ -371,6 +336,9 @@
                 border-radius: 50%;
                 width: 47px;
                 height: 47px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
         }
 
         .handleCaption {
@@ -520,9 +488,48 @@
         .py{
         padding: 70px 0px;
     }
+
+    @media screen and (max-width:767px){
+        .owl-prev:after,
+        .owl-next:after {
+            content: "";
+            font-family: "FontAwesome";
+            position: absolute;
+            font-size: 13px;
+            color: #000 !important;
+            padding: 0px 0px;
+            border-radius: 50%;
+            background: #fff;
+        }
+        .owl-nav {
+            display: flex;
+            position: absolute;
+            width: 100%;
+            align-items: center;
+        }
+            .card {
+             margin-top: 0px; 
+        }
+        .carousel_indecator {
+            background-color: #bd9b0cc2;
+            font-size: 15px;
+            width: 20px;
+            height: 20px;
+    
+        }
+        .speech {
+            margin-bottom: 50px;
+            font-size: 29px;
+            text-align: left;
+            font-weight: 700;
+            margin-bottom: 50px;
+            margin-top: 31px;
+        }
+    }
         
     </style>
 @endpush
+
 @section('content')
     <section class="banner-part-content w-100 w3-white" style="margin-top: -12px;">
         <div class="row g-0">
@@ -752,7 +759,7 @@
             nav: true,
             dots: false,
             responsive: {
-                0: { items: 1 },
+                0: { items: 1,autoplay:true,nav:false,dots:true },
                 600: { items: 2 },
                 1000: { items: 3 },
                 1200: { items: 4 }
@@ -782,7 +789,7 @@ function createCard(match) {
                         <div class="card"><div class="card-body p-0">
                             <img class="liveCardImgSize" src="${team1.img}" alt="">
                         </div></div>
-                        <span class="f-12 pl-2">${team1.shortname}</span>
+                        <span class="f-12 ps-2">${team1.shortname}</span>
                         </div>
                         <div class="f-12">${score1}</div>
                     </div>
@@ -791,7 +798,7 @@ function createCard(match) {
                         <div class="card"><div class="card-body p-0">
                             <img class="liveCardImgSize" src="${team2.img}" alt="">
                         </div></div>
-                        <span class="f-12 pl-2">${team2.shortname}</span>
+                        <span class="f-12 ps-2">${team2.shortname}</span>
                         </div>
                         <div class="f-12">${score2}</div>
                     </div>
