@@ -39,22 +39,11 @@
       </div>
       <nav class="navbar navbar-expand-lg navbar-light" style="background: #2bb679">
           <div class="container">
-              {{-- <a class=" py-0" href="{{ url('/') }}">
-                  <div class="" style="width: 100%; display: flex;">
-                      <div class="" style="width: 100%">
-                          <img src="{{ route('imagecache', ['template' => 'original', 'filename' => $ws->logo()]) }}"
-                             alt="logo" />
-                      </div>
-                      <div class="">
-                          <a href="{{ url('/') }}" class="company-name element">Corporate Amatcur Cricket
-                              Association </a>
-                      </div>
-                  </div>
-              </a> --}}
+             
 
               <a href="{{ url('/') }}" class="d-flex align-items-center text-decoration-none">
                   <div class="me-2">
-                      <img src="{{ $company->logo ? asset('storage/'.$company->logo) : "" }}"
+                      <img src="{{ $company->logo ? asset('storage/'.$company->logo) : '' }}"
                           alt="logo" style="height: 36px; width: auto; object-fit: contain;" />
                   </div>
                   <span class="company-name fw-bold fs-5 text-white">
@@ -74,12 +63,9 @@
                           <a class="nav-link text-white {{ Route::is('welocme.aboutus') ? 'active' : '' }}" href="{{ route('welocme.aboutus') }}">About</a>
                       </li>
 
-
                       <li class="nav-item">
                           <a class="nav-link text-white {{ Route::is('welocme.teamMembers') ? 'active' : '' }}" href="{{ route('welocme.teamMembers') }}">Teams</a>
                       </li>
-
-
 
                       <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle text-white {{ Route::is('welocme.photoGalleries') || Route::is('welocme.videoGalleries') ? 'active' : '' }}" href="#" id="navbarDropdown"

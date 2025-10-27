@@ -10,7 +10,7 @@
                             <img src="{{ asset('storage') . '/' . optional($company)->logo }}" alt="logo"
                                 style="height: 50px; width: auto; object-fit: contain;" />
                         </div>
-                        <span class="company-name fw-bold fs-5 text-white" style="font-size: 16px !important">
+                        <span class="company-name fw-bold fs-5 text-white company_font">
                             {{ optional($company)->name }}
                         </span>
                     </a>
@@ -24,9 +24,9 @@
                     <a target="_blank" class="socialIcon" href="{{ optional($company)->linkdin }}"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-            <div class="col-md-6 col-12">
+            <div class="col-md-6 col-12 mt-3 mt-lg-0">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-5">
                         <div class="comonft-sec d-inline-block w-100">
                             <h5 class="footer-title mb-3"> Usefull Links </h5>
                             <ul>
@@ -41,7 +41,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-7">
                         <div class="comonft-sec d-inline-block w-100">
                             <h5 class="footer-title mb-3">Contact Us</h5>
                             <ul>
@@ -66,7 +66,7 @@
     <div class="footer-div1 mt-4">
         <div class="container">
             <div class="d-flex justify-content-between">
-                <p style="font-size:12px" class="footer-copy mb-0">Copyright © {{ date('Y') }}. All Rights Reserved</p>
+                <p style="font-size:12px" class="footer-copy mb-0 d-none d-md-block">Copyright © {{ date('Y') }}. All Rights Reserved</p>
                 <p style="font-size:12px"> Designed & Developed by:<a target="_blank" class="text-white" href="https://linktechbd.com/">Link-Up
                         Technology Ltd.</a> </p>
             </div>
@@ -174,10 +174,18 @@
         font-size: 14px;
         font-weight: bold;
     }
+    .company_font{
+        font-size: 16px !important
+    }
 
     @media screen and (min-width:1024px) {
         .footer-mr {
             padding-right: 90px;
+        }
+    }
+    @media screen and (max-width:500px){
+        .company_font{
+            font-size: 12px !important;
         }
     }
 </style>

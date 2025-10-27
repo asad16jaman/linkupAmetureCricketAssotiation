@@ -75,7 +75,7 @@
             <div class="row g-4 mt-0 mb-3 py-3">
                 @foreach ($players as $player)
                     <div class="col-lg-2 col-sm-4">
-                        <div class="player-card">
+                        <div class="player-card">  
                             <div class="card border">
                                 <div class="position-relative">
                                     <img style="height:170px" src="{{ asset('storage/' . $player->photo) }}" class="card-img-top"

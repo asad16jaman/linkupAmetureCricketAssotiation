@@ -169,6 +169,12 @@
         .mobile-menu-sec ul li.active-dropdown>.dropdown-menu {
             display: block;
         }
+
+        @media screen and (max-width:500px){
+            .company-name{
+                font-size: 12px !important;
+            }
+        }
     </style>
     @stack('css')
 </head>

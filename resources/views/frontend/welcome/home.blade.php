@@ -224,9 +224,9 @@
                 font-size: 1.2rem;
             }
 
-            /* .carousel-inner img {
-                                                                                max-height: 280px;
-                                                                            } */
+             .carousel-inner img {
+                 max-height: 280px !important;
+            } 
 
             .carousel-caption {
                 font-size: 0.9rem;
@@ -488,6 +488,15 @@
         .py{
         padding: 70px 0px;
     }
+    .crickter_voice{
+        font-size: 28px;
+    }
+
+    @media screen and (min-width:1500px){
+        .carousel-inner img{
+            height:  715px !important;
+        }
+    }
 
     @media screen and (max-width:767px){
         .owl-prev:after,
@@ -526,6 +535,27 @@
             margin-top: 31px;
         }
     }
+
+    @media screen and (max-width:500px){
+        .welcome_font{
+            font-size: 20px;
+            font-weight: 900;
+        }
+        .auth_message h1{
+                font-size: 14px;
+                font-weight: 900;
+                margin-bottom: 21px;
+        }
+        .auth_message p{
+            font-size: 12px;
+        }
+        .f-12{
+            font-size: 12px;
+        }
+        .crickter_voice{
+            font-size: 16px;
+        }
+    }
         
     </style>
 @endpush
@@ -536,9 +566,9 @@
             <div class="col-lg-12">
                 <div id="carouselExampleFade" class="carousel slide carousel-fade w-100" data-bs-ride="carousel">
                     <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="0"
-                            class="active"></button>
-                        <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="1"></button>
+                        @foreach ($sliders as $slider)
+                              <button type="button" class="{{ $loop->index == 0 ? 'active' : '' }}" data-bs-target="#carouselExampleFade" data-bs-slide-to="{{ $loop->index }}"></button>
+                        @endforeach
                     </div>
                     <div class="carousel-inner">
                         @foreach ($sliders as $slider)
@@ -594,7 +624,7 @@
                 <div class="col-lg-6 mb-4 mb-lg-0 px-3">
                     <div class="leftcontainer">
                         <div class="top">
-                            <h1 class="f-900">Wellcome to {{ optional($wellcomeNode)->title }}</h1>
+                            <h1 class="f-900 welcome_font">Wellcome to {{ optional($wellcomeNode)->title }}</h1>
                         </div>
                         <p>{!! optional($wellcomeNode)->note !!}
                         </p>
@@ -628,7 +658,7 @@
                     <div class="servcard bg-yellow">
                         <img style="width: 50px;" src="{{ asset('frontend/images/home/crickter.png') }}" alt="">
                         <h3>Become a Cricketer</h3>
-                        <p>Improve your game with world-class coaching and real match practice. Our training helps you
+                        <p class="f-12">Improve your game with world-class coaching and real match practice. Our training helps you
                             master batting, bowling, and fielding to shine on every stage.</p>
                         <a href="{{ route('welocme.contactus') }}" class="btn-white">Join With Us</a>
                     </div>
@@ -639,7 +669,7 @@
                         <div class="servcard bg-light-aqua">
                             <img style="width: 50px;" src="{{ asset('frontend/images/home/umpire.png') }}" alt="">
                             <h3>Become a Umpire</h3>
-                            <p>Learn the laws of cricket and gain confidence to make the right calls every time. Get trained
+                            <p class="12">Learn the laws of cricket and gain confidence to make the right calls every time. Get trained
                                 by experienced professionals and become a trusted face in every competitive match.</p>
                             <a href="{{ route('welocme.contactus') }}" class="bg-yellow">Join With Us</a>
                         </div>
@@ -651,12 +681,14 @@
     <section class="authmessage bg-light py">
         <div class="container">
             <div class="row">
-                <div class="col-md-7 col-12">
+                <div class="col-md-7 col-12 auth_message">
                     <h1 class="border-container">{{ $auth_message->title }}</h1>
                     <p>{!! $auth_message->speech !!}</p>
                     <div class="py-3">
                         <p>{{ $auth_message->name }}</p>
-                        <span>{{ $auth_message->designation }}</span>
+                        
+                        <span class='f-12'>{{ $auth_message->designation }}</span>
+                        
                     </div>
                 </div>
                 <div class="col-md-5 col-12">
@@ -699,7 +731,7 @@
                         <div class="card-">
                             <div class="card-header-">
                                 <div class="d-flex align-items-center justify-content-between">
-                                    <h2 class="main-hed01" style="font-size: 28px;">Voice From Our Cricketers</h2>
+                                    <h2 class="main-hed01 crickter_voice">Voice From Our Cricketers</h2>
                                     <div class="owl-player-custom-nav">
                                         <button class="btn btn-asee prev"><i class="fas fa-angle-left text-dark"></i></button>
                                         <button class="btn btn-asee next"><i class="fas fa-angle-right text-dark"></i></button>
@@ -825,6 +857,7 @@ function createCard(match) {
         const lastInning = teamScores[teamScores.length - 1];
         return `${firstInning.r} & ${lastInning.r}-${lastInning.w} (${lastInning.o})`;
     }
+    
         // setInterval(loadScores, 60000);
         var shopSlider = $('.shop-slider');
         shopSlider.owlCarousel({
@@ -848,13 +881,13 @@ function createCard(match) {
                 }
             }
         });
+
          $('.score_carousel').owlCarousel({
             loop: true,
             margin: 20,
             autoplay: false,
             rtl: false,
             nav: true,
-             
             dots: false,
             responsive: {
                 0: { items: 1 },
@@ -863,11 +896,12 @@ function createCard(match) {
                 1200: { items: 4 }
             }
             });
+
     </script>
     <script>
         $(document).ready(function () {
             var myCarousel = document.querySelector('#carouselExampleFade')
-            var carousel = new bootstrap.Carousel(carouselExampleFade, {
+            var carousel = new bootstrap.Carousel(myCarousel, {
                 interval: 5000000,
             })
         });
