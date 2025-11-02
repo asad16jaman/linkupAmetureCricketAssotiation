@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Bylaw;
 use App\Models\WebsiteSetting;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
@@ -31,12 +32,21 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('*', function ($view) {
 
-                $data =  Company::all()->first();
+                $data =  Company::first();
                 if($data){
                     $view->with('company',$data);
                 }else{
                     $view->with('company',false);
                 }
+
+                $bylaws =  Bylaw::latest()->get();
+                if($data){
+                    $view->with('bylaw',$bylaws);
+                }else{
+                    $view->with('bylaw',false);
+                }
+
+
             });
         Paginator::useBootstrap();
     }

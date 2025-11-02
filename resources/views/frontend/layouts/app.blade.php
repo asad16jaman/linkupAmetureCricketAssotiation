@@ -1,11 +1,12 @@
 <!doctype html>
 <html lang="en">
 <!-- Mirrored from oxentictemplates.in/templatemonster/cricket-new/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 Sep 2025 11:43:49 GMT -->
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
-    <link rel="icon" type="image/png" href="{{ asset('storage').'/'.optional($company)->logo }}">
+    <link rel="icon" type="image/png" href="{{ asset('storage') . '/' . optional($company)->logo }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/font-awesome.min.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
@@ -25,15 +26,19 @@
         .sub-main-banner {
             margin-top: -12px;
         }
+
         body {
             padding-top: 105px;
         }
-        .f-900{
+
+        .f-900 {
             font-weight: 900;
         }
+
         header {
             z-index: 1030;
         }
+
         .scroll-to-top {
             background-color: white;
             right: 40px;
@@ -48,29 +53,33 @@
             border: none;
             color: #fff !important;
         }
+
         :not(.portfolio-item) {
             transition: all .2s linear;
         }
+
         .scroll-to-top {
-                align-items: center;
-                background: #2bb679 !important;
-                border-radius: 50% !important;
-                bottom: 1rem !important;
-                box-shadow: var(--box-shadow);
-                display: flex;
-                height: 2rem !important;
-                justify-content: center;
-                right: 1rem !important;
-                text-align: center;
-                transition: all .2s;
-                width: 2rem !important;
-                z-index: 900 !important;
-                color: #fff !important;
+            align-items: center;
+            background: #112345 !important;
+            border-radius: 50% !important;
+            bottom: 1rem !important;
+            box-shadow: var(--box-shadow);
+            display: flex;
+            height: 2rem !important;
+            justify-content: center;
+            right: 1rem !important;
+            text-align: center;
+            transition: all .2s;
+            width: 2rem !important;
+            z-index: 900 !important;
+            color: #fff !important;
         }
+
         .scroll-to-top:hover {
             transform: translateY(-4px);
             background: #000031;
         }
+
         .nav-item.dropdown:hover .dropdown-menu {
             display: block;
             margin-top: 0;
@@ -79,6 +88,7 @@
             visibility: visible;
 
         }
+
         .dropdown-menu {
             display: block;
             opacity: 0;
@@ -88,39 +98,48 @@
             top: 56px;
             background: #000031;
         }
+
         .nav-item.dropdown .dropdown-menu .dropdown-item:hover {
-            background: #2bb679;
+            background: #0f66dd;
         }
+
         .dropdown-toggle::after {
             display: none !important;
         }
+
         .dropdown-toggle::before {
             display: none !important;
         }
+
         .company-name {
             font-size: 20px !important;
             font-weight: 700 !important;
             color: #fff;
             padding-left: 10px;
         }
+
         .company-name:hover {
             color: #fff;
 
         }
+
         .mobile-menu-sec ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
+
         .mobile-menu-sec ul li {
             border-bottom: 1px solid #ddd;
         }
+
         .mobile-menu-sec ul li a {
             display: block;
             padding: 10px 15px;
             text-decoration: none;
             color: #000;
         }
+
         .mobile-menu-sec ul li.has-dropdown>a::after {
             content: "▾";
             /* Arrow */
@@ -128,23 +147,78 @@
             font-size: 14px;
             transition: transform 0.3s;
         }
+
         .mobile-menu-sec ul li.active-dropdown>a::after {
             transform: rotate(180deg);
         }
+
         .mobile-menu-sec ul .dropdown-menu {
             display: none;
             background: #f8f9fa;
             padding-left: 20px;
         }
+
         .mobile-menu-sec ul li.active-dropdown>.dropdown-menu {
             display: block;
         }
-        @media screen and (max-width:500px){
-            .company-name{
+
+        @media screen and (max-width:500px) {
+            .company-name {
                 font-size: 12px !important;
             }
         }
     </style>
+
+    <style>
+  /* Basic styles */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-btn {
+    background: transparent;
+    color: #000;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 0px;
+    cursor: pointer;
+    font-size: 15px;
+    display: flex;
+    justify-content: start;
+  }
+
+  .dropdown-btn:focus {
+    outline: none;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 180px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    border-radius: 6px;
+    z-index: 10;
+    overflow: hidden;
+  }
+
+  .dropdown-content a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #f2f2f2;
+  }
+
+  /* show class toggled by JS */
+  .dropdown.show .dropdown-content {
+    display: block;
+  }
+</style>
     @stack('css')
 </head>
 
@@ -162,8 +236,8 @@
                         <div class="com-div-md">
                             <h5 class="text-center mb-3"> Become A Member </h5>
                             <button type="button" class="close" data-bs-dismiss="modal">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                    fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-x" viewBox="0 0 16 16">
                                     <path
                                         d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
                                 </svg>
@@ -172,8 +246,8 @@
                                 <div class="cm-select-login mt-0">
                                     <div class="country-dp">
 
-                                        <input type="text" name="fullname" class="form-control"
-                                            placeholder="Full Name" required />
+                                        <input type="text" name="fullname" class="form-control" placeholder="Full Name"
+                                            required />
                                     </div>
                                     <div class="phone-div">
 
@@ -227,7 +301,7 @@
         <div class="offcanvas-body">
             <div class="head-contact d-block d-lg-none">
                 <a href="{{ url('/') }}" class="logo-side">
-                    <img src="{{ $company->logo ? asset('storage/'.$company->logo) : "" }}"
+                    <img src="{{ $company->logo ? asset('storage/' . $company->logo) : "" }}"
                         style="height: 50px; width: auto; object-fit: contain;" alt="logo" />
                 </a>
                 <div class="mobile-menu-sec mt-3">
@@ -249,7 +323,16 @@
                             <a href="{{ route('welocme.videoGalleries') }}"> Video Gallery </a>
                         </li>
                         <li>
-                            <a href="{{ route('welocme.blogs') }}"> Blog </a>
+                            <div class="dropdown" style="width:100%" id="customDropdown">
+                                <button class="dropdown-btn" style="width: 100%;">Select Option ▾</button>
+                                <div class="dropdown-content">
+                                    @foreach ($bylaw as $law)
+                                        <a class="dropdown-item w3-text-white py-2"
+                                            href="{{ url('storage/'.$law->file) }}" target="_blank" style="color: #000 !important;">{{ $law->navName }}</a>         
+                                    @endforeach
+                                    
+                                </div>
+                            </div>
                         </li>
                         <li>
                             <a href="{{ route('welocme.contactus') }}"> Contact </a>
@@ -276,21 +359,41 @@
     <script src="{{ asset('frontend/js/jquery.min.js') }}"></script>
     <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('frontend/js/jquery.fancybox.min.js') }}"></script>
+    
 
 
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             let dropdownToggles = document.querySelectorAll(".mobile-menu-sec .has-dropdown > a");
 
-            dropdownToggles.forEach(function(toggle) {
-                toggle.addEventListener("click", function(e) {
+            dropdownToggles.forEach(function (toggle) {
+                toggle.addEventListener("click", function (e) {
                     e.preventDefault();
                     let parentLi = this.parentElement;
                     parentLi.classList.toggle("active-dropdown");
                 });
             });
         });
+
+        //mobile nav dropdown
+        // Dropdown toggle logic
+  const dropdown = document.getElementById('customDropdown');
+  const btn = dropdown.querySelector('.dropdown-btn');
+
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation(); // prevent click from bubbling
+    dropdown.classList.toggle('show');
+  });
+
+  // Close dropdown when clicked outside
+  window.addEventListener('click', function () {
+    dropdown.classList.remove('show');
+  });
+
+
+
+
     </script>
 
 
@@ -318,7 +421,7 @@
 
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.upcomin-matches').owlCarousel({
                 loop: true,
                 margin: 50,
@@ -370,15 +473,15 @@
                 }
             })
 
-            
+
 
             // Custom Next Prev
-            $('.owl-player-custom-nav .next').click(function() {
+            $('.owl-player-custom-nav .next').click(function () {
                 shopSlider.trigger('next.owl.carousel');
             });
 
-            $('.owl-player-custom-nav .prev').click(function() {
-                shopSlider.trigger('prev.owl.carousel', [300]); 
+            $('.owl-player-custom-nav .prev').click(function () {
+                shopSlider.trigger('prev.owl.carousel', [300]);
             });
 
 
@@ -460,11 +563,11 @@
             });
 
 
-            $('.owl-patner-custom-nav .next').click(function() {
+            $('.owl-patner-custom-nav .next').click(function () {
                 video.trigger('next.owl.carousel');
             });
 
-            $('.owl-patner-custom-nav .prev').click(function() {
+            $('.owl-patner-custom-nav .prev').click(function () {
                 video.trigger('prev.owl.carousel', [300]);
             });
 
@@ -498,11 +601,11 @@
             });
 
 
-            $('.owl-video-custom-nav .next').click(function() {
+            $('.owl-video-custom-nav .next').click(function () {
                 video.trigger('next.owl.carousel');
             });
 
-            $('.owl-video-custom-nav .prev').click(function() {
+            $('.owl-video-custom-nav .prev').click(function () {
                 video.trigger('prev.owl.carousel', [300]);
             });
 
@@ -533,39 +636,31 @@
             });
 
             // Custom Next Prev
-            $('.owl-gallery-custom-nav .next').click(function() {
+            $('.owl-gallery-custom-nav .next').click(function () {
                 gallery.trigger('next.owl.carousel');
             });
 
-            $('.owl-gallery-custom-nav .prev').click(function() {
+            $('.owl-gallery-custom-nav .prev').click(function () {
                 gallery.trigger('prev.owl.carousel', [300]);
             });
 
         });
     </script>
 
-    <script>
-        $(document).ready(function() {
-            var myCarousel = document.querySelector('#carouselExampleFade')
-            var carousel = new bootstrap.Carousel(carouselExampleFade, {
-                interval: 90000,
-            })
-        });
-    </script>
 
 
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             //YOUTUBE VIDEO
-            $('.play-button').click(function(e) {
+            $('.play-button').click(function (e) {
                 var iframeEl = $('<iframe>', {
                     src: $(this).data('url')
                 });
                 $('#youtubevideo').attr('src', $(this).data('url'));
             })
 
-            $('#close-video').click(function(e) {
+            $('#close-video').click(function (e) {
                 $('#youtubevideo').attr('src', '');
             });
 
@@ -632,17 +727,17 @@
         }
     </script>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var toastElList = [].slice.call(document.querySelectorAll('.toast'))
-        var toastList = toastElList.map(function (toastEl) {
-            return new bootstrap.Toast(toastEl, {
-                delay: 4000 // ৪ সেকেন্ড পরে auto hide
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+            var toastList = toastElList.map(function (toastEl) {
+                return new bootstrap.Toast(toastEl, {
+                    delay: 4000 // ৪ সেকেন্ড পরে auto hide
+                });
             });
+            toastList.forEach(toast => toast.show());
         });
-        toastList.forEach(toast => toast.show());
-    });
-</script>
+    </script>
     @stack('js')
 </body>
 

@@ -20,8 +20,10 @@
                 </div>
                 <div class="mt-3 d-flex">
                     <a target="_blank" class="socialIcon" href="{{ optional($company)->facebook }}"><i class="fab fa-facebook-f"></i></a>
-                    <a target="_blank" class="socialIcon" href="{{ optional($company)->twiter }}"><i class="fab fa-instagram"></i></a>
-                    <a target="_blank" class="socialIcon" href="{{ optional($company)->linkdin }}"><i class="fab fa-linkedin-in"></i></a>
+                    <a target="_blank" class="socialIcon" href="{{ optional($company)->twiter }}">
+                        <i style="font-size: 20px; " class="fab fa-youtube fa-2x"></i>   
+                    </a>
+                    
                 </div>
             </div>
             <div class="col-md-6 col-12 mt-3 mt-lg-0">
@@ -45,24 +47,16 @@
                         <div class="comonft-sec d-inline-block w-100">
                             <h5 class="footer-title mb-3">Contact Us</h5>
                             <ul>
-                                <li class="my-1"><a href="{{ route('welocme.blogs')}}"> <i class="fa fa-phone contactfont"></i> 01788954321</li>
-                                <li class="my-1"><a href="{{ route('welocme.teamMembers')}}"><i class="fa fa-envelope contactfont"></i> asad@gmail.lcom
-                                    </a></li>
-                                <li class="my-1"><a href="{{ route('welocme.photoGalleries')}}"><i class="fa fa-map-marker contactfont"></i> flff,dkdlsd
+                                <li class="my-1"><a href="{{ route('welocme.teamMembers')}}"><i class="fa fa-envelope contactfont"></i> {{ optional($company)->email }} </a></li>
+                                <li class="my-1"><a href="{{ route('welocme.photoGalleries')}}"><i class="fa fa-map-marker contactfont"></i> {{ optional($company)->address }}
                                     </a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
-
         </div>
     </div>
-
-
     <div class="footer-div1 mt-4">
         <div class="container">
             <div class="d-flex justify-content-between">
@@ -73,8 +67,6 @@
         </div>
     </div>
 </footer>
-
-
 <style>
     /* .footer {
         background: linear-gradient(#00000080, #0009),
@@ -88,7 +80,7 @@
     } */
 
         .socialIcon{
-        background: #2bb679;
+        background: #112345;
         border-radius: 49%;
         margin-right: 10px;
         height: 35px;
@@ -102,10 +94,13 @@
             color: yellow;
             margin-right: 24px;
             margin-top: 10px;
+            border: 1px solid #fff;
+            padding: 7px;
+            border-radius: 50%;
         }
         
     .footer {
-        background: #2c2c2c;
+        background: #0f66dd;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -147,7 +142,7 @@
     }
 
     footer ul li a:hover {
-        color: #C40E00;
+        color: #112345;
         padding-left: 5px;
     }
 
@@ -159,13 +154,13 @@
     }
 
     .social a:hover {
-        color: #C40E00;
+        color: #112345;
         transform: scale(1.2);
     }
 
 
     .footer-div1 {
-        background: #2bb679;
+        background: #112345;
         /* padding: 12px 0;
     margin-top: 30px; */
     }

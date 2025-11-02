@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\InviteController;
+use App\Http\Controllers\Admin\LawController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
@@ -37,6 +39,7 @@ use App\Http\Controllers\Admin\VideoGalleryController;
 // });
 
    Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
+   Route::get('/tournament-detail', [WelcomeController::class, 'tournament'])->name('tournament');
 
    Route::get('blogs/{type?}', [WelcomeController::class, 'blogs'])->name('welocme.blogs');
    Route::get('blogs/{uid}/detail', [WelcomeController::class, 'blogsDetail'])->name('welocme.blogs.detial');
@@ -113,6 +116,9 @@ Route::group(['prefix'=> '/admin','middleware'=>'auth','as'=>'admin.'], function
     Route::get('/chairman-message',[AuthMessageController::class,'index'])->name('ch-message');
     Route::post('/chairman-message',[AuthMessageController::class,'store'])->name('ch-message');
     
+    Route::get('/invite-message',[InviteController::class,'index'])->name('invite-message');
+    Route::post('/invite-message',[InviteController::class,'store'])->name('invite-message');
+
     //Photo Gallery url hare
     Route::get("/photogallery/{id?}",[PhotoGalleryController::class,"index"])->name("photogallery");
     Route::post("/photogallery/{id?}",[PhotoGalleryController::class,"store"])->name("photogallery");
@@ -122,6 +128,12 @@ Route::group(['prefix'=> '/admin','middleware'=>'auth','as'=>'admin.'], function
     Route::get("/videogallery/{id?}",[VideoGalleryController::class,"index"])->name("videogallery");
     Route::post("/videogallery/{id?}",[VideoGalleryController::class,"store"])->name("videogallery");
     Route::post("/videogallery/{id}/delete",[VideoGalleryController::class,"destory"])->name("videogallery.delete");
+
+    //By-Law url hare
+    
+    Route::get("/by-law-file/{id?}",[LawController::class,"index"])->name("byLawFile");
+    Route::post("/by-law-file/{id?}",[LawController::class,"store"])->name("byLawFile");
+    Route::post("/by-law-file/{id}/delete",[LawController::class,"destroy"])->name("byLawFile.delete");
 
     //Managment url hare
     Route::get('/player/{id?}',[ManagemenController::class,'index'])->name('management');
@@ -142,13 +154,13 @@ Route::group(['prefix'=> '/admin','middleware'=>'auth','as'=>'admin.'], function
     Route::post('/clients/{id}',[ClientController::class,'destroy'])->name('client.delete');
 
     //Wellcome Node url hare
-    Route::get('/create-wellcome-node',[WellcomeController::class,'index'])->name('wellcome');
-    Route::post('/create-wellcome-node',[WellcomeController::class,'store'])->name('wellcome');
+    Route::get('/create-welcome-node',[WellcomeController::class,'index'])->name('wellcome');
+    Route::post('/create-welcome-node',[WellcomeController::class,'store'])->name('wellcome');
 
     //feedback maintaining url
-    Route::get("/feedback/{id?}",[FeedbackController::class,"index"])->name("feedback");
-    Route::post("/feedback/{id?}",[FeedbackController::class,"store"])->name("feedback");
-    Route::post("/feedback/{id}/delete",[FeedbackController::class,"destroy"])->name("feedback.delete");
+    Route::get("/addition/{id?}",[FeedbackController::class,"index"])->name("feedback");
+    Route::post("/addition/{id?}",[FeedbackController::class,"store"])->name("feedback");
+    Route::post("/addition/{id}/delete",[FeedbackController::class,"destroy"])->name("feedback.delete");
 
     //admin logout
     Route::get('/logout',[DashboardController::class,'logout'])->name('logout');

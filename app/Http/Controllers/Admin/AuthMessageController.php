@@ -13,20 +13,21 @@ class AuthMessageController extends Controller
     //
 
     public function index(){
+        $heading = "Home Page Message";
         $ch= Authmessage::first();
-        return view("admin.authmsg", compact(['ch']));
+        return view("admin.authmsg", compact(['ch','heading']));
     }
 
     public function store(Request $request){
 
         $request->validate([
-            'name'=> 'required',
-            'designation' => 'required',
+            'name'=> 'nullable',
+            'designation' => 'nullable',
             'title' => 'required'
         ]);
         
-         $data = $request->only(['name','speech','designation','title']);
-         $ch = Authmessage::first();
+        $data = $request->only(['name','speech','designation','title']);
+        $ch = Authmessage::first();
         if ($ch) {
             //user edit section is hare
             try{
@@ -44,6 +45,7 @@ class AuthMessageController extends Controller
             }catch(\Exception $e){
                 Log::error("this message is from : ".__CLASS__."Line is : ".__LINE__." messages is ".$e->getMessage());
                 return redirect()->route('error');
+                
             }
         }
 

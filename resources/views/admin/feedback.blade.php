@@ -48,7 +48,7 @@
 
             <div class="card mb-1">
                 <div class="card-header pt-1 pb-0">
-                    <h6 class="text-center">Create Feedback</h6>
+                    <h6 class="text-center">Create Advertisement</h6>
                 </div>
                 <form method="post" enctype="multipart/form-data">
                     @csrf
@@ -58,29 +58,14 @@
                                 <div class="row mb-2">
                                     <div class="col-md-3 col-12">
                                         <div class="">
-                                            <label for="title">Name :</label>
+                                            <label for="title">Title :</label>
                                         </div>
                                     </div>
                                     <div class="col-md-9 col-12">
                                         <input type="text" class="form-control p-1 @error('name') is-invalid
                                         @enderror" name="name"
-                                            value="{{ old('name',optional($editfeedback)->name) }}" placeholder="Enter Title">
+                                            value="{{ old('name',optional($editfeedback)->name) }}" placeholder="Enter title">
                                         @error('name')
-                                            <p class="text-danger">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="row mb-2">
-                                    <div class="col-md-3 col-12">
-                                        <div class="">
-                                            <label for="title">Proffesion :</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9 col-12">
-                                        <input type="text" class="form-control p-1 @error('profession') is-invalid
-                                        @enderror" name="profession"
-                                            value="{{ old('profession',optional($editfeedback)->profession) }}" placeholder="Enter Page Name">
-                                        @error('profession')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
@@ -114,7 +99,7 @@
                                         <input type="file" name="photo" id="imageInput" name="image" accept="image/*"
                                             style="display: none;">
                                     </div>
-                                    <p class="text-center"></p>
+                                    <p class="text-center text-danger" style="font-size:12px">Image Must Be : jpeg,jpg,png,webp,svg . 500px X 500px</p>
                                     @error('photo')
                                             <p class="text-danger text-center mt-1">{{ $message }}</p>
                                         @enderror
@@ -132,7 +117,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header p-2">
-                            <h6 class="card-title ">Feedback Items</h6>
+                            <h6 class="card-title ">All Advertisement</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -165,14 +150,12 @@
                                                     <tr role="row bg-dark">
                                                         <th style="width: 136.031px;" class="p-1">SL NO:</th>
                                                         <th style="width: 214.469px;" class="p-1">Image</th>
-                                                        <th style="width: 214.469px;" class="p-1">Name</th>
-                                                        <th style="width: 214.469px;" class="p-1">Profesion</th>
+                                                        <th style="width: 214.469px;" class="p-1">Title</th>
                                                         <th style="width: 214.469px;" class="p-1">description</th>
                                                         <th style="width: 81.375px;" class="p-1">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-
                                                     @forelse($allfeedback as $item)
                                                         <tr role="row" class="odd">
                                                             <td class="sorting_1">{{ $loop->iteration }}</td>
@@ -182,17 +165,12 @@
                                                                     alt="Image Not Found">
                                                             </td>
                                                             <td>{{ $item->name }}</td>
-                                                            <td>{{ $item->profession }}</td>
                                                             <td>{{ substr($item->note, 0, 30) }}...</td>
-
-
                                                             <td class="d-flex justify-content-center">
-
                                                                 <a href="{{ route('admin.feedback' ,['id'=>$item->id,'page'=>request()->query('page'),'search'=>request()->query('search')]) }}"
                                                                     class="btn btn-info p-1 me-1">
                                                                     <i class="fas fa-edit iconsize"></i>
                                                                 </a>
-
                                                                 <form
                                                                     action="{{ route('admin.feedback.delete', ['id' => $item->id]) }}"
                                                                     method="post">
@@ -204,19 +182,12 @@
                                                             </td>
                                                         </tr>
                                                     @empty
-                                                        <p>there is no feedback</p>
-
+                                                        <p>there is no advertisement</p>
                                                     @endforelse
-
-
-
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
-                                    
-
-
                                 </div>
                             </div>
                         </div>
@@ -225,8 +196,9 @@
 
 
             </div>
-        </div>
 
+        </div>
+</div>
 @endsection
 
     @push('script')

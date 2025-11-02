@@ -109,7 +109,8 @@
                                         <p class="text-danger text-end">{{ $message }}</p>
                                     @enderror
                                 </div>
-                                <div class="row mb-2">
+                                {{-- 
+                                    <div class="row mb-2">
                                     <!-- //Instagram is replased by whatsapp  -->
                                     <div class="col-md-3 col-12">
                                         <label for="password">Linkdin :</label>
@@ -121,12 +122,13 @@
                                         <p class="text-danger text-end">{{ $message }}</p>
                                     @enderror
                                 </div>
+                                --}}
                                 <div class="row mb-2">
                                     <div class="col-md-3 col-12">
-                                        <label for="password">Twiter :</label>
+                                        <label for="password">Youtube :</label>
                                     </div>
                                     <div class="col-md-9 col-12">
-                                          <input type="text" class="form-control p-1 @error('twiter') is-invalid @enderror" value="{{ old('twiter',optional($company)->twiter) }}" name="twiter" placeholder="Enter Twiter">
+                                          <input type="text" class="form-control p-1 @error('twiter') is-invalid @enderror" value="{{ old('twiter',optional($company)->twiter) }}" name="twiter" placeholder="Enter Youtube Url">
                                     </div>
                                     @error('twiter')
                                         <p class="text-end text-danger">{{ $message }}</p>

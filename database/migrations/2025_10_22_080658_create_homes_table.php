@@ -11,16 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
+        
         Schema::create('homes', function (Blueprint $table) {
             $table->id();
-            $table->text('impact');
-            $table->string('batsman');
-            $table->string('bowler');
-            $table->string('trophies');
-            $table->string('awart');
-            $table->string('total_crickter');
+            $table->text('impact')->nullable();
+            $table->string('title')->nullable();
+            $table->string('img')->nullable();
+            $table->string('advertis_title')->nullable();
+            $table->string('awart')->nullable();
+            $table->string('total_crickter')->nullable();
             $table->timestamps();
         });
+
+
     }
 
     /**

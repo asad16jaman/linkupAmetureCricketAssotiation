@@ -48,7 +48,7 @@
 
             <div class="card">
                 <div class="card-header pt-1 pb-0">
-                    <h4 class="text-center">Home Page Message</h4>
+                    <h4 class="text-center">{{ $heading }}</h4>
                 </div>
                 <form method="post" enctype="multipart/form-data">
                     @csrf
@@ -66,7 +66,8 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="row mb-2">
+                                {{-- 
+                                    <div class="row mb-2">
                                     <div class="col-md-12 col-12">
                                         <label for="email2">Name :</label>
                                         <input type="text" class="form-control p-1 @error('name') is-invalid
@@ -89,6 +90,7 @@
                                         @enderror
                                     </div>
                                 </div>
+                                --}}
                             </div>
                             <div class="col-md-4 col-12">
                                 <div class="col-md-12 col-12 d-flex justify-content-center mt-1">

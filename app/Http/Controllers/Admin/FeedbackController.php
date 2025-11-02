@@ -29,9 +29,8 @@ class FeedbackController extends Controller
     {
 
         $validaterules = [
-            "name" => "required",
-            "profession" => "required",
-            'note' => 'required'
+            "name" => "nullable|string",
+            'note' => 'nullable|string'
         ];
         // dimensions:width=500,height=0"
         if ($id == null || $request->hasFile('photo')) {
@@ -39,7 +38,7 @@ class FeedbackController extends Controller
         }
         ;
         $request->validate($validaterules);
-        $data = $request->only(['name', 'profession', 'note']);
+        $data = $request->only(['name', 'note']);
         if ($id != null) {
             
             try {

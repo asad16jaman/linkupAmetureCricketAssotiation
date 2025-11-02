@@ -51,7 +51,7 @@
                     </li>
                     <li>
                       <a href="{{ route('admin.wellcome') }}" style="padding: 5px 24px !important">
-                        <p class="{{($page == 'wellcome') ? 'sub-item' : "pl" }}">Wellcome</p>
+                        <p class="{{($page == 'wellcome') ? 'sub-item' : "pl" }}">Welcome</p>
                       </a>
                     </li>
                     <li>
@@ -77,7 +77,9 @@
                   </ul>
                 </div>
               </li>
-                <li class="nav-item {{ $page == 'review' ? 'active' : "" }}">
+
+                {{-- 
+                  <li class="nav-item {{ $page == 'review' ? 'active' : "" }}">
                 <a data-bs-toggle="collapse" href="#productss">
                   <i class="fas fa-project-diagram"></i>
                   <p>Blog Management</p>
@@ -85,20 +87,7 @@
                 </a>
                 <div class="collapse" id="productss">
                   <ul class="nav nav-collapse">
-                   {{-- 
-                       <li>
-                      <a href="{{ route('admin.brand') }}" style="padding: 5px 24px !important">
-                        <p class="{{ ($page == 'brand') ? 'sub-item' : 'pl' }}">Event Type</p>
-                      </a>
-                    </li>
-                   --}}
-                    {{-- 
-                      <li>
-                      <a href="{{ route('admin.book') }}" style="padding: 5px 24px !important">
-                        <p class="{{ ($page == 'product') ? 'sub-item' : 'pl' }}">Event</p>
-                      </a>
-                    </li>
-                    --}}
+                   
                      <li>
                       <a href="{{ route('admin.eventType') }}" style="padding: 5px 24px !important">
                         <p class="{{ ($page == 'brand') ? 'sub-item' : 'pl' }}"> Type</p>
@@ -109,25 +98,12 @@
                         <p class="{{ ($page == 'product') ? 'sub-item' : 'pl' }}">Blog</p>
                       </a>
                     </li>
-                    {{-- 
-                      <li>
-                      <a href="{{ route('admin.product.review') }}" style="padding: 5px 24px !important">
-                        <p class="{{ ($page == 'review') ? 'sub-item' : 'pl' }}">Product Message</p>
-                      </a>
-                    </li>
-                    --}}
+                    
                   </ul>
                 </div>
               </li>
-              {{-- 
-                <li class="nav-item {{ ($page=='service') ? 'active' : '' }}">
-                <a href="{{ route('admin.service') }}">
-                  <i class="fas fa-wrench"></i>
-                  <p>Service</p>
-                </a>
-              </li>
-              --}}
-              
+                --}}
+
               <li class="nav-item {{ ($page=='gallery') ? 'active' : '' }}">
                 <a href="{{ route('admin.photogallery') }}">
                  <i class="fas fa-image"></i>
@@ -149,7 +125,7 @@
                 </a>
               </li>
 
-              <li class="nav-item {{ ($page=='ch') ? 'active' : '' }}">
+              <li class="nav-item {{ Route::is('admin.ch-message') ? 'active' : ''  }}">
                 <a href="{{ route('admin.ch-message') }}">
                   <i class="fas fa-feather-alt"></i>
                   <p>message</p>
@@ -183,6 +159,20 @@
                 </a>
               </li>
               --}}
+
+              <li class="nav-item  {{ Route::is('admin.invite-message') ? 'active' : '' }}">
+                <a href="{{ route('admin.invite-message') }}">
+                  <i class="fas fa-question-circle"></i> 
+                  <p>Invite Cart</p>
+                </a>
+              </li>
+
+              <li class="nav-item  {{ ($page=='faq') ? 'active' : '' }}">
+                <a href="{{ route('admin.byLawFile') }}">
+                  <i class="fas fa-question-circle"></i> 
+                  <p>By-Law</p>
+                </a>
+              </li>
 
               
                 <li class="nav-item {{ ($page=='contact') ? 'active' : '' }}">
