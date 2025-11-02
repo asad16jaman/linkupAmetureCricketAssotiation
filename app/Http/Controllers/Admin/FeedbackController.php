@@ -55,7 +55,7 @@ class FeedbackController extends Controller
                 return redirect()->route('admin.feedback', ['page' => $request->query('page'), 'search' => $request->query('search')])->with('success', "Successfully updated Feedback");
 
             } catch (\Exception $e) {
-                \Log::error("Error is commin from SlideController Storage method");
+                \Log::error("Error is commin from Feedback Controller Storage method Message is".$e->getMessage());
                 return redirect()->route('error');
 
             }
