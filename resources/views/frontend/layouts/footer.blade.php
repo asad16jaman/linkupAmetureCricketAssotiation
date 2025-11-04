@@ -47,9 +47,18 @@
                         <div class="comonft-sec d-inline-block w-100">
                             <h5 class="footer-title mb-3">Contact Us</h5>
                             <ul>
-                                <li class="my-1"><a href="{{ route('welocme.teamMembers')}}"><i class="fa fa-envelope contactfont"></i> {{ optional($company)->email }} </a></li>
-                                <li class="my-1"><a href="{{ route('welocme.photoGalleries')}}"><i class="fa fa-map-marker contactfont"></i> {{ optional($company)->address }}
-                                    </a></li>
+                                <li class="my-1">
+                                    <a href="{{ route('welocme.teamMembers')}}" class="d-flex">
+                                    <p><i class="fa fa-envelope contactfont"></i> </p>
+                                    <p>{{ optional($company)->email }} </p>
+                                    </a>
+                                </li>
+                                <li class="my-1">
+                                    <a href="{{ route('welocme.photoGalleries')}}" class="d-flex">
+                                        <p><i class="fa fa-map-marker contactfont"></i> </p>
+                                        <p>{{ optional($company)->address }}</p>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>

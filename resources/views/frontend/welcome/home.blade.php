@@ -296,6 +296,40 @@
             }
         }
         
+
+        .player-card {
+    position: relative;
+    overflow: hidden;
+}
+
+
+.feedback-card {
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+}
+
+.flow-body {
+    position: absolute;
+    bottom: -100%; 
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    padding: 10px;
+    transition: bottom 0.4s ease-in-out;
+}
+
+
+.feedback-card:hover .flow-body {
+    bottom: 0; 
+}
+
+.feedback-card:hover {
+    transform: scale(1.05);
+}
+
+        
+        
     </style>
 @endpush
 
@@ -424,13 +458,15 @@
                                 <div class="shop-slider owl-carousel owl-theme mt-0 py-2">
                                     @foreach ($feedbacks as $fedbck)
                                         <div class="player-card">
-                                            <div class="card border-0 shadow-sm p-1 rounded-3 feedback-card">
-                                                <div class="card-body p-0">
+                                            <div class="card border-0 shadow-sm p-1 rounded-3 feedback-card position-relative">
+                                                <div class="card-body p-0 ">
                                                     <img style="height:190px" class="img-fluid" src="{{ asset('storage/' . $fedbck->photo) }}" alt="{{ $fedbck->name }}">
-                                                    <div>
+                                                    @if(optional($fedbck)->name || optional($fedbck)->note)
+                                                    <div class="position-absolute flow-body">
                                                         <p class="card_title_style text-truncate" style="color: #000000;">{{ optional($fedbck)->name }}</p>
                                                         <p class=" card-body-style" style="color: #000000;">{{ optional($fedbck)->note }}</p>
                                                     </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -443,9 +479,6 @@
             </div>
         </div>
     </section>
-
-   
-
     <section class="authmessage bg-light py">
         <div class="container">
             <div class="row">
@@ -480,10 +513,8 @@
         function loadScores() {
             $.get(API_URL, function (response) {
                 if (response.status !== "success") return;
-
                 let matches = response.data;
                 if (!matches || matches.length === 0) return;
-
                 const container = $('#matchCards'); // jQuery object
                 container.trigger('destroy.owl.carousel'); // destroy previous instance
                 container.html(matches.map(match => createCard(match)).join("")); // replace cards
@@ -507,7 +538,6 @@
         }
 
         // loadScores()
-        
         function createCard(match) {
             const team1 = match.teamInfo[0];
             const team2 = match.teamInfo[1];
@@ -571,7 +601,7 @@
         shopSlider.owlCarousel({
             loop: true,
             margin: 30,
-            autoplay: true,
+            autoplay: false,
             nav: false,
             dots: false,
             responsive: {
