@@ -32,8 +32,8 @@ class SliderController extends Controller
     public function store(Request $request, ?int $id = null)
     {
         $validationRules = [
-            'title' => 'required',
-            'description' => 'required'
+            'title' => 'nullable',
+            'description' => 'nullable'
         ];
         if ($request->hasFile('img')) {
             $validationRules = [

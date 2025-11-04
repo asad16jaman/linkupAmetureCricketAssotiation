@@ -68,8 +68,8 @@
         <div class="container">
 
             <!-- Contact Info -->
-            <div class="row g-4 mb-5">
-                <div class="col-lg-4 col-md-6">
+            <div class="row g-4 mb-5 ">
+                <div class="col-lg-4 col-md-6 offset-lg-2">
                     <div class="info-item text-center p-4 rounded shadow-lg h-100 position-relative"
                         style="background: #000031">
                         <!-- Icon Top Center -->
@@ -93,7 +93,8 @@
                 </div>
 
 
-                <div class="col-lg-4 col-md-6">
+                {{-- 
+                    <div class="col-lg-4 col-md-6">
                     <div class="info-item text-center p-4 rounded shadow-lg h-100 position-relative"
                         style="background: #000031">
 
@@ -116,6 +117,8 @@
                         </div>
                     </div>
                 </div>
+                
+                --}}
 
 
                 <div class="col-lg-4 col-md-6">
@@ -202,7 +205,9 @@
                 </div>
             </div>
             <!-- Google Map -->
-            <div class="row mt-5">
+            {{-- 
+            
+                <div class="row mt-5">
                 <div class="col-12">
                     <div class="map-container rounded shadow-lg overflow-hidden" style="height: 400px;">
                         <iframe src="{{ optional($company)->map }}" width="100%" height="455" style="border:1;"
@@ -210,6 +215,8 @@
                     </div>
                 </div>
             </div>
+
+            --}}
         </div>
     </section>
 

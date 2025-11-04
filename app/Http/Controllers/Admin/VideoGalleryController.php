@@ -61,7 +61,7 @@ class VideoGalleryController extends Controller
                     $data['img'] = $path;
                 }
                 VideoGallery::where('id', '=', $id)->update($data);
-                return redirect()->route('admin.photogallery', ['id' => $id, 'page' => request()->query('page'), 'search' => request()->query('search')])->with('success', 'Successfully Gallery Updated!');
+                return redirect()->route('admin.videogallery', ['id' => $id, 'page' => request()->query('page'), 'search' => request()->query('search')])->with('success', 'Successfully Gallery Updated!');
             } catch (\Exception $e) {
                 \Log::error("this message is from : " . __CLASS__ . "Line is : " . __LINE__ . " messages is " . $e->getMessage());
                 return redirect()->route('error');

@@ -30,13 +30,13 @@ class PhotoGalleryController extends Controller
     {
         if($id){
             $request->validate([
-                'title' => 'required',
+                'title' => 'nullable',
                 'img' => "nullable|image|mimes:jpeg,jpg,png,gif,webp,svg"
             ]);
 
         }else{
             $request->validate([
-                'title' => 'required',
+                'title' => 'nullable',
                 'img' => "required|image|mimes:jpeg,jpg,png,gif,webp,svg"
             ]);
         }

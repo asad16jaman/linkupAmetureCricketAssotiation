@@ -348,16 +348,18 @@
                         @foreach ($sliders as $slider)
                             <div class="carousel-item {{ ($loop->iteration == 1) ? 'active' : '' }}">
                                 <img src="{{ asset('storage/' . $slider->img) }}" class="d-block w-100" alt="Slide 1">
-                                <div class="carousel-caption text-start">
-                                    <div class="handleCaption">
-                                        <div style="width: 70%;">
-                                            <h1 class="fw-bold slider_title">{{ $slider->title }}</h1>
-                                            <p class="mt-1 slider-body">{{ $slider->description }} </p>
-                                            <a href="{{ route('welocme.contactus') }}" class="join-us-button">Join With Us</a>
+                                @if ($slider->title || $slider->description)
+                                    <div class="carousel-caption text-start">
+                                        <div class="handleCaption">
+                                            <div style="width: 70%;">
+                                                <h1 class="fw-bold slider_title">{{ $slider->title }}</h1>
+                                                <p class="mt-1 slider-body">{{ $slider->description }} </p>
+                                            </div>
                                         </div>
+                                        <!-- <a href="#" class="btn btn-danger btn-lg px-4 mt-1">See More</a> -->
                                     </div>
-                                    <!-- <a href="#" class="btn btn-danger btn-lg px-4 mt-1">See More</a> -->
-                                </div>
+                                @endif
+                                
                             </div>
                         @endforeach
                     </div>

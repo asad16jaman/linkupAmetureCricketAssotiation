@@ -23,6 +23,10 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/jquery.fancybox.min.css') }}">
 
     <style>
+        .nav-item:hover .nav-link{
+            color: #ffc107 !important;
+            /* background-color: yellow; */
+        }
         .sub-main-banner {
             margin-top: -12px;
         }

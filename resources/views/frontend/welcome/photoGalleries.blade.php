@@ -26,6 +26,22 @@
             transform: translateY(-6px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
+        .galley_card{
+            position: relative;
+            transition: 0.5s;
+        }
+        .callery_caption{
+                width: 100%;
+            background-color: #000000c2;
+            color: #fff;
+            position: absolute;
+            bottom: -200px;
+            text-align: center;
+            transition: 0.5s;
+        }
+        .galley_card:hover .callery_caption{
+            bottom: 0px;
+        }
     </style>
 @endpush
 
@@ -59,11 +75,11 @@
         @foreach ($photogallery as $gallery)
             <div class="col-lg-3 col-md-6">
                 <a data-fancybox="wk" href="{{ asset('storage/'.$gallery->img) }}" class="comon-links-divb05">
-                    <figure>
+                    <figure class="galley_card">
                         <img src="{{ asset('storage/'.$gallery->img) }}" alt="pbnm">
-                        <figcaption>
+                        <div class="callery_caption">
                             {{ $gallery->title }}
-                        </figcaption>
+                        </div>
                     </figure>
                 </a>
             </div>
