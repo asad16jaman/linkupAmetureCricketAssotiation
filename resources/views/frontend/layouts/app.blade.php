@@ -317,7 +317,7 @@
                             <a href="{{ route('welocme.aboutus') }}"> About </a>
                         </li>
                         <li>
-                            <a href="{{ route('welocme.teamMembers') }}"> Teams </a>
+                            <a href="{{ route('welocme.teamMembers') }}">Team</a>
                         </li>
                         <!-- Dropdown End -->
                         <li>
@@ -328,7 +328,7 @@
                         </li>
                         <li>
                             <div class="dropdown" style="width:100%" id="customDropdown">
-                                <button class="dropdown-btn" style="width: 100%;">Select Option ▾</button>
+                                <button class="dropdown-btn" style="width: 100%;">Get In Touch ▾</button>
                                 <div class="dropdown-content">
                                     @foreach ($bylaw as $law)
                                         <a class="dropdown-item w3-text-white py-2"

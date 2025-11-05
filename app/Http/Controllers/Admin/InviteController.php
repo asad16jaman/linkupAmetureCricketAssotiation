@@ -11,7 +11,7 @@ class InviteController extends Controller
 {
     //
     public function index(){
-        $heading = "Invite Cart Message Create";
+        $heading = "Collaboration Create";
         $ch= Invite::first();
         return view("admin.authmsg", compact(['ch','heading']));
     }

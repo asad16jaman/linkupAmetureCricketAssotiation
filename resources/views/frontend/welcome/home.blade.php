@@ -32,7 +32,7 @@
             align-items: center;
         }
 
-        .liveCardImgSize{
+        .liveCardImgSize {
             width: 41px;
             height: 25px;
             object-fit: contain;
@@ -45,6 +45,10 @@
             padding: 7px 12px;
             border-radius: 11px;
             margin-top: 41px;
+        }
+        .sponser-title{
+            font-weight: 900;
+    margin-bottom: 15px;
         }
 
         .banner-part-content .carousel-caption {
@@ -91,7 +95,7 @@
             bottom: -113px;
         }
 
-       
+
 
         .welcome-section {
             width: 100%;
@@ -115,7 +119,8 @@
             background: #ffffff;
             color: #000;
         }
-        .btn-white:hover{
+
+        .btn-white:hover {
             background: #ffffff;
             color: #000;
         }
@@ -164,7 +169,8 @@
             font-size: 18px;
         }
 
-        .owl-prev:after, .owl-next:after {
+        .owl-prev:after,
+        .owl-next:after {
             content: "";
             font-family: "FontAwesome";
             position: absolute;
@@ -179,20 +185,26 @@
             justify-content: center;
         }
 
-        .card_title_style{
+        .card_title_style {
             font-size: 20px;
             margin-top: 10px;
             color: #112345;
             font-weight: 600;
         }
-        .card-body-style{
+
+        .card-body-style {
             color: #000000;
             font-size: 12px;
             height: 53px;
         }
-        .welcome-border{
+
+        .welcome-border {
             border-left: 10px solid #0f66dd;
             border-right: 10px solid #0f66dd;
+        }
+        .colaborate-style{
+            background: linear-gradient(45deg, #dceefa, #fdf5de);
+        color: #000;
         }
 
         @media screen and (min-width: 1500px) {
@@ -202,17 +214,15 @@
         }
 
         @media (min-width: 1201px) and (max-width: 1440px) {
-
             .carousel-inner img {
                 height: 550px;
             }
-
-
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-             .owl-prev:after,
+
+            .owl-prev:after,
             .owl-next:after {
                 content: "";
                 font-family: "FontAwesome";
@@ -223,12 +233,14 @@
                 border-radius: 50%;
                 background: #fff;
             }
+
             .owl-nav {
                 display: flex;
                 position: absolute;
                 width: 100%;
                 align-items: center;
             }
+
             .banner-part-content h1 {
                 font-size: 1.2rem;
             }
@@ -275,13 +287,16 @@
             .crickter_voice {
                 font-size: 16px;
             }
-            .slider_title{
+
+            .slider_title {
                 font-size: 15px !important;
             }
-            .slider-body{
+
+            .slider-body {
                 font-size: 11px !important;
             }
-            .join-us-button{
+
+            .join-us-button {
                 margin-top: 7px;
                 font-size: 12px;
                 background: #bd9b0c;
@@ -289,47 +304,56 @@
                 padding: 4px 10px;
                 border-radius: 4px;
             }
+
             .carousel_indecator {
                 font-size: 15px;
                 width: 30px;
                 height: 30px;
             }
         }
-        
+
+        .outline-text {
+           
+  font-size: 25px;
+  font-weight: bold;
+  background: linear-gradient(45deg, #ff0066, #00ccff);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
+  font-family: Arial, sans-serif;
+
+            }
 
         .player-card {
-    position: relative;
-    overflow: hidden;
-}
+            position: relative;
+            overflow: hidden;
+        }
 
 
-.feedback-card {
-    position: relative;
-    transition: transform 0.3s ease-in-out;
-}
+        .feedback-card {
+            position: relative;
+            transition: transform 0.3s ease-in-out;
+        }
 
-.flow-body {
-    position: absolute;
-    bottom: -100%; 
-    left: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    color: #000;
-    padding: 10px;
-    transition: bottom 0.4s ease-in-out;
-}
+        .flow-body {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            color: #000;
+            padding: 10px;
+            transition: bottom 0.4s ease-in-out;
+        }
 
 
-.feedback-card:hover .flow-body {
-    bottom: 0; 
-}
+        .feedback-card:hover .flow-body {
+            bottom: 0;
+        }
 
-.feedback-card:hover {
-    transform: scale(1.05);
-}
-
-        
-        
+        .feedback-card:hover {
+            transform: scale(1.05);
+        }
     </style>
 @endpush
 
@@ -359,7 +383,7 @@
                                         <!-- <a href="#" class="btn btn-danger btn-lg px-4 mt-1">See More</a> -->
                                     </div>
                                 @endif
-                                
+
                             </div>
                         @endforeach
                     </div>
@@ -383,12 +407,14 @@
 
         </div>
     </section>
+
     <section>
         <div class="container">
             {{-- include('frontend.home.livescore') --}}
             <div id="matchCards" class="score_carousel owl-carousel owl-theme mt-0 py-2"></div>
         </div>
     </section>
+
     <!-- Impact section Start -->
     @include('frontend.home.impact', ['data' => $impactData])
     <!-- Impact section End -->
@@ -418,6 +444,38 @@
             </div>
         </div>
     </section>
+
+    <section class="servSection py">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <img style=""
+                            src="{{ optional($invite)->img ? asset('storage/' . $invite->img) : asset('frontend/images/home/crickter.png') }}"
+                            alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12  mb-3 mb-md-0">
+                    <div class="card h-100">
+                        <div class="card-body  ">
+                            <div class="colaborate-style h-100 d-flex flex-row justify-content-center align-items-center text-center">
+                                <div>
+                                    <h3 class="sponser-title outline-text">{{ optional($invite)->title }}</h3>
+                                <p class="f-12">{!!  optional($invite)->speech !!}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
     <section class="feedbackSection bg-yellow py-5">
         <div class="container">
             <div class="row">
@@ -435,12 +493,16 @@
                                         <div class="player-card">
                                             <div class="card border-0 shadow-sm p-1 rounded-3 feedback-card position-relative">
                                                 <div class="card-body p-0 ">
-                                                    <img style="height:190px" class="img-fluid" src="{{ asset('storage/' . $fedbck->photo) }}" alt="{{ $fedbck->name }}">
+                                                    <img style="height:190px" class="img-fluid"
+                                                        src="{{ asset('storage/' . $fedbck->photo) }}"
+                                                        alt="{{ $fedbck->name }}">
                                                     @if(optional($fedbck)->name || optional($fedbck)->note)
-                                                    <div class="position-absolute flow-body">
-                                                        <p class="card_title_style text-truncate" style="color: #000000;">{{ optional($fedbck)->name }}</p>
-                                                        <p class=" card-body-style" style="color: #000000;">{{ optional($fedbck)->note }}</p>
-                                                    </div>
+                                                        <div class="position-absolute flow-body">
+                                                            <p class="card_title_style text-truncate" style="color: #000000;">
+                                                                {{ optional($fedbck)->name }}</p>
+                                                            <p class=" card-body-style" style="color: #000000;">
+                                                                {{ optional($fedbck)->note }}</p>
+                                                        </div>
                                                     @endif
                                                 </div>
                                             </div>
@@ -520,41 +582,41 @@
             const score1 = getScoreByTeam(team1.name, score);
             const score2 = getScoreByTeam(team2.name, score);
             return `
-                <div class="item"> <!-- Owl Carousel item -->
-                    <div class="card shadow">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                        <p class="text-truncate f-11">${match.name}</p>
-                        <span class="f-12 text-uppercase">${match.matchType}</span>
-                        </div>
+                    <div class="item"> <!-- Owl Carousel item -->
+                        <div class="card shadow">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                            <p class="text-truncate f-11">${match.name}</p>
+                            <span class="f-12 text-uppercase">${match.matchType}</span>
+                            </div>
 
-                        <div>
-                        <div class="first-team d-flex justify-content-between align-items-center mt-2">
-                            <div class="f-12 d-flex align-items-center">
-                            <div class="card"><div class="card-body p-0">
-                                <img class="liveCardImgSize" src="${team1.img}" alt="">
-                            </div></div>
-                            <span class="f-12 ps-2">${team1.shortname}</span>
+                            <div>
+                            <div class="first-team d-flex justify-content-between align-items-center mt-2">
+                                <div class="f-12 d-flex align-items-center">
+                                <div class="card"><div class="card-body p-0">
+                                    <img class="liveCardImgSize" src="${team1.img}" alt="">
+                                </div></div>
+                                <span class="f-12 ps-2">${team1.shortname}</span>
+                                </div>
+                                <div class="f-12">${score1}</div>
                             </div>
-                            <div class="f-12">${score1}</div>
-                        </div>
-                        <div class="second-team d-flex justify-content-between align-items-center mt-2">
-                            <div class="d-flex align-items-center">
-                            <div class="card"><div class="card-body p-0">
-                                <img class="liveCardImgSize" src="${team2.img}" alt="">
-                            </div></div>
-                            <span class="f-12 ps-2">${team2.shortname}</span>
+                            <div class="second-team d-flex justify-content-between align-items-center mt-2">
+                                <div class="d-flex align-items-center">
+                                <div class="card"><div class="card-body p-0">
+                                    <img class="liveCardImgSize" src="${team2.img}" alt="">
+                                </div></div>
+                                <span class="f-12 ps-2">${team2.shortname}</span>
+                                </div>
+                                <div class="f-12">${score2}</div>
                             </div>
-                            <div class="f-12">${score2}</div>
+                            </div>
+                            <div class="mt-2">
+                            <p class="text-truncate f-11">${match.status}</p>
+                            </div>
                         </div>
-                        </div>
-                        <div class="mt-2">
-                        <p class="text-truncate f-11">${match.status}</p>
                         </div>
                     </div>
-                    </div>
-                </div>
-                `;
+                    `;
         }
 
         function getScoreByTeam(teamName, scores) {
@@ -582,7 +644,7 @@
             responsive: {
                 0: {
                     items: 1,
-                    gap:30
+                    gap: 30
                 },
                 600: {
                     items: 3
@@ -623,6 +685,6 @@
             })
         });
 
-        
+
     </script>
 @endpush
