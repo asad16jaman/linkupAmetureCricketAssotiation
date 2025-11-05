@@ -418,33 +418,6 @@
             </div>
         </div>
     </section>
-
-
-    <!-- Service Sectin -->
-    <section class="servSection py">
-        <div class="container">
-            <div class="row">
-                {{-- <div class="col-md-4 col-12 d-flex flex-row justify-content-center align-items-center mb-3 mb-md-0">
-                    <div class="servcard">
-                        <h2 class="border-container" style="margin-bottom:15px">Served Over</h2>
-                        <h1>{{ $impactData->total_crickter }}</h1>
-                        <h2>Cricketers</h2>
-                    </div>
-                </div> --}}
-                <div
-                    class="col-md-12 col-12 d-flex flex-row justify-content-center align-items-center text-center mb-3 mb-md-0">
-                    <div class="servcard bg-yellow">
-                        <img style="width: 50px;" src="{{ optional($invite)->img ? asset('storage/'.$invite->img) : asset('frontend/images/home/crickter.png') }}" alt="">
-                        <h3>{{ optional($invite)->title }}</h3>
-                        <p class="f-12">{!!  optional($invite)->speech !!}</p>
-                        <a href="{{ route('welocme.contactus') }}" class="btn-white">Get In Touch</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
     <section class="feedbackSection bg-yellow py-5">
         <div class="container">
             <div class="row">
