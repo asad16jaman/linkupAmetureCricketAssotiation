@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('title', 'Create Player')
+@section('title', 'Create Management')
 
 @section('style')
     <style>
@@ -44,7 +44,7 @@
         <div class="page-inner">
             <div class="card">
                 <div class="card-header pt-1 pb-0">
-                    <h4 class="text-center">Create Player</h4>
+                    <h4 class="text-center">Create Management</h4>
                 </div>
                 <form method="post" enctype="multipart/form-data">
                     @csrf
@@ -69,7 +69,7 @@
                                 <div class="row mb-2">
                                     <div class="col-md-3 col-12">
                                         <div class="">
-                                            <label for="email2">Type :</label>
+                                            <label for="email2">Designation :</label>
                                         </div>
                                     </div>
                                     <div class="col-md-9 col-12">
@@ -82,16 +82,54 @@
                                         @enderror
                                     </div>
                                 </div>
+
+                                <div class="row mb-2">
+                                    <div class="col-md-3 col-12">
+                                        <div class="">
+                                            <label for="email2">Email :</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9 col-12">
+                                        <input type="text" class="form-control p-1  @error('email') is-invalid
+                                        @enderror" name="email"
+                                            value="{{  old('email', optional($editTeam)->email)  }}"
+                                            placeholder="Enter Email">
+                                        @error('email')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
                             </div>
 
                             <div class="col-md-6 col-12">
+
+                                <div class="row mb-2">
+                                    <div class="col-md-3 col-12">
+                                        <div class="">
+                                            <label for="email2">Facebook :</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9 col-12">
+                                        <input type="text" class="form-control p-1  @error('facebook_url') is-invalid
+                                        @enderror" name="facebook_url"
+                                            value="{{  old('facebook_url', optional($editTeam)->facebook_url)  }}"
+                                            placeholder="Enter Facebook Url">
+                                        @error('facebook_url')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+
                                 <div class="row">
-                                    <div class="col-md-12 col-12 d-flex justify-content-center mt-1">
+                                    <div class="col-3 d-flex justify-content-center mt-1">
                                         <label style="cursor: pointer;" class="me-2">
                                             <!-- (placeholder) -->
-                                            Player
+                                            Picture :
                                         </label>
-
+                                    </div>
+                                    <div class="col-9">
                                         <!-- hidden input -->
                                         <div class="me-3">
                                             <input type="file" class="form-control" name="photo" id="imageInput"
@@ -104,10 +142,12 @@
                                             <p class="text-danger text-center">{{ $message }}</p>
                                         @enderror
                                     </div>
-
-
                                 </div>
                             </div>
+                        </div>
+                        <div class="row mb-2 mt-2 ms-2"> 
+                                <label for="description">Detail :</label>
+                                <textarea name="bio" class="form-control  $error('speech') is-invalid $enderror"  id="description">{{ old('speech',optional($editTeam)->bio) }}</textarea>      
                         </div>
                         <div class="d-flex justify-content-end">
                             <input type="submit" value="Submit" class="btn btn-primary me-3 p-2">
@@ -119,7 +159,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">All Players</h4>
+                            <h4 class="card-title">All Management</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -129,7 +169,8 @@
                                             <th style="width: 136.031px;">SL NO:</th>
                                             <th style="width: 214.469px;">Picture</th>
                                             <th style="width: 214.469px;">Name</th>
-                                            <th style="width: 214.469px;">Type</th>
+                                            <th style="width: 214.469px;">Designation</th>
+                                            <th style="width: 214.469px;">Detail</th>
                                             <th style="width: 81.375px;">Action</th>
                                         </tr>
                                     </thead>
@@ -144,6 +185,9 @@
                                                 </td>
                                                 <td>{{ $team->name }}</td>
                                                 <td>{{ $team->designation }}</td>
+                                                <td>
+                                                    <a href="">Detail</a>
+                                                </td>
 
 
                                                 <td class="d-flex justify-content-center">
@@ -163,7 +207,7 @@
                                                 </td>
                                             </tr>
                                         @empty
-                                            <p>there is no player</p>
+                                            <p>there is no Management</p>
 
                                         @endforelse
                                     </tbody>
@@ -179,11 +223,15 @@
 @endsection
 
     @push('script')
+        <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
         <script src="{{ asset('/assets/admin/js/plugin/datatables/datatables.min.js') }}"></script>
         <script>
 
-
-
+            ClassicEditor
+                .create(document.querySelector('#description'))
+                .catch(error => {
+                        console.error('CKEditor Error:', error);
+                });
 
             $(document).on("click", ".deleteBtn", function (e) {
                 e.preventDefault();

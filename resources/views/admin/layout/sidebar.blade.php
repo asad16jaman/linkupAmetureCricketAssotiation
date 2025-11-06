@@ -121,7 +121,7 @@
               <li class="nav-item {{ ($page=='management') ? 'active' : '' }}">
                 <a href="{{ route('admin.management') }}">
                   <i class="fas fa-futbol"></i>
-                  <p>Player</p>
+                  <p>Management</p>
                 </a>
               </li>
 
@@ -163,7 +163,7 @@
               <li class="nav-item  {{ Route::is('admin.invite-message') ? 'active' : '' }}">
                 <a href="{{ route('admin.invite-message') }}">
                   <i class="fas fa-question-circle"></i> 
-                  <p>Invite Cart</p>
+                  <p>Collaboration</p>
                 </a>
               </li>
 

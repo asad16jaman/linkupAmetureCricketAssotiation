@@ -136,9 +136,9 @@ Route::group(['prefix'=> '/admin','middleware'=>'auth','as'=>'admin.'], function
     Route::post("/by-law-file/{id}/delete",[LawController::class,"destroy"])->name("byLawFile.delete");
 
     //Managment url hare
-    Route::get('/player/{id?}',[ManagemenController::class,'index'])->name('management');
-    Route::post('/player/{id?}',[ManagemenController::class,'store'])->name('management');
-    Route::post('/player/{id}/delete',[ManagemenController::class,'destroy'])->name('management.delete');
+    Route::get('/management/{id?}',[ManagemenController::class,'index'])->name('management');
+    Route::post('/management/{id?}',[ManagemenController::class,'store'])->name('management');
+    Route::post('/management/{id}/delete',[ManagemenController::class,'destroy'])->name('management.delete');
 
     //about url hare
     Route::get('/about',[AboutController::class,'index'])->name('about');

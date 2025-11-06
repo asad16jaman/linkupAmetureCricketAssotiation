@@ -31,7 +31,7 @@ class ManagemenController extends Controller
             $validaterules['photo'] = "required|image|mimes:jpeg,jpg,png,gif,webp,svg";
         };
         $request->validate($validaterules);
-        $data = $request->only(['name', 'designation','bio']);
+        $data = $request->only(['name', 'designation','bio','email','facebook_url']);
         if ($id != null) {
             try{
                 //user edit section is hare
