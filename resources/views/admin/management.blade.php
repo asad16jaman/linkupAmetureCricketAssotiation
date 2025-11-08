@@ -82,7 +82,6 @@
                                         @enderror
                                     </div>
                                 </div>
-
                                 <div class="row mb-2">
                                     <div class="col-md-3 col-12">
                                         <div class="">
@@ -99,12 +98,8 @@
                                         @enderror
                                     </div>
                                 </div>
-
-
                             </div>
-
                             <div class="col-md-6 col-12">
-
                                 <div class="row mb-2">
                                     <div class="col-md-3 col-12">
                                         <div class="">
@@ -121,7 +116,6 @@
                                         @enderror
                                     </div>
                                 </div>
-
                                 <div class="row">
                                     <div class="col-3 d-flex justify-content-center mt-1">
                                         <label style="cursor: pointer;" class="me-2">
@@ -188,15 +182,11 @@
                                                 <td>
                                                     <a href="">Detail</a>
                                                 </td>
-
-
                                                 <td class="d-flex justify-content-center">
-
                                                     <a href="{{ route('admin.management', ['id' => $team->id, 'page' => request()->query('page'), 'search' => request()->query('search')]) }}"
                                                         class="btn btn-info p-1 me-1">
                                                         <i class="fas fa-edit iconsize"></i>
                                                     </a>
-
                                                     <form action="{{ route('admin.management.delete', ['id' => $team->id]) }}"
                                                         method="post">
                                                         @csrf
@@ -208,7 +198,6 @@
                                             </tr>
                                         @empty
                                             <p>there is no Management</p>
-
                                         @endforelse
                                     </tbody>
                                 </table>
@@ -216,17 +205,14 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 </div>
 @endsection
-
     @push('script')
         <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
         <script src="{{ asset('/assets/admin/js/plugin/datatables/datatables.min.js') }}"></script>
         <script>
-
             ClassicEditor
                 .create(document.querySelector('#description'))
                 .catch(error => {
@@ -236,7 +222,6 @@
             $(document).on("click", ".deleteBtn", function (e) {
                 e.preventDefault();
                 let form = $(this).closest("form"); // nearest form select korbe
-
                 swal({
                     title: "Are you sure?",
                     text: "You Want To Delete",

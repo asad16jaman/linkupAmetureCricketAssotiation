@@ -49,7 +49,7 @@ use App\Http\Controllers\Admin\VideoGalleryController;
    Route::post('contact', [WelcomeController::class, 'saveContact'])->name('welocme.contactus');
 
    Route::get('message_details', [WelcomeController::class, 'messageDetails'])->name('welcome.messageDetails');
-   Route::get('welcome/note', [WelcomeController::class, 'welocmeNote'])->name('welocme.note');
+//    Route::get('welcome/note', [WelcomeController::class, 'welocmeNote'])->name('welocme.note');
 
    Route::get('team/members', [WelcomeController::class, 'teamMembers'])->name('welocme.teamMembers');
    Route::get('photo/galleries', [WelcomeController::class, 'photoGalleries'])->name('welocme.photoGalleries');
@@ -166,13 +166,10 @@ Route::group(['prefix'=> '/admin','middleware'=>'auth','as'=>'admin.'], function
     Route::get('/logout',[DashboardController::class,'logout'])->name('logout');
 });
 
-
-
 Route::get('image', function () {
       Artisan::call('storage:link');
       return redirect()->back()->with('success', 'Storage linked successfully.');
    })->name('admin.storage.link');
-
 
 Route::get('clear', function () {
       Artisan::call('optimize:clear');

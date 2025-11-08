@@ -3,8 +3,9 @@
 @push('css')
     <style>
         .player-card .card {
-            border: 1px solid #C40E00 !important;
+            border: 1px solid #323f35 !important;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
         }
 
         .player-card:hover .card {
@@ -43,6 +44,16 @@
             background: #900b00;
             transform: scale(1.1);
         }
+        .management_highliter {
+            width: 100%;
+            bottom: -61px;
+            transition: 0.5s;
+            background: #323f35;
+            color: #fff;
+        }
+        .player-card:hover .management_highliter{
+            bottom: 0px;
+        }
     </style>
 @endpush
 
@@ -74,22 +85,26 @@
         <div class="container">
             <div class="row g-4 mt-0 mb-3 py-3">
                 @foreach ($players as $player)
-                    <div class="col-lg-2 col-sm-4">
-                        <div class="player-card">  
-                            <div class="card border">
-                                <div class="position-relative">
-                                    <img style="height:170px" src="{{ asset('storage/' . $player->photo) }}" class="card-img-top"
+                    <div class="col-lg-3 col-12 col-md-6">
+                        <div class="player-card position-relative">  
+                            <div class="card border" style="height: 330px;">
+                                <div class="position-relative management_card">
+                                    <a data-fancybox="wk" href="{{ asset('storage/'.$player->photo) }}" class="comon-links-divb05" style="border-radius:0px">
+                                    <img style="height:250px;" src="{{ asset('storage/' . $player->photo) }}" class="card-img-top"
                                         alt="{{ $player->name }}">
-                                    <ul class="social-icons list-unstyled d-flex justify-content-center">
-                                        <li><a href="#" class="btn btn-social"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#" class="btn btn-social"><i class="fab fa-linkedin-in"></i></a></li>
-                                    </ul>
+                                    
+                                    </a>
                                 </div>
-                                <div class="card-body text-center">
+                                <div class="card-body text-center position-absolute management_highliter">
                                     <a href="" data-discover="true">
                                         <h5 class="card-title mb-1">{{ $player->name }}</h5>
                                     </a>
-                                    <p class="text-muted mb-0">{{ $player->designation }}</p>
+                                    <p class=" mb-0">{{ $player->designation }}</p>
+                                    <hr>
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <p style="margin-right:10px"><i class="fas fa-envelope"></i></p>
+                                        <p>{{ $player->email ?? "Email not available" }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
